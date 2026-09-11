@@ -1,0 +1,1 @@
+A defender must place a limited number of air-defense systems in a region to make reconnaissance drone swarms pay the highest possible passage cost. The drone swarm can replan its path after encountering defensive systems, so deployment quality must be evaluated through the drone's path-planning response rather than simple coverage alone.

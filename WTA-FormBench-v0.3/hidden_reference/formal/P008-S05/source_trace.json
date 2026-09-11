@@ -1,0 +1,35 @@
+{
+  "sample_id": "P008-S05",
+  "source_evidence": [
+    {
+      "source": "EXP_0217_2026_KCEA_MS-SWTA_TEVC_version_of_record.md",
+      "location": "Section III.A Problem Description and Assumptions, Table I",
+      "supports": "sets, target trajectories, sensors, weapons, time horizon and decision variables"
+    },
+    {
+      "source": "same",
+      "location": "Section III.B Mathematical Model Formulation, Eqs. (1)-(3)",
+      "supports": "primary objective and target-level interception probability"
+    },
+    {
+      "source": "same",
+      "location": "Section III.B Constraint Formulation, Eqs. (4)-(12)",
+      "supports": "assignment consistency, sensor capacity, weapon resource, temporal and engagement-envelope constraints"
+    },
+    {
+      "source": "same",
+      "location": "Section III.C Multimodal Solution Landscape, Eqs. (13)-(14)",
+      "supports": "multimodal portfolio interpretation; not a replacement of the core SWTA formulation"
+    }
+  ],
+  "variant_contract": {
+    "data_group": "P008_LARGE_NESTED",
+    "targets": 10,
+    "sensors": 8,
+    "weapons": 8,
+    "time_slots": 10,
+    "attempts_per_target": 3,
+    "disclosure": "L3"
+  },
+  "validation_trace_file": "validation_trace.json"
+}

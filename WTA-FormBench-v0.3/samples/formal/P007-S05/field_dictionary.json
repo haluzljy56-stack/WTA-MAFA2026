@@ -1,0 +1,106 @@
+{
+  "sample_id": "P007-S05",
+  "paper_id": "P007",
+  "contract_version": "R3C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "platforms",
+      "meaning": "attack platform identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "platform",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "defines platform index"
+    },
+    {
+      "name": "targets",
+      "meaning": "target identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "target",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "defines target index"
+    },
+    {
+      "name": "hit_probability",
+      "meaning": "probability that a platform attack hits a target",
+      "type": "object",
+      "shape_or_key_structure": "platform -> target -> probability",
+      "index_order": "platform, target",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "precomputed source-permitted input",
+      "agent_facing_role": "objective residual input"
+    },
+    {
+      "name": "target_value",
+      "meaning": "target value weight",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative number",
+      "index_order": "target",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "first objective input"
+    },
+    {
+      "name": "target_threat_degree",
+      "meaning": "target threat degree weight",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative number",
+      "index_order": "target",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "second objective input"
+    },
+    {
+      "name": "weapon_cost",
+      "meaning": "resource cost per platform assignment",
+      "type": "object",
+      "shape_or_key_structure": "platform -> nonnegative number",
+      "index_order": "platform",
+      "domain_or_range": "number >= 0",
+      "unit": "cost units",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "third objective input"
+    },
+    {
+      "name": "platform_weapon_capacity",
+      "meaning": "maximum number of assignments per platform",
+      "type": "object",
+      "shape_or_key_structure": "platform -> nonnegative integer",
+      "index_order": "platform",
+      "domain_or_range": "integer >= 0",
+      "unit": "weapons",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "platform capacity constraint"
+    },
+    {
+      "name": "target_max_assigned_weapons",
+      "meaning": "upper bound on weapons assigned to each target",
+      "type": "object",
+      "shape_or_key_structure": "target -> positive integer",
+      "index_order": "target",
+      "domain_or_range": "integer >= 1",
+      "unit": "weapons",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "target upper-bound constraint"
+    },
+    {
+      "name": "range_feasibility",
+      "meaning": "whether each platform-target pair is reachable",
+      "type": "object",
+      "shape_or_key_structure": "platform -> target -> 0/1",
+      "index_order": "platform, target",
+      "domain_or_range": "0 or 1",
+      "unit": "binary",
+      "raw_or_derived": "precomputed feasibility",
+      "agent_facing_role": "range constraint input"
+    }
+  ]
+}

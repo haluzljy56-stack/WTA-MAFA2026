@@ -1,0 +1,738 @@
+{
+  "weapon_types": [
+    "thermal_decoy",
+    "acoustic_decoy",
+    "radar_decoy",
+    "laser_dazzler",
+    "jammer",
+    "point_defense"
+  ],
+  "weapons_by_type": {
+    "thermal_decoy": [
+      "TH01"
+    ],
+    "acoustic_decoy": [
+      "AC01"
+    ],
+    "radar_decoy": [
+      "RD01"
+    ],
+    "laser_dazzler": [
+      "LZ01"
+    ],
+    "jammer": [
+      "JM01",
+      "JM02"
+    ],
+    "point_defense": [
+      "PD01",
+      "PD02"
+    ]
+  },
+  "missiles": [
+    "M01",
+    "M02",
+    "M03",
+    "M04"
+  ],
+  "dynamic_stages": [
+    "K01"
+  ],
+  "missile_values": {
+    "M01": 12,
+    "M02": 14,
+    "M03": 16,
+    "M04": 18
+  },
+  "base_intercept_probability": {
+    "thermal_decoy": {
+      "TH01": {
+        "M01": 0.495,
+        "M02": 0.52,
+        "M03": 0.545,
+        "M04": 0.57
+      }
+    },
+    "acoustic_decoy": {
+      "AC01": {
+        "M01": 0.52,
+        "M02": 0.545,
+        "M03": 0.57,
+        "M04": 0.595
+      }
+    },
+    "radar_decoy": {
+      "RD01": {
+        "M01": 0.545,
+        "M02": 0.57,
+        "M03": 0.595,
+        "M04": 0.62
+      }
+    },
+    "laser_dazzler": {
+      "LZ01": {
+        "M01": 0.57,
+        "M02": 0.595,
+        "M03": 0.62,
+        "M04": 0.42
+      }
+    },
+    "jammer": {
+      "JM01": {
+        "M01": 0.595,
+        "M02": 0.62,
+        "M03": 0.42,
+        "M04": 0.445
+      },
+      "JM02": {
+        "M01": 0.62,
+        "M02": 0.42,
+        "M03": 0.445,
+        "M04": 0.47
+      }
+    },
+    "point_defense": {
+      "PD01": {
+        "M01": 0.62,
+        "M02": 0.42,
+        "M03": 0.445,
+        "M04": 0.47
+      },
+      "PD02": {
+        "M01": 0.42,
+        "M02": 0.445,
+        "M03": 0.47,
+        "M04": 0.495
+      }
+    }
+  },
+  "base_conditional_destroy_probability": {
+    "thermal_decoy": {
+      "TH01": {
+        "M01": 0.48,
+        "M02": 0.51,
+        "M03": 0.54,
+        "M04": 0.57
+      }
+    },
+    "acoustic_decoy": {
+      "AC01": {
+        "M01": 0.54,
+        "M02": 0.57,
+        "M03": 0.36,
+        "M04": 0.39
+      }
+    },
+    "radar_decoy": {
+      "RD01": {
+        "M01": 0.36,
+        "M02": 0.39,
+        "M03": 0.42,
+        "M04": 0.45
+      }
+    },
+    "laser_dazzler": {
+      "LZ01": {
+        "M01": 0.42,
+        "M02": 0.45,
+        "M03": 0.48,
+        "M04": 0.51
+      }
+    },
+    "jammer": {
+      "JM01": {
+        "M01": 0.48,
+        "M02": 0.51,
+        "M03": 0.54,
+        "M04": 0.57
+      },
+      "JM02": {
+        "M01": 0.51,
+        "M02": 0.54,
+        "M03": 0.57,
+        "M04": 0.36
+      }
+    },
+    "point_defense": {
+      "PD01": {
+        "M01": 0.54,
+        "M02": 0.57,
+        "M03": 0.36,
+        "M04": 0.39
+      },
+      "PD02": {
+        "M01": 0.57,
+        "M02": 0.36,
+        "M03": 0.39,
+        "M04": 0.42
+      }
+    }
+  },
+  "weapon_min_range": {
+    "TH01": 0.0,
+    "AC01": 0.0,
+    "RD01": 0.0,
+    "LZ01": 0.0,
+    "JM01": 0.0,
+    "JM02": 0.0,
+    "PD01": 5.0,
+    "PD02": 5.0
+  },
+  "weapon_max_range": {
+    "TH01": 135.0,
+    "AC01": 135.0,
+    "RD01": 135.0,
+    "LZ01": 135.0,
+    "JM01": 220.0,
+    "JM02": 220.0,
+    "PD01": 70.0,
+    "PD02": 70.0
+  },
+  "missile_coordinates": {
+    "M01": {
+      "x": 41.0,
+      "y": -6.0,
+      "z": 3.0
+    },
+    "M02": {
+      "x": 112.0,
+      "y": 3.0,
+      "z": 3.0
+    },
+    "M03": {
+      "x": 8.0,
+      "y": -2.0,
+      "z": 3.0
+    },
+    "M04": {
+      "x": 68.0,
+      "y": 12.0,
+      "z": 3.0
+    }
+  },
+  "weapon_coordinates": {
+    "TH01": {
+      "x": -2.0,
+      "y": -4.0,
+      "z": 0.0
+    },
+    "AC01": {
+      "x": 0.0,
+      "y": -4.0,
+      "z": 0.0
+    },
+    "RD01": {
+      "x": 2.0,
+      "y": -4.0,
+      "z": 0.0
+    },
+    "LZ01": {
+      "x": 4.0,
+      "y": -4.0,
+      "z": 0.0
+    },
+    "JM01": {
+      "x": 6.0,
+      "y": -4.0,
+      "z": 0.0
+    },
+    "JM02": {
+      "x": 6.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "PD01": {
+      "x": 8.0,
+      "y": -4.0,
+      "z": 0.0
+    },
+    "PD02": {
+      "x": 8.0,
+      "y": 0.0,
+      "z": 0.0
+    }
+  },
+  "weapon_motion_angles": {
+    "TH01": {
+      "horizontal_heading": 0.0,
+      "vertical_heading": 0.0
+    },
+    "AC01": {
+      "horizontal_heading": 0.0,
+      "vertical_heading": 0.0
+    },
+    "RD01": {
+      "horizontal_heading": 0.0,
+      "vertical_heading": 0.0
+    },
+    "LZ01": {
+      "horizontal_heading": 0.0,
+      "vertical_heading": 0.0
+    },
+    "JM01": {
+      "horizontal_heading": 0.0,
+      "vertical_heading": 0.0
+    },
+    "JM02": {
+      "horizontal_heading": 0.0,
+      "vertical_heading": 0.0
+    },
+    "PD01": {
+      "horizontal_heading": 0.0,
+      "vertical_heading": 0.0
+    },
+    "PD02": {
+      "horizontal_heading": 0.0,
+      "vertical_heading": 0.0
+    }
+  },
+  "weapon_coverage_angles": {
+    "TH01": {
+      "horizontal_half_angle": 180.0,
+      "vertical_half_angle": 90.0
+    },
+    "AC01": {
+      "horizontal_half_angle": 180.0,
+      "vertical_half_angle": 90.0
+    },
+    "RD01": {
+      "horizontal_half_angle": 180.0,
+      "vertical_half_angle": 90.0
+    },
+    "LZ01": {
+      "horizontal_half_angle": 180.0,
+      "vertical_half_angle": 90.0
+    },
+    "JM01": {
+      "horizontal_half_angle": 95.0,
+      "vertical_half_angle": 50.0
+    },
+    "JM02": {
+      "horizontal_half_angle": 95.0,
+      "vertical_half_angle": 50.0
+    },
+    "PD01": {
+      "horizontal_half_angle": 180.0,
+      "vertical_half_angle": 90.0
+    },
+    "PD02": {
+      "horizontal_half_angle": 180.0,
+      "vertical_half_angle": 90.0
+    }
+  },
+  "missile_guidance_type": {
+    "M01": "infrared",
+    "M02": "acoustic",
+    "M03": "radar",
+    "M04": "laser"
+  },
+  "guidance_counter_compatibility": {
+    "thermal_decoy": {
+      "infrared": 1,
+      "acoustic": 0,
+      "radar": 0,
+      "laser": 0,
+      "mixed": 1
+    },
+    "acoustic_decoy": {
+      "infrared": 0,
+      "acoustic": 1,
+      "radar": 0,
+      "laser": 0,
+      "mixed": 1
+    },
+    "radar_decoy": {
+      "infrared": 0,
+      "acoustic": 0,
+      "radar": 1,
+      "laser": 0,
+      "mixed": 1
+    },
+    "laser_dazzler": {
+      "infrared": 1,
+      "acoustic": 0,
+      "radar": 0,
+      "laser": 1,
+      "mixed": 1
+    },
+    "jammer": {
+      "infrared": 1,
+      "acoustic": 1,
+      "radar": 1,
+      "laser": 1,
+      "mixed": 1
+    },
+    "point_defense": {
+      "infrared": 1,
+      "acoustic": 1,
+      "radar": 1,
+      "laser": 1,
+      "mixed": 1
+    }
+  },
+  "overkill_threshold": 0.18,
+  "stage_setup_time": {
+    "TH01": 1.4,
+    "AC01": 1.6,
+    "RD01": 1.0,
+    "LZ01": 1.2,
+    "JM01": 1.4,
+    "JM02": 1.6,
+    "PD01": 1.6,
+    "PD02": 1.0
+  },
+  "stage_destruction_time": {
+    "TH01": {
+      "M01": 1.5,
+      "M02": 1.65,
+      "M03": 1.8,
+      "M04": 1.2
+    },
+    "AC01": {
+      "M01": 1.5,
+      "M02": 1.65,
+      "M03": 1.8,
+      "M04": 1.2
+    },
+    "RD01": {
+      "M01": 1.5,
+      "M02": 1.65,
+      "M03": 1.8,
+      "M04": 1.2
+    },
+    "LZ01": {
+      "M01": 1.5,
+      "M02": 1.65,
+      "M03": 1.8,
+      "M04": 1.2
+    },
+    "JM01": {
+      "M01": 1.5,
+      "M02": 1.65,
+      "M03": 1.8,
+      "M04": 1.2
+    },
+    "JM02": {
+      "M01": 1.65,
+      "M02": 1.8,
+      "M03": 1.2,
+      "M04": 1.35
+    },
+    "PD01": {
+      "M01": 1.5,
+      "M02": 1.65,
+      "M03": 1.8,
+      "M04": 1.2
+    },
+    "PD02": {
+      "M01": 1.65,
+      "M02": 1.8,
+      "M03": 1.2,
+      "M04": 1.35
+    }
+  },
+  "missile_speed": {
+    "M01": 1.95,
+    "M02": 2.1,
+    "M03": 2.25,
+    "M04": 1.8
+  },
+  "weapon_missile_distance": {
+    "thermal_decoy": {
+      "TH01": {
+        "M01": 43.1509,
+        "M02": 114.2541,
+        "M03": 10.6301,
+        "M04": 71.8679
+      }
+    },
+    "acoustic_decoy": {
+      "AC01": {
+        "M01": 41.1582,
+        "M02": 112.2586,
+        "M03": 8.775,
+        "M04": 69.9214
+      }
+    },
+    "radar_decoy": {
+      "RD01": {
+        "M01": 39.1663,
+        "M02": 110.2633,
+        "M03": 7.0,
+        "M04": 67.9779
+      }
+    },
+    "laser_dazzler": {
+      "LZ01": {
+        "M01": 37.1753,
+        "M02": 108.2682,
+        "M03": 5.3852,
+        "M04": 66.0379
+      }
+    },
+    "jammer": {
+      "JM01": {
+        "M01": 35.1852,
+        "M02": 106.2732,
+        "M03": 4.1231,
+        "M04": 64.1015
+      },
+      "JM02": {
+        "M01": 35.6371,
+        "M02": 106.0849,
+        "M03": 4.1231,
+        "M04": 63.2218
+      }
+    },
+    "point_defense": {
+      "PD01": {
+        "M01": 33.1964,
+        "M02": 104.2785,
+        "M03": 3.6056,
+        "M04": 62.1691
+      },
+      "PD02": {
+        "M01": 33.6749,
+        "M02": 104.0865,
+        "M03": 3.6056,
+        "M04": 61.2617
+      }
+    }
+  },
+  "range_adjusted_intercept_probability": {
+    "thermal_decoy": {
+      "TH01": {
+        "M01": 0.401929,
+        "M02": 0.261124,
+        "M03": 0.519756,
+        "M04": 0.391505
+      }
+    },
+    "acoustic_decoy": {
+      "AC01": {
+        "M01": 0.426744,
+        "M02": 0.278416,
+        "M03": 0.548206,
+        "M04": 0.413722
+      }
+    },
+    "radar_decoy": {
+      "RD01": {
+        "M01": 0.451991,
+        "M02": 0.296143,
+        "M03": 0.576852,
+        "M04": 0.436356
+      }
+    },
+    "laser_dazzler": {
+      "LZ01": {
+        "M01": 0.477669,
+        "M02": 0.314305,
+        "M03": 0.605452,
+        "M04": 0.299146
+      }
+    },
+    "jammer": {
+      "JM01": {
+        "M01": 0.539024,
+        "M02": 0.443825,
+        "M03": 0.41537,
+        "M04": 0.368729
+      },
+      "JM02": {
+        "M01": 0.560922,
+        "M02": 0.300867,
+        "M03": 0.440094,
+        "M04": 0.39055
+      }
+    },
+    "point_defense": {
+      "PD01": {
+        "M01": 0.447044,
+        "M02": 0.0756,
+        "M03": 0.431517,
+        "M04": 0.224458
+      },
+      "PD02": {
+        "M01": 0.301147,
+        "M02": 0.0801,
+        "M03": 0.455759,
+        "M04": 0.240172
+      }
+    }
+  },
+  "range_adjusted_destroy_probability": {
+    "thermal_decoy": {
+      "TH01": {
+        "M01": 0.410261,
+        "M02": 0.313806,
+        "M03": 0.520673,
+        "M04": 0.432072
+      }
+    },
+    "acoustic_decoy": {
+      "AC01": {
+        "M01": 0.465167,
+        "M02": 0.354554,
+        "M03": 0.349364,
+        "M04": 0.298184
+      }
+    },
+    "radar_decoy": {
+      "RD01": {
+        "M01": 0.312526,
+        "M02": 0.24521,
+        "M03": 0.410101,
+        "M04": 0.347003
+      }
+    },
+    "laser_dazzler": {
+      "LZ01": {
+        "M01": 0.367429,
+        "M02": 0.285957,
+        "M03": 0.471297,
+        "M04": 0.396602
+      }
+    },
+    "jammer": {
+      "JM01": {
+        "M01": 0.445106,
+        "M02": 0.398018,
+        "M03": 0.5354,
+        "M04": 0.494509
+      },
+      "JM02": {
+        "M01": 0.472449,
+        "M02": 0.421641,
+        "M03": 0.565144,
+        "M04": 0.312976
+      }
+    },
+    "point_defense": {
+      "PD01": {
+        "M01": 0.423597,
+        "M02": 0.184034,
+        "M03": 0.351571,
+        "M04": 0.232559
+      },
+      "PD02": {
+        "M01": 0.445359,
+        "M02": 0.116681,
+        "M03": 0.380869,
+        "M04": 0.252923
+      }
+    }
+  },
+  "eligible_weapon_missile_pairs": [
+    {
+      "weapon_type": "thermal_decoy",
+      "weapon": "TH01",
+      "missile": "M01"
+    },
+    {
+      "weapon_type": "acoustic_decoy",
+      "weapon": "AC01",
+      "missile": "M02"
+    },
+    {
+      "weapon_type": "radar_decoy",
+      "weapon": "RD01",
+      "missile": "M03"
+    },
+    {
+      "weapon_type": "laser_dazzler",
+      "weapon": "LZ01",
+      "missile": "M01"
+    },
+    {
+      "weapon_type": "laser_dazzler",
+      "weapon": "LZ01",
+      "missile": "M04"
+    },
+    {
+      "weapon_type": "jammer",
+      "weapon": "JM01",
+      "missile": "M01"
+    },
+    {
+      "weapon_type": "jammer",
+      "weapon": "JM01",
+      "missile": "M02"
+    },
+    {
+      "weapon_type": "jammer",
+      "weapon": "JM01",
+      "missile": "M03"
+    },
+    {
+      "weapon_type": "jammer",
+      "weapon": "JM01",
+      "missile": "M04"
+    },
+    {
+      "weapon_type": "jammer",
+      "weapon": "JM02",
+      "missile": "M01"
+    },
+    {
+      "weapon_type": "jammer",
+      "weapon": "JM02",
+      "missile": "M02"
+    },
+    {
+      "weapon_type": "jammer",
+      "weapon": "JM02",
+      "missile": "M03"
+    },
+    {
+      "weapon_type": "jammer",
+      "weapon": "JM02",
+      "missile": "M04"
+    },
+    {
+      "weapon_type": "point_defense",
+      "weapon": "PD01",
+      "missile": "M01"
+    },
+    {
+      "weapon_type": "point_defense",
+      "weapon": "PD01",
+      "missile": "M04"
+    },
+    {
+      "weapon_type": "point_defense",
+      "weapon": "PD02",
+      "missile": "M01"
+    },
+    {
+      "weapon_type": "point_defense",
+      "weapon": "PD02",
+      "missile": "M04"
+    }
+  ],
+  "stage_interval": 3.4,
+  "updated_missile_coordinates": {
+    "K01": {
+      "M01": {
+        "x": 34.37,
+        "y": -6.0,
+        "z": 3.0
+      },
+      "M02": {
+        "x": 104.86,
+        "y": 3.0,
+        "z": 3.0
+      },
+      "M03": {
+        "x": 0.35,
+        "y": -2.0,
+        "z": 3.0
+      },
+      "M04": {
+        "x": 61.88,
+        "y": 12.0,
+        "z": 3.0
+      }
+    }
+  }
+}

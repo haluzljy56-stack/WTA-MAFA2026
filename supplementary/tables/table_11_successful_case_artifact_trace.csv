@@ -1,0 +1,10 @@
+﻿Stage,State,Evidence,Interpretation
+Input,MultiSWTA2_Type1_NT50_NS8_NC6_NV8_NW6_O4,SWTA_MOP1_5 / NT50_NS8_NC6_NV8_NW6 / MOP2,Public natural-language scenario and instance data enter the system
+Planner,completed,"F1,F2,F3,F4","Identifies the SWTA problem family, public fields, objective and constraint candidates"
+Modeler r0,contract defect,MODEL_DESIGN_SECTION_EMPTY,"The initial Design Card lacked a non-empty assumptions section, raising a model-design contract error"
+ErrorRouter r1,modeler,model_design_contract_error detected in model_design_contract; route to modeler for bounded local repair.,The defect is routed back to Modeler rather than retried across the whole pipeline
+Modeler repair,completed,bounded local repair,After the Design Card is repaired the run proceeds to the Critic check
+Critic,passed,no hard defects,"Confirms that public-data bindings, scope and execution semantics do not block construction"
+Builder Team + SCW,assembled,all required slots ready,"Variables, objectives, constraints, data bindings and solution_view are merged into the SCW"
+Solver,success,solver time 0.208162 s,Gurobi accepts the model and produces an engagement plan
+Replay / export,passed,ebw_executable_verified,"solution_view, external replay and the mathematical export agree"

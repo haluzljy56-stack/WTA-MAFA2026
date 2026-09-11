@@ -1,0 +1,8 @@
+﻿Metric,Scale,Evaluation target,Interpretation
+Public-data fidelity,0-5; normalized for cross-split plots,Correct binding to facts explicitly available in public input,"Whether the formulation preserves public entities, values and relationships"
+Objective alignment,0-5,Recovery of source-supported objective intent,Whether the formulation expresses the stated task preference or optimization target
+Constraint coverage,0-5,Recovery of source-supported hard and structural constraints,"Whether the main resource, temporal, spatial and coupling constraints are present"
+Semantic quality,0-5,Overall formulation coherence and source faithfulness,Whether the formulation is internally consistent and domain meaningful
+Required-element coverage,0-1,Scorable required elements only,Fraction of required elements recovered; not a 0-5 quality score
+Stress robustness,0-1,Formal-stress paired retention,Degree to which formulation structure is retained under the S08 pressure variant
+Boundary compliance,Pass/fail audit,Public/private separation and terminal contract,Whether the run respects the input boundary and output contract

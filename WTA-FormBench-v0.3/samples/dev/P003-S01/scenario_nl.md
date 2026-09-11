@@ -1,0 +1,1 @@
+A set of high-speed flight vehicles must be assigned to targets. Every vehicle must receive exactly one target, and every target must receive at least one vehicle but no more than its allowed cap. The objective rewards mission payoff and penalizes trajectory length.

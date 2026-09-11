@@ -1,0 +1,6 @@
+\section*{Multi-stage integer weapon-target assignment reference}
+Use nonnegative integer counts \(x_{ijt}\) and binary target-stage indicators \(y_{jt}\). Minimize \(\sum_{t,i,j} c_i x_{ijt}\). Each target damage is
+\[
+D_j = 1-\prod_t\prod_i (1-p_{ij})^{x_{ijt}}
+\]
+and must exceed \(d_j\). The reference includes stage inventory limits, target-stage availability, assignment-selection linking, one selected engagement stage per target, integer domains and binary domains.

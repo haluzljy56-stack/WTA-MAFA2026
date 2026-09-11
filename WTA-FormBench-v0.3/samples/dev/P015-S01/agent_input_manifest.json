@@ -1,0 +1,17 @@
+{
+  "sample_id": "P015-S01",
+  "allowed_public_files": [
+    "scenario_nl.md",
+    "data_description.md",
+    "instance_data.json"
+  ],
+  "evaluator_private_files": [
+    "metadata.json",
+    "field_dictionary.json"
+  ],
+  "file_sha256": {
+    "scenario_nl.md": "55edab2ee8886b8ee55a009881861a5c2f8cb16af4dcd9fce7154535cf5a3105",
+    "data_description.md": "dd6f8f98cfaba0cb296ca705b6e69cb61a0ac0dbc6ba7a51e08c05f1a6a12d98",
+    "instance_data.json": "6b6018632752f5f6a0c8f77c3978c645c7e8c45904709a857a21e8b38221f6c6"
+  }
+}

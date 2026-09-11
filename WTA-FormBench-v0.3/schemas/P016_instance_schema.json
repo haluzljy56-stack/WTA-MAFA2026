@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P016 R6C instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model_variant",
+    "regularization_parameters_if_saddle_form_requested",
+    "relaxation_requested",
+    "target_value",
+    "targets",
+    "weapon_target_completion_probability",
+    "weapons"
+  ],
+  "properties": {
+    "model_variant": {
+      "type": "string",
+      "minLength": 1
+    },
+    "regularization_parameters_if_saddle_form_requested": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "relaxation_requested": {
+      "type": "boolean"
+    },
+    "target_value": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "weapon_target_completion_probability": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "weapons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}

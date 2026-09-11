@@ -1,0 +1,176 @@
+{
+  "seed_paper_id": "P002",
+  "sample_id": "P002-S08",
+  "eligible_arc_policy": "P002 variables are defined only on healthy in-range missile-target arcs.",
+  "source_trace": {
+    "seed_paper_id": "P002",
+    "sample_id": "P002-S08",
+    "traced_element_ids": [
+      "PARAM:V_j",
+      "PARAM:C_i",
+      "PARAM:r_i",
+      "PARAM:r_ei",
+      "PARAM:P_ij",
+      "PARAM:P_qi",
+      "PARAM:n_mu",
+      "PARAM:s_i",
+      "PARAM:d_ij",
+      "PARAM:D_i",
+      "PARAM:rho_mu",
+      "VAR:x_ij",
+      "DERIVED:m_mu",
+      "DERIVED:P_ci",
+      "DERIVED:R_ij",
+      "DERIVED:R_j",
+      "DERIVED:R_mu",
+      "DERIVED:R_all",
+      "OBJ:F1",
+      "OBJ:F2",
+      "CON:C1",
+      "CON:C2",
+      "CON:C3",
+      "CON:C4",
+      "CON:C5",
+      "CON:C6"
+    ],
+    "source_trace_bindings": {
+      "SET:I": "master_spec.sets",
+      "SET:J": "master_spec.sets",
+      "SET:A": "master_spec.sets",
+      "SET:J_mu": "master_spec.sets",
+      "PARAM:V_j": "master_spec.parameters",
+      "PARAM:C_i": "master_spec.parameters",
+      "PARAM:r_i": "master_spec.parameters",
+      "PARAM:r_ei": "master_spec.parameters",
+      "PARAM:P_ij": "master_spec.parameters",
+      "PARAM:P_qi": "master_spec.parameters",
+      "PARAM:n_mu": "master_spec.parameters",
+      "PARAM:s_i": "master_spec.parameters",
+      "PARAM:d_ij": "master_spec.parameters",
+      "PARAM:D_i": "master_spec.parameters",
+      "PARAM:rho_mu": "master_spec.parameters",
+      "VAR:x_ij": "master_spec.variables",
+      "DERIVED:m_mu": "master_spec.derived",
+      "DERIVED:P_ci": "master_spec.derived",
+      "DERIVED:R_ij": "master_spec.derived",
+      "DERIVED:R_j": "master_spec.derived",
+      "DERIVED:R_mu": "master_spec.derived",
+      "DERIVED:R_all": "master_spec.derived",
+      "OBJ:F1": "Eq. (5)",
+      "OBJ:F2": "Eq. (6)",
+      "CON:C1": "Eq. (7)",
+      "CON:C2": "Eq. (8)",
+      "CON:C3": "Eq. (9)",
+      "CON:C4": "Eq. (10)",
+      "CON:C5": "Eq. (11)",
+      "CON:C6": "Eq. (12)",
+      "SEMANTIC:aggregation_rule": "R1C registry",
+      "SEMANTIC:eligibility_rule": "R1C registry",
+      "SEMANTIC:unsupported_target_threat": "R1C registry",
+      "SEMANTIC:unsupported_time_window": "R1C registry",
+      "SEMANTIC:unsupported_generic_inventory": "R1C registry"
+    }
+  },
+  "validator_trace": {
+    "planted_assignment": {
+      "T01": [
+        "M01",
+        "M02"
+      ],
+      "T02": [
+        "M03",
+        "M04"
+      ],
+      "T03": [
+        "M05",
+        "M06"
+      ],
+      "T04": [
+        "M07",
+        "M09"
+      ],
+      "T05": [
+        "M10",
+        "M11"
+      ],
+      "T06": [
+        "M12",
+        "M13"
+      ],
+      "T07": [
+        "M14",
+        "M16"
+      ],
+      "T08": [
+        "M17",
+        "M18"
+      ]
+    },
+    "area_mission_reliability": {
+      "A01": 0.99664049,
+      "A02": 0.98854488,
+      "A03": 0.99691092,
+      "A04": 1.0
+    },
+    "target_destruction_reliability": {
+      "T01": 0.99891644,
+      "T02": 0.99892717,
+      "T03": 0.99886014,
+      "T04": 0.99912015,
+      "T05": 0.99154179,
+      "T06": 0.99691092,
+      "T07": 0.99886014,
+      "T08": 0.99892717
+    },
+    "missile_target_reliability": {
+      "M01": {
+        "T01": 0.96623817
+      },
+      "M02": {
+        "T01": 0.96790579
+      },
+      "M03": {
+        "T02": 0.96724593
+      },
+      "M04": {
+        "T02": 0.96724593
+      },
+      "M05": {
+        "T03": 0.96623817
+      },
+      "M06": {
+        "T03": 0.96623817
+      },
+      "M07": {
+        "T04": 0.96724593
+      },
+      "M09": {
+        "T04": 0.97313778
+      },
+      "M10": {
+        "T05": 0.93370378
+      },
+      "M11": {
+        "T05": 0.87241788
+      },
+      "M12": {
+        "T06": 0.92608752
+      },
+      "M13": {
+        "T06": 0.95820631
+      },
+      "M14": {
+        "T07": 0.96623817
+      },
+      "M16": {
+        "T07": 0.96623817
+      },
+      "M17": {
+        "T08": 0.96724593
+      },
+      "M18": {
+        "T08": 0.96724593
+      }
+    }
+  }
+}

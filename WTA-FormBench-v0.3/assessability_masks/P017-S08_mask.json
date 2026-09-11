@@ -1,0 +1,73 @@
+{
+  "sample_id": "P017-S08",
+  "paper_id": "P017",
+  "publicly_available_data_fields": [
+    "weapons",
+    "current_missile_storage_list",
+    "missile_distance_to_asset",
+    "missile_damage_intensity",
+    "weapon_missile_destroy_probability",
+    "missile_availability_mask",
+    "sampling_interval",
+    "switching_penalty_if_reward_style_sample",
+    "previous_weapon_action_if_switching_penalty_active"
+  ],
+  "publicly_explained_parameter_semantics": [
+    "weapons",
+    "current_missile_storage_list",
+    "missile_distance_to_asset",
+    "missile_damage_intensity",
+    "weapon_missile_destroy_probability",
+    "missile_availability_mask",
+    "sampling_interval",
+    "switching_penalty_if_reward_style_sample",
+    "previous_weapon_action_if_switching_penalty_active"
+  ],
+  "withheld_aggregation_rules": [
+    "OBJ:OBJ1"
+  ],
+  "withheld_modeling_choices": [
+    "VAR:a_w_t",
+    "VAR:x_wi_t",
+    "CON:C1",
+    "CON:C2",
+    "CON:C3",
+    "CON:C4",
+    "CON:C5"
+  ],
+  "required_elements": [
+    "SET:W",
+    "SET:M_t",
+    "SET:Tau",
+    "PARAM:s_i_t",
+    "PARAM:D_i_t",
+    "PARAM:p_wi_t",
+    "PARAM:available_i_t",
+    "PARAM:C_switch",
+    "PARAM:t_step",
+    "PARAM:current_storage_capacity",
+    "VAR:a_w_t",
+    "VAR:x_wi_t",
+    "DERIVED:th_i_t",
+    "DERIVED:hit_reward_wi_t",
+    "DERIVED:residual_environment_threat",
+    "DERIVED:storage_update",
+    "OBJ:OBJ1",
+    "CON:C1",
+    "CON:C2",
+    "CON:C3",
+    "CON:C4",
+    "CON:C5",
+    "SEMANTIC:TIME_SAMPLING_UPDATE",
+    "SEMANTIC:ALGORITHM_MODEL_BOUNDARY"
+  ],
+  "optional_or_parameterizable_elements": [],
+  "unsupported_elements": [
+    "SEMANTIC:unsupported_public_witness_or_answer_trace",
+    "SEMANTIC:unsupported_algorithm_trace_as_public_model_variable",
+    "SEMANTIC:unsupported_generic_static_WTA_when_dynamic_or_time_slot_semantics_required",
+    "SEMANTIC:unsupported_cluster_coverage_replacement"
+  ],
+  "expected_agent_behavior": "complete formulation under source-supported stress while preserving algorithm/model boundaries",
+  "registry_file": "element_registry/P017_element_registry.json"
+}

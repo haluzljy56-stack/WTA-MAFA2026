@@ -1,0 +1,62 @@
+{
+  "sample_id": "P010-S07",
+  "paper_id": "P010",
+  "contract_version": "R4C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "weapons",
+      "meaning": "weapon identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines the weapon index"
+    },
+    {
+      "name": "targets",
+      "meaning": "target identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines the target index"
+    },
+    {
+      "name": "weapon_target_kill_probability",
+      "meaning": "kill probability for each weapon-target pair",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> target -> probability",
+      "index_order": "weapon -> target -> probability",
+      "domain_or_range": "[0,1]",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "destruction probability input"
+    },
+    {
+      "name": "target_value",
+      "meaning": "reward value for destroying each target",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative number",
+      "index_order": "target -> nonnegative number",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "destroyed-target reward input"
+    },
+    {
+      "name": "target_kill_threshold",
+      "meaning": "minimum combined kill probability required to count target destruction",
+      "type": "object",
+      "shape_or_key_structure": "target -> probability",
+      "index_order": "target -> probability",
+      "domain_or_range": "[0,1]",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "destruction threshold input"
+    }
+  ]
+}

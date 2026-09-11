@@ -1,0 +1,309 @@
+{
+  "artifact_type": "planner_output",
+  "benchmark": "SWTA_MOP1_5",
+  "constraint_candidates": [
+    {
+      "id": "target_at_most_one",
+      "implementation_freedom": "grouping or equivalent sparse aggregation allowed",
+      "pattern_id": "assignment_partition_limit",
+      "required_data_refs": [
+        "derived_public_facts.temporal_action_space.compatible_engagements"
+      ],
+      "scope": "target",
+      "semantics": "for every target t, sum_{e in E: target[e]=t} x[e] <= 1"
+    },
+    {
+      "id": "sensor_channel_capacity_time_indexed_weighted",
+      "implementation_freedom": "interval sweeps or sparse time buckets allowed; unweighted count is forbidden",
+      "pattern_id": "time_indexed_resource_capacity",
+      "required_data_refs": [
+        "derived_public_facts.temporal_action_space.compatible_engagements",
+        "public_instance_data.sensor_channel_capacity",
+        "public_instance_data.target_channel_need"
+      ],
+      "scope": "sensor,time",
+      "semantics": "for each sensor s and public time step tau, sum over selected engagements active at sensor s and time tau of target_channel_need[target[e]] * x[e] <= sensor_channel_capacity[s]"
+    },
+    {
+      "id": "weapon_inventory",
+      "implementation_freedom": "grouping by weapon_vehicle allowed",
+      "pattern_id": "resource_inventory",
+      "required_data_refs": [
+        "derived_public_facts.temporal_action_space.compatible_engagements",
+        "public_instance_data.weapon_inventory"
+      ],
+      "scope": "weapon_vehicle",
+      "semantics": "for each weapon_vehicle w, sum_{e in E: weapon_vehicle[e]=w} x[e] <= weapon_inventory[w]"
+    },
+    {
+      "id": "weapon_min_launch_interval",
+      "implementation_freedom": "compact sliding-window or hit-step buckets; all-pairs only if pre-solve estimate stays within configured envelope",
+      "pattern_id": "same_resource_minimum_time_separation",
+      "required_data_refs": [
+        "derived_public_facts.temporal_action_space.compatible_engagements",
+        "public_instance_data.weapon_min_launch_interval_steps"
+      ],
+      "scope": "weapon_vehicle,hit_step_proxy",
+      "semantics": "two selected engagements using the same weapon_vehicle conflict when abs(hit_step_i - hit_step_j) < weapon_min_launch_interval_steps[w]; equal hit_step conflicts must not be excluded; current materialization uses hit_step proxy, not true launch_step"
+    }
+  ],
+  "executable_risks": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "forbidden_data_boundaries": [
+    "hidden_reference_or_trusted_artifacts_available_to_agent",
+    "external_evaluator_result_used or evaluator_only_assets",
+    "trusted_evaluation restricted_source_roots",
+    "public_instance_data.detection_probability raw full probability array",
+    "public_instance_data.interception_probability raw full probability array",
+    "public_instance_data.target_trace and other described_but_not_materialized trajectory/position/velocity arrays",
+    "coder_forbidden_field_names: sensor_pos, weapon_pos, target_start_pos, target_end_pos, target_speed, weapon_speed, sensor_field_of_view_deg, sensor_normal_deg, sensor_radius, weapon_radius, target_path_length, target_trace_length",
+    "any reference solution, answer key, hidden model, or trusted builder artifact"
+  ],
+  "model_scope_assessment": {
+    "assessment_digest": "cd04fc7da5a8f7c21963e5745a4790bc456ad4babf5949700d7e554fd0a2f94c",
+    "assessment_note": "PUBLIC_MODEL_SCOPE_DRAFT floor suggested trajectory_kinematic, but the executable data manifest shows trajectory/position/velocity fields are described_but_not_materialized and are coder_forbidden. BENCHMARK_EXECUTION_CONTRACT also forbids reconstructing hidden launch-time or trajectory variables. Therefore the actual supported level is sparse time-indexed assignment over authoritative public compatible_engagements.",
+    "builder_directives": [
+      "Implement only the Planner-approved modeling level: time_indexed_sparse_public_candidate_assignment.",
+      "Use sparse public candidate variables x[e] over derived_public_facts.temporal_action_space.compatible_engagements.",
+      "Do not introduce independent launch_time or launch_step decision variables.",
+      "Do not construct trajectory or kinematic constraints from non-materialized fields.",
+      "Use weighted time-indexed sensor capacity constraints with target_channel_need.",
+      "Use compact sliding-window or bucketed weapon_min_launch_interval constraints; avoid all-pairs O(|E|^2).",
+      "Preserve the solver objective contract and registry metadata for replay.",
+      "Do not re-filter authoritative compatible_engagements outside permitted_filters."
+    ],
+    "forbidden_modeling_constructs": [
+      {
+        "blocked_terms": [
+          "launch_time",
+          "launch time decision",
+          "launch_step_decision"
+        ],
+        "name": "independent_launch_time_variable",
+        "reason": "No public launch_step or launch_time_step field is materialized."
+      },
+      {
+        "blocked_terms": [
+          "target_trace",
+          "target_start_pos",
+          "target_end_pos",
+          "target_speed",
+          "sensor_pos",
+          "weapon_pos"
+        ],
+        "name": "trajectory_kinematic_constraint",
+        "reason": "Trajectory/position/velocity fields are absent from executable data manifest and coder_forbidden."
+      },
+      {
+        "blocked_terms": [
+          "stochastic",
+          "scenario",
+          "distribution",
+          "uncertainty",
+          "robust"
+        ],
+        "name": "stochastic_scenario_model",
+        "reason": "No public scenario, distribution, or uncertainty field is materialized."
+      },
+      {
+        "blocked_terms": [
+          "dense Cartesian product",
+          "all sensor-weapon-target-time combinations outside compatible_engagements"
+        ],
+        "name": "dense_cartesian_expansion",
+        "reason": "Sparse public candidate list is authoritative and tractable; dense expansion is unnecessary and may violate complexity contract."
+      }
+    ],
+    "objective_scope": {
+      "allowed_public_objective_fields": [
+        "target_value",
+        "sensor_cost",
+        "weapon_cost",
+        "combined_effectiveness"
+      ],
+      "hidden_or_reference_objective_calibration_allowed": false,
+      "non_solver_active_objective_ids": [
+        "F3",
+        "F4"
+      ],
+      "solver_bound_public_objective_ids": [
+        "F1",
+        "F2"
+      ],
+      "solver_bound_scalar_contract": "swta.expected_remaining_target_value_plus_cost",
+      "use_public_value_or_effectiveness_only": true
+    },
+    "partially_supported_constructs": [
+      {
+        "name": "launch_interception_makespan",
+        "notes": "External replay uses representative hit_step proxy; true launch_step is not materialized.",
+        "support": "partially_supported"
+      },
+      {
+        "name": "weapon_min_launch_interval",
+        "notes": "Enforced on hit_step proxy because launch_step is not materialized.",
+        "support": "partially_supported"
+      }
+    ],
+    "problem_family": "swta",
+    "public_input_digest": "44b6357e874314c9b20730994a86eabc1379aa9d150ba3f53bc32a742eda40bf",
+    "scale_guardrails": {
+      "avoid_dense_cartesian_expansion": true,
+      "largest_public_list": 3200,
+      "max_constraint_growth": "O(|E| + |T| + |S|*|Tau| + |W|*|Tau|), not O(|E|^2)",
+      "max_variable_growth": "O(|E|) binary assignment variables plus compact auxiliaries only",
+      "public_candidate_count": 3200,
+      "public_set_counts": {
+        "sensors": 8,
+        "targets": 50,
+        "weapon_vehicles": 8
+      },
+      "recommended_variable_basis": "sparse_public_candidate_list_x[e]"
+    },
+    "selected_modeling_level": "time_indexed_sparse_public_candidate_assignment",
+    "supported_constructs": [
+      {
+        "name": "candidate_assignment",
+        "notes": "Use one sparse binary variable x[e] per public engagement candidate.",
+        "support": "supported"
+      },
+      {
+        "name": "time_indexed_public",
+        "notes": "Discrete public time steps are available through hit_step and tracking interval fields.",
+        "support": "supported"
+      },
+      {
+        "name": "interval_based_public",
+        "notes": "Public tracking intervals can be used for time-indexed sensor capacity constraints.",
+        "support": "supported"
+      },
+      {
+        "name": "resource_capacity",
+        "notes": "Public capacity and inventory fields are available.",
+        "support": "supported"
+      },
+      {
+        "name": "deterministic_effectiveness_objective",
+        "notes": "Deterministic effectiveness coefficients are available for the solver scalar.",
+        "support": "supported"
+      }
+    ],
+    "temporal_policy": {
+      "allowed_public_time_fields": [
+        "hit_step",
+        "tracking_start_step",
+        "tracking_end_step"
+      ],
+      "discrete_time_supported": true,
+      "forbidden_variables": [
+        "launch_time",
+        "launch_step_decision"
+      ],
+      "independent_launch_time_decision_allowed": false,
+      "interval_based_time_supported": true
+    },
+    "uncertainty_policy": {
+      "allowed_effect_fields": [
+        "combined_effectiveness"
+      ],
+      "deterministic_effectiveness_allowed": true,
+      "robust_optimization_allowed": false,
+      "stochastic_programming_allowed": false
+    },
+    "unsupported_constructs": [
+      {
+        "name": "trajectory_kinematic",
+        "notes": "Public trajectory/position/velocity fields are not materialized and are coder_forbidden; contract forbids reconstructing them.",
+        "support": "unsupported"
+      },
+      {
+        "name": "stochastic_or_robust",
+        "notes": "No public scenario, distribution, or uncertainty fields are materialized.",
+        "support": "unsupported"
+      }
+    ]
+  },
+  "objective_candidates": [
+    {
+      "contract_id": "swta.expected_remaining_target_value_plus_cost",
+      "formula": "sum_{t in T} target_value[t] + sum_{e in E} (sensor_cost[e] + weapon_cost[e] - target_value[e] * combined_effectiveness[e]) * x[e]",
+      "id": "swta.expected_remaining_target_value_plus_cost",
+      "name": "expected_remaining_target_value_plus_cost",
+      "replay_formula_id": "swta.expected_remaining_target_value_plus_cost",
+      "sense": "minimize",
+      "status": "solver_bound_scalar",
+      "uses": [
+        "target_value",
+        "sensor_cost",
+        "weapon_cost",
+        "combined_effectiveness"
+      ]
+    },
+    {
+      "formula": "representative hit_step proxy: minimize maximum hit_step among selected engagements; true launch_step is not materialized",
+      "id": "F3",
+      "name": "launch_interception_makespan",
+      "reporting_note": "external replay uses hit_step proxy until launch_step is materialized",
+      "sense": "minimize",
+      "status": "non_solver_active_reporting",
+      "uses": [
+        "hit_step"
+      ]
+    },
+    {
+      "formula": "external reporting from selected public sensor/weapon resource usage; no public scalarization weights for direct solver optimization",
+      "id": "F4",
+      "name": "operational_concentration_risk",
+      "sense": "minimize",
+      "status": "non_solver_active_reporting",
+      "uses": [
+        "sensor",
+        "weapon_vehicle"
+      ]
+    }
+  ],
+  "problem_family": "swta",
+  "provenance": {
+    "adapter_compile_summary_digest": "bc867b1874b2c37e05cceca44a9a5d1349c8d212025beb2e141796291d6bf00f",
+    "benchmark_execution_contract_digest": "58f83c5267630029036c3015bac20e5ddad2e417abb22a9e1335cf510dbdcd00",
+    "benchmark_execution_contract_id": "bec.swta.MultiSWTA2_Type1_NT50_NS8_NC6_NV8_NW6_O4.v1",
+    "builder_execution_hints_digest": "eb79fb1a029370e599a2826beec8ad0336ebfac8af4e8daa6682f9ccb6f16af0",
+    "executable_data_manifest_digest": "8779f2ac27e790e3e68ed6990f121da94c4b13308e80693c2634b8aa938a203c",
+    "external_evaluator_feedback_used": false,
+    "no_hidden_reference_used": true,
+    "public_input_digest": "44b6357e874314c9b20730994a86eabc1379aa9d150ba3f53bc32a742eda40bf",
+    "trusted_builder_used": false
+  },
+  "public_fields": [
+    "benchmark",
+    "sample_id",
+    "case_id",
+    "public_case.objective_ids",
+    "objective_definitions.F1",
+    "objective_definitions.F2",
+    "objective_definitions.F3",
+    "objective_definitions.F4",
+    "public_instance_data.sets.sensors",
+    "public_instance_data.sets.targets",
+    "public_instance_data.sets.weapon_vehicles",
+    "public_instance_data.target_value",
+    "public_instance_data.target_channel_need",
+    "public_instance_data.target_flight_time",
+    "public_instance_data.target_min_detection_steps",
+    "public_instance_data.target_type",
+    "public_instance_data.sensor_channel_capacity",
+    "public_instance_data.sensor_cost",
+    "public_instance_data.weapon_inventory",
+    "public_instance_data.weapon_cost",
+    "public_instance_data.weapon_min_launch_interval_steps",
+    "derived_public_facts.temporal_action_space.compatible_engagements"
+  ],
+  "public_input_digest": "44b6357e874314c9b20730994a86eabc1379aa9d150ba3f53bc32a742eda40bf",
+  "sample_id": "MultiSWTA2_Type1_NT50_NS8_NC6_NV8_NW6_O4"
+}

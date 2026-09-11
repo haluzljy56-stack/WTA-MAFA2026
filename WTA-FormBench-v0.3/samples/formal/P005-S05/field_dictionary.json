@@ -1,0 +1,95 @@
+{
+  "sample_id": "P005-S05",
+  "paper_id": "P005",
+  "contract_version": "R2D_field_dictionary_contract_v1.0",
+  "fields": [
+    {
+      "name": "weapon_categories",
+      "meaning": "weapon category identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "weapon_category",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "defines weapon index set"
+    },
+    {
+      "name": "targets",
+      "meaning": "target identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "target",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "defines target index set"
+    },
+    {
+      "name": "stages",
+      "meaning": "attack stage identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique ordered list",
+      "index_order": "stage",
+      "domain_or_range": "unique identifiers",
+      "unit": "stage",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "defines stage index set"
+    },
+    {
+      "name": "weapon_unit_cost",
+      "meaning": "unit cost for each weapon category",
+      "type": "object",
+      "shape_or_key_structure": "weapon_category -> nonnegative number",
+      "index_order": "weapon_category",
+      "domain_or_range": "number >= 0",
+      "unit": "cost units",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "objective cost input"
+    },
+    {
+      "name": "weapon_target_destroy_probability",
+      "meaning": "destroy probability for one weapon against one target",
+      "type": "object",
+      "shape_or_key_structure": "weapon_category -> target -> probability",
+      "index_order": "weapon_category, target",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "damage accumulation input"
+    },
+    {
+      "name": "stage_weapon_inventory",
+      "meaning": "available weapon count per stage and category",
+      "type": "object",
+      "shape_or_key_structure": "stage -> weapon_category -> nonnegative integer inventory",
+      "index_order": "stage, weapon_category",
+      "domain_or_range": "integer >= 0",
+      "unit": "weapons",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "stage capacity input"
+    },
+    {
+      "name": "target_stage_availability",
+      "meaning": "whether each target can be engaged in each stage",
+      "type": "object",
+      "shape_or_key_structure": "target -> stage -> binary availability",
+      "index_order": "target, stage",
+      "domain_or_range": "0 or 1",
+      "unit": "binary",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "stage reachability input"
+    },
+    {
+      "name": "target_damage_threshold",
+      "meaning": "required accumulated damage probability for each target",
+      "type": "object",
+      "shape_or_key_structure": "target -> required damage probability",
+      "index_order": "target",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "threshold constraint input"
+    }
+  ]
+}

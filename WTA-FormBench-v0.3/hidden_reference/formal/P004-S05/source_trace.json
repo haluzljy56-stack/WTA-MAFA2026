@@ -1,0 +1,30 @@
+{
+  "sample_id": "P004-S05",
+  "source_evidence": [
+    {
+      "source": "EXP_0035_2026_Solution_Approaches_for_the_Dynamic_Naval_Air_Defense_Planning_Problem.md",
+      "location": "Introduction and Section II",
+      "supports": "dynamic NADP definition, update triggers, platform survival variable, updated objective"
+    },
+    {
+      "source": "EXP_0035_2026_Dynamic_NADP_supplementary_material.md",
+      "location": "Section B, final mathematical formulation, Eqs. (1)-(36)",
+      "supports": "complete MINLP formulation with objective, weapon scheduling, radar illumination, heading, blind-sector, platform-survival and variable-domain constraints"
+    }
+  ],
+  "variant_contract": {
+    "data_group": "P004_LARGE_NESTED",
+    "ships": 3,
+    "threats": 9,
+    "fire_channels": 9,
+    "radars": 3,
+    "time_slots": 10,
+    "disclosure": "L3"
+  },
+  "allowed_semantic_sources": [
+    "master_specs",
+    "variant_contracts",
+    "scenario_contracts",
+    "assessability_contracts"
+  ]
+}

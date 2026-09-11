@@ -1,0 +1,132 @@
+[
+  {
+    "name": "sets",
+    "meaning": "missiles, targets and enemy areas",
+    "type": "object",
+    "shape/index order": "sets.missiles, sets.targets, sets.areas",
+    "domain/range": "unique string IDs",
+    "unit or dimensionless": "dimensionless",
+    "raw/derived status": "raw",
+    "agent-facing role": "index sets"
+  },
+  {
+    "name": "target_area",
+    "meaning": "area membership for each target",
+    "type": "object",
+    "shape/index order": "keys sets.targets; values sets.areas",
+    "domain/range": "area IDs",
+    "unit or dimensionless": "dimensionless",
+    "raw/derived status": "raw",
+    "agent-facing role": "grouping"
+  },
+  {
+    "name": "target_value",
+    "meaning": "value of each target",
+    "type": "object",
+    "shape/index order": "keys sets.targets",
+    "domain/range": "positive integer",
+    "unit or dimensionless": "value unit",
+    "raw/derived status": "raw",
+    "agent-facing role": "objective coefficient"
+  },
+  {
+    "name": "missile_cost",
+    "meaning": "cost of each missile",
+    "type": "object",
+    "shape/index order": "keys sets.missiles",
+    "domain/range": "positive integer",
+    "unit or dimensionless": "cost unit",
+    "raw/derived status": "raw",
+    "agent-facing role": "objective denominator"
+  },
+  {
+    "name": "missile_intrinsic_reliability",
+    "meaning": "intrinsic reliability of each missile",
+    "type": "object",
+    "shape/index order": "keys sets.missiles",
+    "domain/range": "[0,1]",
+    "unit or dimensionless": "probability",
+    "raw/derived status": "raw",
+    "agent-facing role": "parameter"
+  },
+  {
+    "name": "missile_em_reliability",
+    "meaning": "electromagnetic-environment reliability of each missile",
+    "type": "object",
+    "shape/index order": "keys sets.missiles",
+    "domain/range": "[0,1]",
+    "unit or dimensionless": "probability",
+    "raw/derived status": "raw",
+    "agent-facing role": "parameter"
+  },
+  {
+    "name": "missile_target_damage_probability",
+    "meaning": "damage probability for each missile-target pair",
+    "type": "object matrix",
+    "shape/index order": "outer keys sets.missiles; inner keys sets.targets",
+    "domain/range": "[0,1]",
+    "unit or dimensionless": "probability",
+    "raw/derived status": "raw",
+    "agent-facing role": "parameter"
+  },
+  {
+    "name": "single_interceptor_success_probability",
+    "meaning": "single enemy interceptor success probability against each missile",
+    "type": "object",
+    "shape/index order": "keys sets.missiles",
+    "domain/range": "[0,1]",
+    "unit or dimensionless": "probability",
+    "raw/derived status": "raw",
+    "agent-facing role": "parameter"
+  },
+  {
+    "name": "area_interceptor_count",
+    "meaning": "enemy interceptor count in each area",
+    "type": "object",
+    "shape/index order": "keys sets.areas",
+    "domain/range": "nonnegative integer",
+    "unit or dimensionless": "count",
+    "raw/derived status": "raw",
+    "agent-facing role": "pressure parameter"
+  },
+  {
+    "name": "missile_health",
+    "meaning": "whether a missile is available",
+    "type": "object",
+    "shape/index order": "keys sets.missiles",
+    "domain/range": "{0,1}",
+    "unit or dimensionless": "indicator",
+    "raw/derived status": "raw",
+    "agent-facing role": "eligibility parameter"
+  },
+  {
+    "name": "missile_target_distance",
+    "meaning": "distance between each missile and target",
+    "type": "object matrix",
+    "shape/index order": "outer keys sets.missiles; inner keys sets.targets",
+    "domain/range": "nonnegative",
+    "unit or dimensionless": "distance unit",
+    "raw/derived status": "raw",
+    "agent-facing role": "eligibility parameter"
+  },
+  {
+    "name": "missile_range",
+    "meaning": "range limit of each missile",
+    "type": "object",
+    "shape/index order": "keys sets.missiles",
+    "domain/range": "positive",
+    "unit or dimensionless": "distance unit",
+    "raw/derived status": "raw",
+    "agent-facing role": "eligibility parameter"
+  },
+  {
+    "name": "area_reliability_threshold",
+    "meaning": "minimum reliability required for each area",
+    "type": "object",
+    "shape/index order": "keys sets.areas",
+    "domain/range": "[0,1]",
+    "unit or dimensionless": "probability",
+    "raw/derived status": "raw",
+    "agent-facing role": "constraint parameter"
+  }
+]

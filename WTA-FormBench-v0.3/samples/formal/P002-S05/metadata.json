@@ -1,0 +1,9 @@
+{
+  "sample_id": "P002-S05",
+  "seed_paper_id": "P002",
+  "repair_stage": "R1C_P001_P003",
+  "split": "formal",
+  "nl_level": "L3",
+  "substantive_instance_hash": "0ee7c272e8890ace1f9a1d1867255f77afa79f4bc7427a9fbc01c2a4474133b7",
+  "evaluator_private": true
+}

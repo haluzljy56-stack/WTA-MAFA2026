@@ -1,0 +1,5 @@
+﻿Benchmark,Model source,Gurobi success,Greedy feasible,Random feasible,Greedy quality,Random quality
+SWTA,Reference model,30/30,30/30,30/30,0.274,0.267
+SWTA,WTA-MAFA generated model,27/30,27/30,27/30,0.268,0.260
+MADRA,Reference model,10/10,10/10,10/10,0.933,0.977
+MADRA,WTA-MAFA generated model,6/10,6/10,6/10,0.889,0.965

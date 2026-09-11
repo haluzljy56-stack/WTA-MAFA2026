@@ -1,0 +1,356 @@
+{
+  "threats": [
+    "A01",
+    "A02"
+  ],
+  "ships": [
+    "N01"
+  ],
+  "fire_channels": [
+    "F01",
+    "F02"
+  ],
+  "weapon_systems": [
+    "WS01",
+    "WS02"
+  ],
+  "radars": [
+    "R01"
+  ],
+  "time_slots": [
+    "T01",
+    "T02",
+    "T03",
+    "T04",
+    "T05",
+    "T06"
+  ],
+  "engageable_pairs": [
+    {
+      "threat": "A01",
+      "fire_channel": "F01"
+    },
+    {
+      "threat": "A01",
+      "fire_channel": "F02"
+    },
+    {
+      "threat": "A02",
+      "fire_channel": "F01"
+    },
+    {
+      "threat": "A02",
+      "fire_channel": "F02"
+    }
+  ],
+  "engagement_windows": {
+    "A01|F01": {
+      "earliest_start": "T01",
+      "latest_end": "T05"
+    },
+    "A01|F02": {
+      "earliest_start": "T02",
+      "latest_end": "T05"
+    },
+    "A02|F01": {
+      "earliest_start": "T02",
+      "latest_end": "T04"
+    },
+    "A02|F02": {
+      "earliest_start": "T01",
+      "latest_end": "T04"
+    }
+  },
+  "engagement_duration": {
+    "A01|F01": {
+      "T01": 3,
+      "T02": 2,
+      "T03": 2,
+      "T04": 3,
+      "T05": 2,
+      "T06": 2
+    },
+    "A01|F02": {
+      "T01": 2,
+      "T02": 2,
+      "T03": 3,
+      "T04": 2,
+      "T05": 2,
+      "T06": 3
+    },
+    "A02|F01": {
+      "T01": 2,
+      "T02": 2,
+      "T03": 3,
+      "T04": 2,
+      "T05": 2,
+      "T06": 3
+    },
+    "A02|F02": {
+      "T01": 2,
+      "T02": 3,
+      "T03": 2,
+      "T04": 2,
+      "T05": 3,
+      "T06": 2
+    }
+  },
+  "weapon_rounds": {
+    "WS01": 1,
+    "WS02": 1
+  },
+  "weapon_setup_times": {
+    "WS01": 2,
+    "WS02": 1
+  },
+  "radar_setup_times": {
+    "R01": 1
+  },
+  "threat_values": {
+    "A01": 10,
+    "A02": 12
+  },
+  "threat_hit_probabilities": {
+    "A01": 0.43,
+    "A02": 0.475
+  },
+  "single_shot_kill_probabilities": {
+    "A01|F01|T01": 0.66,
+    "A01|F01|T02": 0.685,
+    "A01|F01|T03": 0.71,
+    "A01|F01|T04": 0.56,
+    "A01|F01|T05": 0.585,
+    "A01|F01|T06": 0.0,
+    "A01|F02|T01": 0.0,
+    "A01|F02|T02": 0.56,
+    "A01|F02|T03": 0.585,
+    "A01|F02|T04": 0.61,
+    "A01|F02|T05": 0.635,
+    "A01|F02|T06": 0.0,
+    "A02|F01|T01": 0.0,
+    "A02|F01|T02": 0.71,
+    "A02|F01|T03": 0.56,
+    "A02|F01|T04": 0.585,
+    "A02|F01|T05": 0.0,
+    "A02|F01|T06": 0.0,
+    "A02|F02|T01": 0.56,
+    "A02|F02|T02": 0.585,
+    "A02|F02|T03": 0.61,
+    "A02|F02|T04": 0.635,
+    "A02|F02|T05": 0.0,
+    "A02|F02|T06": 0.0
+  },
+  "target_ship": {
+    "A01": "N01",
+    "A02": "N01"
+  },
+  "threat_hit_times": {
+    "A01": "T06",
+    "A02": "T05"
+  },
+  "initial_ship_heading": {
+    "N01": 35
+  },
+  "ship_turn_rate": {
+    "N01": 10
+  },
+  "threat_bearings": {
+    "N01": {
+      "A01": {
+        "T01": 72,
+        "T02": 81,
+        "T03": 90,
+        "T04": 99,
+        "T05": 108,
+        "T06": 117
+      },
+      "A02": {
+        "T01": 89,
+        "T02": 98,
+        "T03": 107,
+        "T04": 116,
+        "T05": 125,
+        "T06": 134
+      }
+    }
+  },
+  "blind_sector_bounds": {
+    "F01": [
+      {
+        "sector_id": "BS_F01_1",
+        "start_angle": 158,
+        "end_angle": 208
+      }
+    ],
+    "F02": [
+      {
+        "sector_id": "BS_F02_1",
+        "start_angle": 171,
+        "end_angle": 221
+      }
+    ]
+  },
+  "platform_survival_probability": {
+    "A01|F01|T01": 1.0,
+    "A01|F01|T02": 1.0,
+    "A01|F01|T03": 1.0,
+    "A01|F01|T04": 1.0,
+    "A01|F01|T05": 1.0,
+    "A01|F01|T06": 0.924,
+    "A01|F02|T01": 1.0,
+    "A01|F02|T02": 1.0,
+    "A01|F02|T03": 1.0,
+    "A01|F02|T04": 1.0,
+    "A01|F02|T05": 1.0,
+    "A01|F02|T06": 0.924,
+    "A02|F01|T01": 1.0,
+    "A02|F01|T02": 1.0,
+    "A02|F01|T03": 1.0,
+    "A02|F01|T04": 1.0,
+    "A02|F01|T05": 1.0,
+    "A02|F01|T06": 0.924,
+    "A02|F02|T01": 1.0,
+    "A02|F02|T02": 1.0,
+    "A02|F02|T03": 1.0,
+    "A02|F02|T04": 1.0,
+    "A02|F02|T05": 1.0,
+    "A02|F02|T06": 0.924
+  },
+  "relative_bearing": {
+    "N01": {
+      "A01": {
+        "T01": 37,
+        "T02": 36,
+        "T03": 35,
+        "T04": 34,
+        "T05": 33,
+        "T06": 32
+      },
+      "A02": {
+        "T01": 54,
+        "T02": 53,
+        "T03": 52,
+        "T04": 51,
+        "T05": 50,
+        "T06": 49
+      }
+    }
+  },
+  "heading_wrap_auxiliaries": {
+    "planned_heading": {
+      "N01": {
+        "T01": 35,
+        "T02": 45,
+        "T03": 55,
+        "T04": 65,
+        "T05": 75,
+        "T06": 85
+      }
+    },
+    "wrap_indicator": {
+      "N01": {
+        "T01": 0,
+        "T02": 0,
+        "T03": 0,
+        "T04": 0,
+        "T05": 0,
+        "T06": 0
+      }
+    }
+  },
+  "blind_sector_auxiliaries": {
+    "A01|F01|T01": false,
+    "A01|F01|T02": false,
+    "A01|F01|T03": false,
+    "A01|F01|T04": false,
+    "A01|F01|T05": false,
+    "A01|F01|T06": false,
+    "A01|F02|T01": false,
+    "A01|F02|T02": false,
+    "A01|F02|T03": false,
+    "A01|F02|T04": false,
+    "A01|F02|T05": false,
+    "A01|F02|T06": false,
+    "A02|F01|T01": false,
+    "A02|F01|T02": false,
+    "A02|F01|T03": false,
+    "A02|F01|T04": false,
+    "A02|F01|T05": false,
+    "A02|F01|T06": false,
+    "A02|F02|T01": false,
+    "A02|F02|T02": false,
+    "A02|F02|T03": false,
+    "A02|F02|T04": false,
+    "A02|F02|T05": false,
+    "A02|F02|T06": false
+  },
+  "fixed_previous_engagements": [],
+  "available_fire_channels": [
+    "F01"
+  ],
+  "radar_capacity": {
+    "R01": 1
+  },
+  "fire_channel_ship": {
+    "F01": "N01",
+    "F02": "N01"
+  },
+  "fire_channel_weapon_system": {
+    "F01": "WS01",
+    "F02": "WS02"
+  },
+  "fire_channel_radar": {
+    "F01": "R01",
+    "F02": "R01"
+  },
+  "radar_illumination_alternatives": {
+    "A01|F01|T01": [
+      "R01"
+    ],
+    "A01|F01|T02": [
+      "R01"
+    ],
+    "A01|F01|T03": [
+      "R01"
+    ],
+    "A01|F01|T04": [
+      "R01"
+    ],
+    "A01|F01|T05": [
+      "R01"
+    ],
+    "A01|F02|T02": [
+      "R01"
+    ],
+    "A01|F02|T03": [
+      "R01"
+    ],
+    "A01|F02|T04": [
+      "R01"
+    ],
+    "A01|F02|T05": [
+      "R01"
+    ],
+    "A02|F01|T02": [
+      "R01"
+    ],
+    "A02|F01|T03": [
+      "R01"
+    ],
+    "A02|F01|T04": [
+      "R01"
+    ],
+    "A02|F02|T01": [
+      "R01"
+    ],
+    "A02|F02|T02": [
+      "R01"
+    ],
+    "A02|F02|T03": [
+      "R01"
+    ],
+    "A02|F02|T04": [
+      "R01"
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "sample_id": "P015-S01",
+  "paper_id": "P015",
+  "publicly_available_data_fields": [
+    "air_defense_systems",
+    "candidate_positions",
+    "position_suitability",
+    "defense_radius",
+    "drone_start_point",
+    "drone_entry_point",
+    "terrain_or_grid_cost_data",
+    "path_cost_weights",
+    "swarm_interval_delta",
+    "path_planning_graph"
+  ],
+  "publicly_explained_parameter_semantics": [
+    "air_defense_systems",
+    "candidate_positions",
+    "position_suitability",
+    "defense_radius",
+    "drone_start_point",
+    "drone_entry_point",
+    "terrain_or_grid_cost_data",
+    "path_cost_weights",
+    "swarm_interval_delta",
+    "path_planning_graph"
+  ],
+  "withheld_aggregation_rules": [
+    "OBJ:OBJ1"
+  ],
+  "withheld_modeling_choices": [
+    "VAR:a_j",
+    "CON:C1",
+    "CON:C4"
+  ],
+  "required_elements": [
+    "SET:A",
+    "SET:Omega",
+    "SET:P",
+    "VAR:a_j",
+    "OBJ:OBJ1",
+    "CON:C1",
+    "CON:C4"
+  ],
+  "optional_or_parameterizable_elements": [
+    "SET:D",
+    "PARAM:m",
+    "PARAM:r_d",
+    "PARAM:S",
+    "PARAM:T",
+    "PARAM:terrain_height",
+    "PARAM:w_H,w_R,w_S,w_E",
+    "PARAM:z_min,z_max",
+    "PARAM:Delta_d",
+    "PARAM:candidate_position_suitability",
+    "VAR:z_rj",
+    "VAR:P_j",
+    "DERIVED:L(P)",
+    "DERIVED:H(P)",
+    "DERIVED:R(P)",
+    "DERIVED:S_cost(P)",
+    "DERIVED:C(P)",
+    "DERIVED:E_j(P)",
+    "DERIVED:C_j(P)",
+    "DERIVED:P_j_star",
+    "CON:C2",
+    "CON:C3",
+    "CON:C5",
+    "SEMANTIC:ALGORITHM_MODEL_BOUNDARY"
+  ],
+  "unsupported_elements": [
+    "SEMANTIC:unsupported_clustering_encoding_algorithm_variables_as_formulation_variables",
+    "SEMANTIC:unsupported_generic_coverage_maximization_only",
+    "SEMANTIC:unsupported_ordinary_weapon_target_assignment_variables",
+    "SEMANTIC:unsupported_public_planted_deployment_or_replanned_path_answer",
+    "SEMANTIC:unsupported_sensor_weapon_target_kill_probability_model",
+    "SEMANTIC:unsupported_static_target_protection_assignment"
+  ],
+  "expected_agent_behavior": "recover the high-level optimization structure and mark undisclosed exact physical formulas as assumptions rather than inventing unrelated WTA elements",
+  "registry_file": "element_registry/P015_element_registry.json"
+}

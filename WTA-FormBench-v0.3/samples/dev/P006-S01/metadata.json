@@ -1,0 +1,8 @@
+{
+  "sample_id": "P006-S01",
+  "paper_id": "P006",
+  "split": "dev",
+  "disclosure": "L1",
+  "evaluator_private": true,
+  "instance_sha256": "f3eb8b343bce2d97f9814988083d2ef27232ff282f174b3c735f92e7ff888341"
+}

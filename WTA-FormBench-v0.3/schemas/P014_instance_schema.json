@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P014 R5C instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "weapon_platforms",
+    "sensor_platforms",
+    "targets",
+    "weapon_target_destruction_probability",
+    "sensor_target_tracking_probability",
+    "target_threat_value",
+    "weapon_usage_cost",
+    "sensor_activation_cost",
+    "total_ammunition_baseline",
+    "sensor_capacity"
+  ],
+  "properties": {
+    "sensor_activation_cost": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "sensor_capacity": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "sensor_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "sensor_target_tracking_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "target_threat_value": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "total_ammunition_baseline": {
+      "type": "number",
+      "minimum": 1e-06
+    },
+    "weapon_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "weapon_target_destruction_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "weapon_usage_cost": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  }
+}

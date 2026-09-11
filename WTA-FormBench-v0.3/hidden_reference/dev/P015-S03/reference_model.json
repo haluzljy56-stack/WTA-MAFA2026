@@ -1,0 +1,171 @@
+{
+  "paper_id": "P015",
+  "semantic_status": "AUDITED_HIGH_MASTER_SPEC_WITH_ADVERSARIAL_DEPLOYMENT_PATH_RESPONSE",
+  "sets": [
+    {
+      "id": "A",
+      "meaning": "available air-defense systems",
+      "index": "a, j"
+    },
+    {
+      "id": "Omega",
+      "meaning": "feasible candidate deployment positions in the predetermined region",
+      "index": "r"
+    },
+    {
+      "id": "P",
+      "meaning": "candidate drone paths from start to target entry point",
+      "index": "path"
+    },
+    {
+      "id": "D",
+      "meaning": "drone swarm / drones represented through path-cost and replanning model",
+      "index": "d"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "m",
+      "meaning": "number of air-defense systems to deploy",
+      "domain": "positive integer"
+    },
+    {
+      "id": "r_d",
+      "meaning": "defense/detection/interception radius of an air-defense system",
+      "domain": "positive"
+    },
+    {
+      "id": "S",
+      "meaning": "initial start point of drone swarm",
+      "domain": "coordinate"
+    },
+    {
+      "id": "T",
+      "meaning": "entry/terminal point of drone path",
+      "domain": "coordinate"
+    },
+    {
+      "id": "terrain_height",
+      "meaning": "terrain or grid height map used in path cost",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "w_H,w_R,w_S,w_E",
+      "meaning": "weights for height, horizontal rotation, inclination and fire threat costs",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "z_min,z_max",
+      "meaning": "minimum and maximum height normalizers",
+      "domain": "scalars"
+    },
+    {
+      "id": "Delta_d",
+      "meaning": "swarm interval/new starting distance after interception",
+      "domain": "positive"
+    },
+    {
+      "id": "candidate_position_suitability",
+      "meaning": "1 if a candidate position can host an air-defense system",
+      "domain": "{0,1}"
+    }
+  ],
+  "variables": [
+    {
+      "id": "a_j",
+      "meaning": "deployment position selected for the j-th air-defense system",
+      "domain": "Omega"
+    },
+    {
+      "id": "z_rj",
+      "meaning": "1 if candidate position r is selected for system j; equivalent binary encoding of a_j",
+      "domain": "binary"
+    },
+    {
+      "id": "P_j",
+      "meaning": "drone path after the j-th interception/replanning response",
+      "domain": "opponent response path, evaluator variable"
+    }
+  ],
+  "derived": [
+    {
+      "id": "L(P)",
+      "formula": "normalized path length cost",
+      "meaning": "path length component"
+    },
+    {
+      "id": "H(P)",
+      "formula": "normalized path height cost",
+      "meaning": "height component"
+    },
+    {
+      "id": "R(P)",
+      "formula": "excessive horizontal rotation cost",
+      "meaning": "turning cost component"
+    },
+    {
+      "id": "S_cost(P)",
+      "formula": "excessive inclination cost",
+      "meaning": "slope/inclination component"
+    },
+    {
+      "id": "C(P)",
+      "formula": "L(P)+w_H*H(P)+w_R*R(P)+w_S*S_cost(P)",
+      "meaning": "baseline drone path cost"
+    },
+    {
+      "id": "E_j(P)",
+      "formula": "fire threat cost induced by deployed systems encountered by path P",
+      "meaning": "additional cost due to air-defense threat"
+    },
+    {
+      "id": "C_j(P)",
+      "formula": "C(P)+w_E*E_j(P)",
+      "meaning": "path cost after considering j deployed air-defense systems"
+    },
+    {
+      "id": "P_j_star",
+      "formula": "argmin over feasible paths from S_j to T of C_j(P)",
+      "meaning": "opponent drone swarm best response path after j deployments"
+    }
+  ],
+  "objective": {
+    "sense": "maximize",
+    "formula": "total cost of original and replanned path segments induced by selected deployment positions, with each path segment obtained by the drone swarm's minimum-cost replanning response",
+    "meaning": "choose air-defense deployments to maximize the cost for the reconnaissance drone swarm to pass through the region"
+  },
+  "constraints": [
+    {
+      "id": "C1",
+      "formula": "a_j in Omega and candidate_position_suitability(a_j)=1",
+      "meaning": "systems can only be deployed at suitable candidate positions"
+    },
+    {
+      "id": "C2",
+      "formula": "a_j distinct and newly selected position not inside removed/occupied defense range if the source's sequential feasible-region update is used",
+      "meaning": "deployment positions are distinct and respect the remaining feasible region"
+    },
+    {
+      "id": "C3",
+      "formula": "defense range of selected system must intersect the relevant current replanned path in exact iterative construction",
+      "meaning": "candidate positions considered for next deployment affect/intercept the path"
+    },
+    {
+      "id": "C4",
+      "formula": "P_j is the minimum-cost drone path response under cost C_j(P)",
+      "meaning": "opponent path planning best-response condition"
+    },
+    {
+      "id": "C5",
+      "formula": "binary encoding z_rj selects exactly one candidate position for each deployed system and each position at most once, when binary formulation is used",
+      "meaning": "equivalent discrete deployment encoding"
+    }
+  ],
+  "equivalence_rules": [
+    "The deployment problem may be represented as a bilevel/adversarial model: upper-level chooses defense positions, lower-level replans drone paths by minimizing path cost.",
+    "Precomputing pairwise path costs or response paths is acceptable as evaluator normalization if the adversarial path response semantics are preserved.",
+    "A pure max-coverage or facility-location model without drone path replanning response is not equivalent."
+  ],
+  "algorithm_boundary": "exact iterative search, encoding/decoding and evolutionary frameworks are solution algorithms; A* path planning is the opponent response evaluator, not a generic coverage constraint",
+  "public_private_boundary": "All planted assignments, bandwidth plans, Pareto/deployment answers, path response traces and algorithm populations are private validation only unless explicitly defined as exogenous public scenario data."
+}

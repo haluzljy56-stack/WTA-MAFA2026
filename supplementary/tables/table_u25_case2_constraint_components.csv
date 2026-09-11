@@ -1,0 +1,5 @@
+﻿ID,Name,Formula text,Uses
+C001,target_attempt_limit,"For each target, selected radar-launcher engagements must not exceed max_attempts_per_target from the public case file.","max_attempts_per_target, engagement_options"
+C002,radar_channel_capacity,Selected engagements using a radar must not exceed public radar channel_capacity.,"radars, engagement_options"
+C003,launcher_inventory,Selected engagements using a launcher must not exceed public launcher inventory.,"launchers, engagement_options"
+C004,positive_engagement_effectiveness,Variables exist only for public target-radar-launcher combinations with overlapping feasible hit intervals and positive interception prob...,"engagement_options, interception_probability"

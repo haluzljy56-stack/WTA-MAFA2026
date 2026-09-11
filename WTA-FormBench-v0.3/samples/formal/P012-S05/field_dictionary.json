@@ -1,0 +1,194 @@
+{
+  "sample_id": "P012-S05",
+  "paper_id": "P012",
+  "contract_version": "R4C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "targets",
+      "meaning": "aerial target identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines target index"
+    },
+    {
+      "name": "radars",
+      "meaning": "radar identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines radar index"
+    },
+    {
+      "name": "missile_vehicles",
+      "meaning": "missile vehicle identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines missile vehicle index"
+    },
+    {
+      "name": "interception_attempts_by_target",
+      "meaning": "candidate interception attempts for each target",
+      "type": "object",
+      "shape_or_key_structure": "target -> array[attempt]",
+      "index_order": "target -> array[attempt]",
+      "domain_or_range": "unique attempt identifiers per target",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines attempt index"
+    },
+    {
+      "name": "time_slots",
+      "meaning": "discrete planning time slots",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "ordered time identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines time index"
+    },
+    {
+      "name": "target_value",
+      "meaning": "interception value of each target",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative number",
+      "index_order": "target -> nonnegative number",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "expected value input"
+    },
+    {
+      "name": "target_max_interception_count",
+      "meaning": "maximum planned interception attempts for each target",
+      "type": "object",
+      "shape_or_key_structure": "target -> positive integer",
+      "index_order": "target -> positive integer",
+      "domain_or_range": "integer >= 1",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "target attempt count input"
+    },
+    {
+      "name": "missile_vehicle_load",
+      "meaning": "available missile load for each vehicle",
+      "type": "object",
+      "shape_or_key_structure": "vehicle -> nonnegative integer",
+      "index_order": "vehicle -> nonnegative integer",
+      "domain_or_range": "integer >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "missile load constraint input"
+    },
+    {
+      "name": "missile_vehicle_cost",
+      "meaning": "operational cost per missile vehicle assignment",
+      "type": "object",
+      "shape_or_key_structure": "vehicle -> nonnegative number",
+      "index_order": "vehicle -> nonnegative number",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "unsaturated-mode cost input"
+    },
+    {
+      "name": "radar_detection_feasibility",
+      "meaning": "whether a radar can detect a target at a time slot",
+      "type": "object",
+      "shape_or_key_structure": "target -> radar -> time -> 0/1",
+      "index_order": "target -> radar -> time -> 0/1",
+      "domain_or_range": "0 or 1",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "radar detection feasibility"
+    },
+    {
+      "name": "radar_channel_capacity",
+      "meaning": "maximum radar channels per radar",
+      "type": "object",
+      "shape_or_key_structure": "radar -> positive integer",
+      "index_order": "radar -> positive integer",
+      "domain_or_range": "integer >= 1",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "radar capacity constraint input"
+    },
+    {
+      "name": "radar_channel_requirement",
+      "meaning": "channels required to track one target",
+      "type": "number",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "number > 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "radar occupancy input"
+    },
+    {
+      "name": "radar_accuracy_factor",
+      "meaning": "radar accuracy factor by target, radar and time",
+      "type": "object",
+      "shape_or_key_structure": "target -> radar -> time -> probability",
+      "index_order": "target -> radar -> time -> probability",
+      "domain_or_range": "[0,1]",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "interception probability input"
+    },
+    {
+      "name": "missile_engagement_feasibility",
+      "meaning": "whether a missile vehicle can engage a target at a time slot",
+      "type": "object",
+      "shape_or_key_structure": "target -> vehicle -> time -> 0/1",
+      "index_order": "target -> vehicle -> time -> 0/1",
+      "domain_or_range": "0 or 1",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "missile reachability input"
+    },
+    {
+      "name": "interception_probability_table_or_generation_inputs",
+      "meaning": "precomputed interception probabilities for target, attempt, vehicle, radar and time choices",
+      "type": "object",
+      "shape_or_key_structure": "target -> attempt -> vehicle -> radar -> time -> probability",
+      "index_order": "target -> attempt -> vehicle -> radar -> time -> probability",
+      "domain_or_range": "[0,1]",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "scheduled interception probability input"
+    },
+    {
+      "name": "interception_timing_windows",
+      "meaning": "tracking, launch and end timing windows for each target attempt",
+      "type": "object",
+      "shape_or_key_structure": "target -> attempt -> timing fields",
+      "index_order": "target -> attempt -> timing fields",
+      "domain_or_range": "time identifiers and gap bounds",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "timing constraint input"
+    },
+    {
+      "name": "firepower_mode",
+      "meaning": "objective mode determined by target count and missile load",
+      "type": "string",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "unsaturated or saturated",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "selects value-minus-cost or value-only objective"
+    }
+  ]
+}

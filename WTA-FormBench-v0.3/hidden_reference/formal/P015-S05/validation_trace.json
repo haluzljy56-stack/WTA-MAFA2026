@@ -1,0 +1,80 @@
+{
+  "planted_deployment_positions": {
+    "A01": "C001",
+    "A02": "C002",
+    "A03": "C003",
+    "A04": "C004",
+    "A05": "C005"
+  },
+  "opponent_replanned_paths": [
+    {
+      "after_system": "A01",
+      "start_node": "C002",
+      "end_node": "C006",
+      "private_replanned_path_nodes": [
+        "C002",
+        "C003",
+        "C004",
+        "C005",
+        "C006"
+      ],
+      "path_cost": 12.532
+    },
+    {
+      "after_system": "A02",
+      "start_node": "C003",
+      "end_node": "C007",
+      "private_replanned_path_nodes": [
+        "C003",
+        "C004",
+        "C005",
+        "C006",
+        "C007"
+      ],
+      "path_cost": 14.359
+    },
+    {
+      "after_system": "A03",
+      "start_node": "C004",
+      "end_node": "C008",
+      "private_replanned_path_nodes": [
+        "C004",
+        "C005",
+        "C006",
+        "C007",
+        "C008"
+      ],
+      "path_cost": 16.186
+    },
+    {
+      "after_system": "A04",
+      "start_node": "C005",
+      "end_node": "C009",
+      "private_replanned_path_nodes": [
+        "C005",
+        "C006",
+        "C007",
+        "C008",
+        "C009"
+      ],
+      "path_cost": 18.013
+    },
+    {
+      "after_system": "A05",
+      "start_node": "C006",
+      "end_node": "C010",
+      "private_replanned_path_nodes": [
+        "C006",
+        "C007",
+        "C008",
+        "C009",
+        "C010"
+      ],
+      "path_cost": 19.84
+    }
+  ],
+  "deployment_objective_value": 80.93,
+  "path_cost_component_trace": {
+    "uses_length_height_rotation_inclination_and_fire_threat": true
+  }
+}

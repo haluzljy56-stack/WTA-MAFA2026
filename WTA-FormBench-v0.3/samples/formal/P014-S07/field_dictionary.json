@@ -1,0 +1,117 @@
+{
+  "sample_id": "P014-S07",
+  "paper_id": "P014",
+  "contract_version": "R5C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "weapon_platforms",
+      "meaning": "weapon or interceptor platform identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines weapon index"
+    },
+    {
+      "name": "sensor_platforms",
+      "meaning": "sensor platform identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines sensor index"
+    },
+    {
+      "name": "targets",
+      "meaning": "UAV target identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines target index"
+    },
+    {
+      "name": "weapon_target_destruction_probability",
+      "meaning": "destruction probability for weapon-target pairs",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> target -> probability",
+      "index_order": "weapon -> target -> probability",
+      "domain_or_range": "[0,1]",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "destruction probability input"
+    },
+    {
+      "name": "sensor_target_tracking_probability",
+      "meaning": "tracking probability for sensor-target pairs",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> target -> probability",
+      "index_order": "sensor -> target -> probability",
+      "domain_or_range": "[0,1]",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "tracking probability input"
+    },
+    {
+      "name": "target_threat_value",
+      "meaning": "threat value of each target",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative number",
+      "index_order": "target -> nonnegative number",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "threat elimination objective input"
+    },
+    {
+      "name": "weapon_usage_cost",
+      "meaning": "cost of using each weapon platform",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> nonnegative number",
+      "index_order": "weapon -> nonnegative number",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "cost objective input"
+    },
+    {
+      "name": "sensor_activation_cost",
+      "meaning": "cost of activating each sensor platform",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> nonnegative number",
+      "index_order": "sensor -> nonnegative number",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "cost objective input"
+    },
+    {
+      "name": "total_ammunition_baseline",
+      "meaning": "baseline ammunition for reserved-strength objective",
+      "type": "number",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "number > 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "reserved-strength objective denominator"
+    },
+    {
+      "name": "sensor_capacity",
+      "meaning": "tracking capacity for each sensor platform",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> positive integer",
+      "index_order": "sensor -> positive integer",
+      "domain_or_range": "integer >= 1",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "sensor capacity constraint input"
+    }
+  ]
+}

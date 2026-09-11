@@ -1,0 +1,95 @@
+{
+  "paper_id": "P010",
+  "contract_version": "R4C_element_registry_v1.0",
+  "elements": {
+    "SET:W": {
+      "kind": "SET",
+      "meaning": "weapons"
+    },
+    "SET:T": {
+      "kind": "SET",
+      "meaning": "targets"
+    },
+    "PARAM:p_ij": {
+      "kind": "PARAM",
+      "meaning": "kill probability of weapon i against target j"
+    },
+    "PARAM:v_j": {
+      "kind": "PARAM",
+      "meaning": "value of target j"
+    },
+    "PARAM:k_j": {
+      "kind": "PARAM",
+      "meaning": "kill-probability threshold required for target j to be considered destroyed"
+    },
+    "VAR:x_ij": {
+      "kind": "VAR",
+      "meaning": "1 if weapon i is assigned to target j; 0 otherwise"
+    },
+    "VAR:y_j": {
+      "kind": "VAR",
+      "meaning": "1 if target j is considered destroyed; 0 otherwise"
+    },
+    "DERIVED:S_j(X)": {
+      "kind": "DERIVED",
+      "meaning": "survival probability of target j under assigned weapons"
+    },
+    "DERIVED:K_j(X)": {
+      "kind": "DERIVED",
+      "meaning": "kill probability of target j"
+    },
+    "DERIVED:OV_j(X,Y)": {
+      "kind": "DERIVED",
+      "meaning": "overkill penalty for destroyed target j"
+    },
+    "DERIVED:IK_j(X,Y)": {
+      "kind": "DERIVED",
+      "meaning": "invalid-kill penalty: weapons assigned to an undestroyed target"
+    },
+    "OBJ:OBJ1": {
+      "kind": "OBJ",
+      "meaning": "maximize destroyed-target value while penalizing overkill and invalid kill"
+    },
+    "CON:C1": {
+      "kind": "CON",
+      "meaning": "each weapon is assigned to at most one target"
+    },
+    "CON:C2": {
+      "kind": "CON",
+      "meaning": "target j can be declared destroyed only if its kill threshold is reached"
+    },
+    "CON:C3": {
+      "kind": "CON",
+      "meaning": "binary assignment domain"
+    },
+    "CON:C4": {
+      "kind": "CON",
+      "meaning": "binary target destruction domain"
+    },
+    "SEMANTIC:unsupported_target_threat_objective": {
+      "kind": "UNSUPPORTED",
+      "meaning": "target threat objective"
+    },
+    "SEMANTIC:unsupported_generic_residual_survival_minimization_without_y_j_destruction_decisions": {
+      "kind": "UNSUPPORTED",
+      "meaning": "generic residual survival minimization without y_j destruction decisions"
+    },
+    "SEMANTIC:unsupported_multiobjective_weighted_cost_risk_preference_vector": {
+      "kind": "UNSUPPORTED",
+      "meaning": "multiobjective weighted cost/risk/preference vector"
+    },
+    "SEMANTIC:unsupported_sensor_variables": {
+      "kind": "UNSUPPORTED",
+      "meaning": "sensor variables"
+    },
+    "SEMANTIC:unsupported_time_stages_or_dynamic_replanning": {
+      "kind": "UNSUPPORTED",
+      "meaning": "time stages or dynamic replanning"
+    },
+    "SEMANTIC:unsupported_planted_target_destruction_scheme_or_heuristic_initial_solution_in_public_input": {
+      "kind": "UNSUPPORTED",
+      "meaning": "planted target destruction scheme or heuristic initial solution in public input"
+    }
+  },
+  "algorithm_boundary": "logarithmic transformation, TSHHS, SimpleO and MMRBH are solution algorithms; they are not the gold optimization model"
+}

@@ -1,0 +1,155 @@
+{
+  "paper_id": "P015",
+  "contract_version": "R5C_element_registry_v1.0",
+  "elements": {
+    "SET:A": {
+      "kind": "SET",
+      "meaning": "available air-defense systems"
+    },
+    "SET:Omega": {
+      "kind": "SET",
+      "meaning": "feasible candidate deployment positions in the predetermined region"
+    },
+    "SET:P": {
+      "kind": "SET",
+      "meaning": "candidate drone paths from start to target entry point"
+    },
+    "SET:D": {
+      "kind": "SET",
+      "meaning": "drone swarm / drones represented through path-cost and replanning model"
+    },
+    "PARAM:m": {
+      "kind": "PARAM",
+      "meaning": "number of air-defense systems to deploy"
+    },
+    "PARAM:r_d": {
+      "kind": "PARAM",
+      "meaning": "defense/detection/interception radius of an air-defense system"
+    },
+    "PARAM:S": {
+      "kind": "PARAM",
+      "meaning": "initial start point of drone swarm"
+    },
+    "PARAM:T": {
+      "kind": "PARAM",
+      "meaning": "entry/terminal point of drone path"
+    },
+    "PARAM:terrain_height": {
+      "kind": "PARAM",
+      "meaning": "terrain or grid height map used in path cost"
+    },
+    "PARAM:w_H,w_R,w_S,w_E": {
+      "kind": "PARAM",
+      "meaning": "weights for height, horizontal rotation, inclination and fire threat costs"
+    },
+    "PARAM:z_min,z_max": {
+      "kind": "PARAM",
+      "meaning": "minimum and maximum height normalizers"
+    },
+    "PARAM:Delta_d": {
+      "kind": "PARAM",
+      "meaning": "swarm interval/new starting distance after interception"
+    },
+    "PARAM:candidate_position_suitability": {
+      "kind": "PARAM",
+      "meaning": "1 if a candidate position can host an air-defense system"
+    },
+    "VAR:a_j": {
+      "kind": "VAR",
+      "meaning": "deployment position selected for the j-th air-defense system"
+    },
+    "VAR:z_rj": {
+      "kind": "VAR",
+      "meaning": "1 if candidate position r is selected for system j; equivalent binary encoding of a_j"
+    },
+    "VAR:P_j": {
+      "kind": "VAR",
+      "meaning": "drone path after the j-th interception/replanning response"
+    },
+    "DERIVED:L(P)": {
+      "kind": "DERIVED",
+      "meaning": "path length component"
+    },
+    "DERIVED:H(P)": {
+      "kind": "DERIVED",
+      "meaning": "height component"
+    },
+    "DERIVED:R(P)": {
+      "kind": "DERIVED",
+      "meaning": "turning cost component"
+    },
+    "DERIVED:S_cost(P)": {
+      "kind": "DERIVED",
+      "meaning": "slope/inclination component"
+    },
+    "DERIVED:C(P)": {
+      "kind": "DERIVED",
+      "meaning": "baseline drone path cost"
+    },
+    "DERIVED:E_j(P)": {
+      "kind": "DERIVED",
+      "meaning": "additional cost due to air-defense threat"
+    },
+    "DERIVED:C_j(P)": {
+      "kind": "DERIVED",
+      "meaning": "path cost after considering j deployed air-defense systems"
+    },
+    "DERIVED:P_j_star": {
+      "kind": "DERIVED",
+      "meaning": "opponent drone swarm best response path after j deployments"
+    },
+    "OBJ:OBJ1": {
+      "kind": "OBJ",
+      "meaning": "choose air-defense deployments to maximize the cost for the reconnaissance drone swarm to pass through the region"
+    },
+    "CON:C1": {
+      "kind": "CON",
+      "meaning": "systems can only be deployed at suitable candidate positions"
+    },
+    "CON:C2": {
+      "kind": "CON",
+      "meaning": "deployment positions are distinct and respect the remaining feasible region"
+    },
+    "CON:C3": {
+      "kind": "CON",
+      "meaning": "candidate positions considered for next deployment affect/intercept the path"
+    },
+    "CON:C4": {
+      "kind": "CON",
+      "meaning": "opponent path planning best-response condition"
+    },
+    "CON:C5": {
+      "kind": "CON",
+      "meaning": "equivalent discrete deployment encoding"
+    },
+    "SEMANTIC:unsupported_ordinary_weapon_target_assignment_variables": {
+      "kind": "UNSUPPORTED",
+      "meaning": "ordinary weapon-target assignment variables"
+    },
+    "SEMANTIC:unsupported_generic_coverage_maximization_only": {
+      "kind": "UNSUPPORTED",
+      "meaning": "generic coverage maximization only"
+    },
+    "SEMANTIC:unsupported_sensor_weapon_target_kill_probability_model": {
+      "kind": "UNSUPPORTED",
+      "meaning": "sensor-weapon-target kill probability model"
+    },
+    "SEMANTIC:unsupported_static_target_protection_assignment": {
+      "kind": "UNSUPPORTED",
+      "meaning": "static target protection assignment"
+    },
+    "SEMANTIC:unsupported_clustering_encoding_algorithm_variables_as_formulation_variables": {
+      "kind": "UNSUPPORTED",
+      "meaning": "clustering/encoding algorithm variables as formulation variables"
+    },
+    "SEMANTIC:unsupported_public_planted_deployment_or_replanned_path_answer": {
+      "kind": "UNSUPPORTED",
+      "meaning": "public planted deployment or replanned-path answer"
+    },
+    "SEMANTIC:ALGORITHM_MODEL_BOUNDARY": {
+      "kind": "SEMANTIC",
+      "meaning": "contract-required element"
+    }
+  },
+  "algorithm_boundary": "exact iterative search, encoding/decoding and evolutionary frameworks are solution algorithms; A* path planning is the opponent response evaluator, not a generic coverage constraint"
+}

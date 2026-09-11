@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P004 R2D strengthened instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "threats",
+    "ships",
+    "fire_channels",
+    "weapon_systems",
+    "radars",
+    "time_slots",
+    "engageable_pairs",
+    "engagement_windows",
+    "engagement_duration",
+    "weapon_rounds",
+    "weapon_setup_times",
+    "radar_setup_times",
+    "threat_values",
+    "threat_hit_probabilities",
+    "single_shot_kill_probabilities",
+    "target_ship",
+    "threat_hit_times",
+    "initial_ship_heading",
+    "ship_turn_rate",
+    "threat_bearings",
+    "blind_sector_bounds",
+    "platform_survival_probability",
+    "relative_bearing",
+    "heading_wrap_auxiliaries",
+    "blind_sector_auxiliaries",
+    "fixed_previous_engagements",
+    "available_fire_channels",
+    "radar_capacity",
+    "fire_channel_ship",
+    "fire_channel_weapon_system",
+    "fire_channel_radar",
+    "radar_illumination_alternatives"
+  ],
+  "properties": {
+    "threats": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "ships": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "fire_channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "weapon_systems": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "radars": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "time_slots": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "engageable_pairs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "engagement_windows": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "engagement_duration": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "weapon_rounds": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "weapon_setup_times": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "radar_setup_times": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "threat_values": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "threat_hit_probabilities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "single_shot_kill_probabilities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "target_ship": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "threat_hit_times": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "initial_ship_heading": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "ship_turn_rate": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "threat_bearings": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "blind_sector_bounds": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "platform_survival_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "relative_bearing": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "heading_wrap_auxiliaries": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "blind_sector_auxiliaries": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "fixed_previous_engagements": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "available_fire_channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "radar_capacity": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "fire_channel_ship": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "fire_channel_weapon_system": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "fire_channel_radar": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "radar_illumination_alternatives": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "dynamic_update_event": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "weapon_or_radar_breakdown_event": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

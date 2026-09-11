@@ -1,0 +1,10 @@
+{
+  "sample_id": "P012-S03",
+  "semantic_sources": [
+    "master_spec",
+    "variant_contract",
+    "scenario_contract",
+    "assessability_contract"
+  ],
+  "method_outputs_used": []
+}

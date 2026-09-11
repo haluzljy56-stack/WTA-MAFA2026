@@ -1,0 +1,1 @@
+A defended asset faces incoming UAV targets. The defender must assign sensors to track targets and weapons/interceptors to engage them. The plan should improve threat elimination, reduce sensor/weapon use cost, and preserve remaining interceptor strength for later attacks.

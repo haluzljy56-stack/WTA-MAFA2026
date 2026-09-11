@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+\section*{SWTA / MultiSWTA2\_Type1\_NT50\_NS8\_NC6\_NV8\_NW6\_O4}
+\textbf{Method:} WTA-MAFA\\
+\textbf{Objective contract:} swta.expected\_remaining\_target\_value\_plus\_cost\\
+\textbf{Math trust status:} ebw\_executable\_verified\\
+\textbf{Source mode:} ebw\_executable\_contract\_swta
+
+\paragraph{Executable evidence.}
+Workspace digest: \texttt{1cd0e516a67488aa}\\
+Slot digest: \texttt{c6ea67785063a59f}\\
+Builder code digest: \texttt{bd23b264fdecaf1c}\\
+Model registry digest: \texttt{5be1bca990f9c8be}\\
+BEC digest: \texttt{58f83c5267630029}\\
+External objective report digest: \texttt{31bfc5172256f0f7}\\
+LLM reinterpretation used: \texttt{false}. Feedback to current Agent allowed: \texttt{false}.
+
+\section*{SWTA Contract-Level Formulation}
+\[
+\begin{aligned}
+\min_{x}\quad
+& \sum_{t \in T} v_t + \sum_{e \in E} \left(c^S_e + c^W_e - v_{t(e)} p_e\right)x_e \\
+\text{s.t.}\quad
+& \sum_{e \in E: t(e)=t} x_e \le 1 && \forall t \in T \\
+& \sum_{e \in E: s(e)=s,\ a_e \le \tau \le b_e} q_{t(e)} x_e \le C_s && \forall s \in S,\ \forall \tau \\
+& \sum_{e \in E: w(e)=w} x_e \le I_w && \forall w \in W \\
+& \sum_{e \in E: w(e)=w,\ \tau \le h_e \le \tau+d_w-1} x_e \le 1 && \forall w \in W,\ \forall \tau \\
+& x_e \in \{0,1\} && \forall e \in E.
+\end{aligned}
+\]
+\paragraph{Symbols.} $E$ is the authoritative compatible candidate set; $v_t$ is target value; $c^S_e$ and $c^W_e$ are public sensor and weapon costs; $p_e$ is combined effectiveness; $q_t$ is target channel need; $C_s$ is sensor capacity; $I_w$ is weapon inventory; $h_e$ is hit step; $d_w$ is minimum launch interval.
+
+\end{document}

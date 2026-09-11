@@ -1,0 +1,3 @@
+﻿Benchmark,Samples,Subgroups,Main modeling pressure,Role in the paper
+SWTA,162,MOP1-MOP5; Type0/Type1; O2/O3/O4; multiple scales,"Candidate engagement, multi-objective assignment, resource capacity, spatial and probability-dependent effects",Large-scale formal comparison
+MADRA,20,P1-P10; single and multi3,"Radar-launcher-target-hit-time coupling, inventory, channel capacity, hit intervals and repeated engagements",Small but temporally strict formal comparison

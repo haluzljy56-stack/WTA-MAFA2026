@@ -1,0 +1,183 @@
+{
+  "sample_id": "P008-S02",
+  "paper_id": "P008",
+  "contract_version": "R3C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "targets",
+      "meaning": "incoming target identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "target",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "target index"
+    },
+    {
+      "name": "sensors",
+      "meaning": "sensor identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "sensor",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "sensor index"
+    },
+    {
+      "name": "weapons",
+      "meaning": "weapon identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "weapon",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "weapon index"
+    },
+    {
+      "name": "time_horizon",
+      "meaning": "discrete time identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique ordered list",
+      "index_order": "time",
+      "domain_or_range": "unique identifiers",
+      "unit": "time slot",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "time index"
+    },
+    {
+      "name": "attempts_by_target",
+      "meaning": "possible interception attempts per target",
+      "type": "object",
+      "shape_or_key_structure": "target -> list[attempt]",
+      "index_order": "target, attempt",
+      "domain_or_range": "unique attempt ids",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set mapping",
+      "agent_facing_role": "attempt index"
+    },
+    {
+      "name": "target_value",
+      "meaning": "target value weight",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative number",
+      "index_order": "target",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "objective weight"
+    },
+    {
+      "name": "sensor_visibility",
+      "meaning": "sensor visibility by target and time",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> target -> time -> 0/1",
+      "index_order": "sensor, target, time",
+      "domain_or_range": "0 or 1",
+      "unit": "binary",
+      "raw_or_derived": "raw/precomputed parameter",
+      "agent_facing_role": "sensor visibility constraint"
+    },
+    {
+      "name": "sensor_channel_capacity",
+      "meaning": "tracking channel capacity per sensor",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> nonnegative integer",
+      "index_order": "sensor",
+      "domain_or_range": "integer >= 0",
+      "unit": "channels",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "sensor capacity constraint"
+    },
+    {
+      "name": "weapon_engagement_envelope",
+      "meaning": "weapon engagement feasibility by target/time",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> target -> time -> 0/1",
+      "index_order": "weapon, target, time",
+      "domain_or_range": "0 or 1",
+      "unit": "binary",
+      "raw_or_derived": "precomputed envelope",
+      "agent_facing_role": "engagement-envelope constraint"
+    },
+    {
+      "name": "weapon_inventory",
+      "meaning": "launch inventory per weapon system",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> nonnegative integer",
+      "index_order": "weapon",
+      "domain_or_range": "integer >= 0",
+      "unit": "rounds",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "weapon resource constraint"
+    },
+    {
+      "name": "weapon_reload_time",
+      "meaning": "reload separation per weapon system",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> nonnegative time",
+      "index_order": "weapon",
+      "domain_or_range": "number >= 0",
+      "unit": "time slots",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "reload constraint"
+    },
+    {
+      "name": "target_impact_time",
+      "meaning": "predicted target impact time",
+      "type": "object",
+      "shape_or_key_structure": "target -> positive time index",
+      "index_order": "target",
+      "domain_or_range": "positive integer",
+      "unit": "time slot",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "temporal constraint"
+    },
+    {
+      "name": "weapon_flight_time",
+      "meaning": "flight time for weapon-target engagements",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> target -> nonnegative time",
+      "index_order": "weapon, target",
+      "domain_or_range": "number >= 0",
+      "unit": "time slots",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "temporal constraint"
+    },
+    {
+      "name": "sensor_tracking_time",
+      "meaning": "tracking duration before engagement",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> target -> nonnegative time",
+      "index_order": "sensor, target",
+      "domain_or_range": "number >= 0",
+      "unit": "time slots",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "tracking-before-engagement constraint"
+    },
+    {
+      "name": "sensor_lock_time",
+      "meaning": "sensor lock/processing time",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> target -> nonnegative time",
+      "index_order": "sensor, target",
+      "domain_or_range": "number >= 0",
+      "unit": "time slots",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "timing constraint"
+    },
+    {
+      "name": "kill_probability_coefficients_or_precomputed_values",
+      "meaning": "precomputed kill probability values for target-attempt-sensor-weapon-time combinations",
+      "type": "object",
+      "shape_or_key_structure": "key = target|attempt|sensor|weapon|time -> probability",
+      "index_order": "target, attempt, sensor, weapon, time",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "precomputed source-permitted input",
+      "agent_facing_role": "interception probability input"
+    }
+  ]
+}

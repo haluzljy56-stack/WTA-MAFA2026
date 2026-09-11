@@ -1,0 +1,1 @@
+A command team must assign available sensing assets and effectors to targets. Every target must receive sensing support and effector support, each asset can be used for at most one target, and the plan should minimize total assignment cost while meeting a common required destruction confidence for every target.

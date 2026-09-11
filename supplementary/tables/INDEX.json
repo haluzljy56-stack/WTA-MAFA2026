@@ -1,0 +1,506 @@
+[
+  {
+    "file": "tables/table_1_benchmark_reconstruction_summary.csv",
+    "label": "1",
+    "caption": "Supplementary Table 1. Benchmark reconstruction summary.",
+    "rows": 3,
+    "cols": 6,
+    "section": "3.7 Appendix / 3.7.1 Appendix overview and audit map"
+  },
+  {
+    "file": "tables/table_2_agent_prompt_and_output_contract_index.csv",
+    "label": "2",
+    "caption": "Supplementary Table 2. Agent prompt and output contract index.",
+    "rows": 7,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.3 Agent prompts, role contracts and schemas"
+  },
+  {
+    "file": "tables/table_3_method_artifact_checklist_and_coverage.csv",
+    "label": "3",
+    "caption": "Supplementary Table 3. Method artifact checklist and coverage.",
+    "rows": 4,
+    "cols": 15,
+    "section": "3.7 Appendix / 3.7.4 Code-model-first output contract"
+  },
+  {
+    "file": "tables/table_4_full_182_sample_per_instance_core_results.csv",
+    "label": "4",
+    "caption": "Supplementary Table 4. Full 182-sample per-instance core results.",
+    "rows": 183,
+    "cols": 13,
+    "section": "3.7 Appendix / 3.7.8 Full per-instance results"
+  },
+  {
+    "file": "tables/table_5_full_per_instance_domain_quality_results.csv",
+    "label": "5",
+    "caption": "Supplementary Table 5. Full per-instance domain-quality results.",
+    "rows": 183,
+    "cols": 13,
+    "section": "3.7 Appendix / 3.7.8 Full per-instance results"
+  },
+  {
+    "file": "tables/table_6_full_per_instance_runtime_and_token_results.csv",
+    "label": "6",
+    "caption": "Supplementary Table 6. Full per-instance runtime and token results.",
+    "rows": 183,
+    "cols": 11,
+    "section": "3.7 Appendix / 3.7.8 Full per-instance results"
+  },
+  {
+    "file": "tables/table_7_full_per_instance_failure_taxonomy.csv",
+    "label": "7",
+    "caption": "Supplementary Table 7. Full per-instance failure taxonomy.",
+    "rows": 183,
+    "cols": 10,
+    "section": "3.7 Appendix / 3.7.8 Full per-instance results"
+  },
+  {
+    "file": "tables/table_8_full_preference_profile_results.csv",
+    "label": "8",
+    "caption": "Supplementary Table 8. Full preference-profile results.",
+    "rows": 911,
+    "cols": 9,
+    "section": "3.7 Appendix / 3.7.9 Stratified supplementary results"
+  },
+  {
+    "file": "tables/table_9_reference_context_comparison_details.csv",
+    "label": "9",
+    "caption": "Supplementary Table 9. Reference/context comparison details.",
+    "rows": 911,
+    "cols": 10,
+    "section": "3.7 Appendix / 3.7.9 Stratified supplementary results"
+  },
+  {
+    "file": "tables/table_10_controlled_variable_audit_for_a_c_d_e_blocks.csv",
+    "label": "10",
+    "caption": "Supplementary Table 10. Controlled-variable audit for A/C/D/E blocks.",
+    "rows": 6,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.10 Boundary, leakage and controlled-variable audit"
+  },
+  {
+    "file": "tables/table_u10_boundary_leakage_and_controlled_variable_audit.csv",
+    "label": "",
+    "caption": "",
+    "rows": 2,
+    "cols": 7,
+    "section": "3.7 Appendix / 3.7.10 Boundary, leakage and controlled-variable audit"
+  },
+  {
+    "file": "tables/table_u11_boundary_leakage_and_controlled_variable_audit.csv",
+    "label": "",
+    "caption": "",
+    "rows": 4,
+    "cols": 15,
+    "section": "3.7 Appendix / 3.7.10 Boundary, leakage and controlled-variable audit"
+  },
+  {
+    "file": "tables/table_u12_boundary_leakage_and_controlled_variable_audit.csv",
+    "label": "",
+    "caption": "",
+    "rows": 2,
+    "cols": 10,
+    "section": "3.7 Appendix / 3.7.10 Boundary, leakage and controlled-variable audit"
+  },
+  {
+    "file": "tables/table_u13_case1_case_contract.csv",
+    "label": "",
+    "caption": "",
+    "rows": 3,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.11 Case study I: successful iterated SWTA end-to-end trace / Case contract"
+  },
+  {
+    "file": "tables/table_u14_case1_instance_summary.csv",
+    "label": "",
+    "caption": "",
+    "rows": 11,
+    "cols": 3,
+    "section": "3.7 Appendix / 3.7.11 Case study I: successful iterated SWTA end-to-end trace / Instance summary"
+  },
+  {
+    "file": "tables/table_u15_case1_objective_definitions.csv",
+    "label": "",
+    "caption": "",
+    "rows": 5,
+    "cols": 6,
+    "section": "3.7 Appendix / 3.7.11 Case study I: successful iterated SWTA end-to-end trace / Objective definitions"
+  },
+  {
+    "file": "tables/table_u16_case1_constraint_components.csv",
+    "label": "",
+    "caption": "",
+    "rows": 9,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.11 Case study I: successful iterated SWTA end-to-end trace / Constraint components"
+  },
+  {
+    "file": "tables/table_u17_case1_sets.csv",
+    "label": "",
+    "caption": "",
+    "rows": 4,
+    "cols": 2,
+    "section": "3.7 Appendix / 3.7.11 Case study I: successful iterated SWTA end-to-end trace / Sets"
+  },
+  {
+    "file": "tables/table_u18_case1_solver_expectation.csv",
+    "label": "",
+    "caption": "",
+    "rows": 4,
+    "cols": 2,
+    "section": "3.7 Appendix / 3.7.11 Case study I: successful iterated SWTA end-to-end trace / Solver expectation"
+  },
+  {
+    "file": "tables/table_u19_case1_source_boundary.csv",
+    "label": "",
+    "caption": "",
+    "rows": 7,
+    "cols": 2,
+    "section": "3.7 Appendix / 3.7.11 Case study I: successful iterated SWTA end-to-end trace / Source boundary"
+  },
+  {
+    "file": "tables/table_u20_case1_trace_summary.csv",
+    "label": "",
+    "caption": "",
+    "rows": 10,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.11 Case study I: successful iterated SWTA end-to-end trace / Trace summary"
+  },
+  {
+    "file": "tables/table_11_successful_case_artifact_trace.csv",
+    "label": "11",
+    "caption": "Supplementary Table 11. Successful case artifact trace.",
+    "rows": 10,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.11 Case study I: successful iterated SWTA end-to-end trace / Trace summary"
+  },
+  {
+    "file": "tables/table_u22_case2_case_contract.csv",
+    "label": "",
+    "caption": "",
+    "rows": 3,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.12 Case study II: failed MADRA bounded-repair trace / Case contract"
+  },
+  {
+    "file": "tables/table_u23_case2_instance_summary.csv",
+    "label": "",
+    "caption": "",
+    "rows": 9,
+    "cols": 3,
+    "section": "3.7 Appendix / 3.7.12 Case study II: failed MADRA bounded-repair trace / Instance summary"
+  },
+  {
+    "file": "tables/table_u24_case2_objective_definitions.csv",
+    "label": "",
+    "caption": "",
+    "rows": 2,
+    "cols": 6,
+    "section": "3.7 Appendix / 3.7.12 Case study II: failed MADRA bounded-repair trace / Objective definitions"
+  },
+  {
+    "file": "tables/table_u25_case2_constraint_components.csv",
+    "label": "",
+    "caption": "",
+    "rows": 5,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.12 Case study II: failed MADRA bounded-repair trace / Constraint components"
+  },
+  {
+    "file": "tables/table_u26_case2_sets.csv",
+    "label": "",
+    "caption": "",
+    "rows": 4,
+    "cols": 2,
+    "section": "3.7 Appendix / 3.7.12 Case study II: failed MADRA bounded-repair trace / Sets"
+  },
+  {
+    "file": "tables/table_u27_case2_solver_expectation.csv",
+    "label": "",
+    "caption": "",
+    "rows": 4,
+    "cols": 2,
+    "section": "3.7 Appendix / 3.7.12 Case study II: failed MADRA bounded-repair trace / Solver expectation"
+  },
+  {
+    "file": "tables/table_u28_case2_source_boundary.csv",
+    "label": "",
+    "caption": "",
+    "rows": 7,
+    "cols": 2,
+    "section": "3.7 Appendix / 3.7.12 Case study II: failed MADRA bounded-repair trace / Source boundary"
+  },
+  {
+    "file": "tables/table_12_failed_case_repair_and_artifact_trace.csv",
+    "label": "12",
+    "caption": "Supplementary Table 12. Failed case repair and artifact trace.",
+    "rows": 5,
+    "cols": 3,
+    "section": "3.7 Appendix / 3.7.12 Case study II: failed MADRA bounded-repair trace / Failure audit and retained artifacts"
+  },
+  {
+    "file": "tables/table_u30_case2_trace_summary.csv",
+    "label": "",
+    "caption": "",
+    "rows": 7,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.12 Case study II: failed MADRA bounded-repair trace / Trace summary"
+  },
+  {
+    "file": "tables/table_u31_reproducibility_profile_and_environment.csv",
+    "label": "",
+    "caption": "",
+    "rows": 8,
+    "cols": 12,
+    "section": "3.7 Appendix / 3.7.13 Reproducibility profile and environment"
+  },
+  {
+    "file": "tables/table_u32_reproducibility_profile_and_environment.csv",
+    "label": "",
+    "caption": "",
+    "rows": 111,
+    "cols": 10,
+    "section": "3.7 Appendix / 3.7.13 Reproducibility profile and environment"
+  },
+  {
+    "file": "tables/table_A1_evidence_map_between_the_main_text_and_the_appen.csv",
+    "label": "A1",
+    "caption": "Supplementary Table A1. Evidence map between the main text and the appendix.",
+    "rows": 7,
+    "cols": 3,
+    "section": "3.7 Appendix / 3.7.14 Expanded aggregate evidence"
+  },
+  {
+    "file": "tables/table_A2_swta_and_madra_benchmark_composition.csv",
+    "label": "A2",
+    "caption": "Supplementary Table A2. SWTA and MADRA benchmark composition.",
+    "rows": 3,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.15 SWTA/MADRA Benchmark Details and Reproduction Settings / Benchmark composition"
+  },
+  {
+    "file": "tables/table_A3_shared_execution_settings_for_swta_madra_experim.csv",
+    "label": "A3",
+    "caption": "Supplementary Table A3. Shared execution settings for SWTA/MADRA experiments.",
+    "rows": 14,
+    "cols": 2,
+    "section": "3.7 Appendix / 3.7.15 SWTA/MADRA Benchmark Details and Reproduction Settings / Reproduction settings"
+  },
+  {
+    "file": "tables/table_A4_baseline_reproduction_matrix.csv",
+    "label": "A4",
+    "caption": "Supplementary Table A4. Baseline reproduction matrix.",
+    "rows": 5,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.15 SWTA/MADRA Benchmark Details and Reproduction Settings / Baseline reproduction"
+  },
+  {
+    "file": "tables/table_A5a_swta_end_to_end_stage_funnel.csv",
+    "label": "A5a",
+    "caption": "Supplementary Table A5a. SWTA end-to-end stage funnel.",
+    "rows": 5,
+    "cols": 7,
+    "section": "3.7 Appendix / 3.7.16 Expanded SWTA/MADRA Results / End-to-end stage funnel"
+  },
+  {
+    "file": "tables/table_A5b_madra_end_to_end_stage_funnel.csv",
+    "label": "A5b",
+    "caption": "Supplementary Table A5b. MADRA end-to-end stage funnel.",
+    "rows": 5,
+    "cols": 6,
+    "section": "3.7 Appendix / 3.7.16 Expanded SWTA/MADRA Results / End-to-end stage funnel"
+  },
+  {
+    "file": "tables/table_A5c_madra_scalar_domain_quality_among_scored_outputs.csv",
+    "label": "A5c",
+    "caption": "Supplementary Table A5c. MADRA scalar domain quality among scored outputs.",
+    "rows": 4,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.16 Expanded SWTA/MADRA Results / End-to-end stage funnel"
+  },
+  {
+    "file": "tables/table_A5d_swta_domain_quality_dimensions_with_common_scori.csv",
+    "label": "A5d",
+    "caption": "Supplementary Table A5d. SWTA domain-quality dimensions with common scoring support.",
+    "rows": 5,
+    "cols": 9,
+    "section": "3.7 Appendix / 3.7.16 Expanded SWTA/MADRA Results / Detailed SWTA domain dimensions"
+  },
+  {
+    "file": "tables/table_A5e_runtime_and_interaction_cost_with_uniformly_reco.csv",
+    "label": "A5e",
+    "caption": "Supplementary Table A5e. Runtime and interaction cost with uniformly recorded fields.",
+    "rows": 5,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.16 Expanded SWTA/MADRA Results / Runtime and token summaries"
+  },
+  {
+    "file": "tables/table_A5f_wta_mafa_token_summaries.csv",
+    "label": "A5f",
+    "caption": "Supplementary Table A5f. WTA-MAFA token summaries.",
+    "rows": 3,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.16 Expanded SWTA/MADRA Results / Runtime and token summaries"
+  },
+  {
+    "file": "tables/table_A5g_aggregated_failure_endpoints_over_the_full_test_.csv",
+    "label": "A5g",
+    "caption": "Supplementary Table A5g. Aggregated failure endpoints over the full test sets.",
+    "rows": 23,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.16 Expanded SWTA/MADRA Results / Failure endpoints"
+  },
+  {
+    "file": "tables/table_A6a_availability_and_pairing_coverage_for_expert_ref.csv",
+    "label": "A6a",
+    "caption": "Supplementary Table A6a. Availability and pairing coverage for expert-reference comparison.",
+    "rows": 4,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.17 Expanded Expert Reference Comparison"
+  },
+  {
+    "file": "tables/table_A6b_paired_model_checks_and_conditional_quality.csv",
+    "label": "A6b",
+    "caption": "Supplementary Table A6b. Paired model checks and conditional quality.",
+    "rows": 5,
+    "cols": 7,
+    "section": "3.7 Appendix / 3.7.17 Expanded Expert Reference Comparison"
+  },
+  {
+    "file": "tables/table_A7a_semantic_front_end_completion_across_the_archite.csv",
+    "label": "A7a",
+    "caption": "Supplementary Table A7a. Semantic/front-end completion across the architecture staircase.",
+    "rows": 8,
+    "cols": 2,
+    "section": "3.7 Appendix / 3.7.18 Expanded Ablation, Backbone, and Robustness / Architecture staircase"
+  },
+  {
+    "file": "tables/table_A7b_end_to_end_closure_for_executable_configurations.csv",
+    "label": "A7b",
+    "caption": "Supplementary Table A7b. End-to-end closure for executable configurations.",
+    "rows": 6,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.18 Expanded Ablation, Backbone, and Robustness / Architecture staircase"
+  },
+  {
+    "file": "tables/table_A7c_backbone_sensitivity_under_the_fixed_wta_mafa_ar.csv",
+    "label": "A7c",
+    "caption": "Supplementary Table A7c. Backbone sensitivity under the fixed WTA-MAFA architecture.",
+    "rows": 4,
+    "cols": 7,
+    "section": "3.7 Appendix / 3.7.18 Expanded Ablation, Backbone, and Robustness / Backbone sensitivity"
+  },
+  {
+    "file": "tables/table_A8_swta_mop_wise_results.csv",
+    "label": "A8",
+    "caption": "Supplementary Table A8. SWTA MOP-wise results.",
+    "rows": 21,
+    "cols": 6,
+    "section": "3.7 Appendix / 3.7.18 Expanded Ablation, Backbone, and Robustness / MOP, scale and preference robustness"
+  },
+  {
+    "file": "tables/table_A9_wta_mafa_madra_scale_summary.csv",
+    "label": "A9",
+    "caption": "Supplementary Table A9. WTA-MAFA MADRA scale summary.",
+    "rows": 3,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.18 Expanded Ablation, Backbone, and Robustness / MOP, scale and preference robustness"
+  },
+  {
+    "file": "tables/table_A10_preference_scores_with_available_outputs.csv",
+    "label": "A10",
+    "caption": "Supplementary Table A10. Preference scores with available outputs.",
+    "rows": 11,
+    "cols": 5,
+    "section": "3.7 Appendix / 3.7.18 Expanded Ablation, Backbone, and Robustness / MOP, scale and preference robustness"
+  },
+  {
+    "file": "tables/table_A11_wta_formbench_v0_3_benchmark_card.csv",
+    "label": "A11",
+    "caption": "Supplementary Table A11. WTA-FormBench-v0.3 benchmark card.",
+    "rows": 11,
+    "cols": 2,
+    "section": "3.7 Appendix / 3.7.19 WTA-FormBench-v0.3 Benchmark Card"
+  },
+  {
+    "file": "tables/table_A12_p001_p018_source_family_mapping.csv",
+    "label": "A12",
+    "caption": "Supplementary Table A12. P001-P018 source-family mapping.",
+    "rows": 19,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.20 Eighteen Source Families and References / Family-level task coverage"
+  },
+  {
+    "file": "tables/table_A13_formbench_source_references_p001_p009.csv",
+    "label": "A13",
+    "caption": "Supplementary Table A13. FormBench source references P001-P009.",
+    "rows": 10,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.20 Eighteen Source Families and References / FormBench source references"
+  },
+  {
+    "file": "tables/table_A14_formbench_source_references_p010_p018.csv",
+    "label": "A14",
+    "caption": "Supplementary Table A14. FormBench source references P010-P018.",
+    "rows": 10,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.20 Eighteen Source Families and References / FormBench source references"
+  },
+  {
+    "file": "tables/table_A15_formbench_source_batches_and_freeze_milestones.csv",
+    "label": "A15",
+    "caption": "Supplementary Table A15. FormBench source batches and freeze milestones.",
+    "rows": 8,
+    "cols": 3,
+    "section": "3.7 Appendix / 3.7.21 FormBench Construction and Freeze Procedure"
+  },
+  {
+    "file": "tables/table_A16_public_and_evaluator_private_information_boundar.csv",
+    "label": "A16",
+    "caption": "Supplementary Table A16. Public and evaluator-private information boundary.",
+    "rows": 4,
+    "cols": 3,
+    "section": "3.7 Appendix / 3.7.22 FormBench Input Boundary and Evaluation Rubric / Input boundary"
+  },
+  {
+    "file": "tables/table_A17_formbench_evaluation_dimensions.csv",
+    "label": "A17",
+    "caption": "Supplementary Table A17. FormBench evaluation dimensions.",
+    "rows": 8,
+    "cols": 4,
+    "section": "3.7 Appendix / 3.7.22 FormBench Input Boundary and Evaluation Rubric / Evaluation rubric"
+  },
+  {
+    "file": "tables/table_A18_formal_family_level_formulation_recovery.csv",
+    "label": "A18",
+    "caption": "Supplementary Table A18. Formal family-level formulation recovery.",
+    "rows": 19,
+    "cols": 8,
+    "section": "3.7 Appendix / 3.7.23 Extended FormBench Results / Formal family-level results"
+  },
+  {
+    "file": "tables/table_A19_stress_family_level_formulation_recovery.csv",
+    "label": "A19",
+    "caption": "Supplementary Table A19. Stress family-level formulation recovery.",
+    "rows": 19,
+    "cols": 8,
+    "section": "3.7 Appendix / 3.7.23 Extended FormBench Results / Stress family-level results"
+  },
+  {
+    "file": "tables/table_A20_formal_to_stress_paired_differences.csv",
+    "label": "A20",
+    "caption": "Supplementary Table A20. Formal-to-stress paired differences.",
+    "rows": 19,
+    "cols": 7,
+    "section": "3.7 Appendix / 3.7.23 Extended FormBench Results / Paired formal-stress differences"
+  },
+  {
+    "file": "tables/table_A21_formbench_process_and_boundary_diagnostics.csv",
+    "label": "A21",
+    "caption": "Supplementary Table A21. FormBench process and boundary diagnostics.",
+    "rows": 3,
+    "cols": 11,
+    "section": "3.7 Appendix / 3.7.24 FormBench Process Diagnostics and Case Studies / Process diagnostics"
+  }
+]

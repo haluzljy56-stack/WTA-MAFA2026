@@ -1,0 +1,10 @@
+{
+  "validation_trace_status": "not_available_in_source_batch",
+  "reason": "original accepted batch did not include per-sample validation_trace.json",
+  "sample_id": "P001-S08",
+  "paper_id": "P001",
+  "split": "stress",
+  "semantic_reference_status": "accepted_by_prior_batch_review",
+  "does_not_modify_reference_model": true,
+  "r7d_policy": "minimal_evaluator_private_trace_added_for_final_freeze_completeness"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "sample_id",
+    "seed_paper_id",
+    "repair_stage",
+    "split",
+    "nl_level",
+    "substantive_instance_hash",
+    "evaluator_private"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "sample_id": {},
+    "seed_paper_id": {},
+    "repair_stage": {},
+    "split": {},
+    "nl_level": {},
+    "substantive_instance_hash": {},
+    "evaluator_private": {}
+  }
+}

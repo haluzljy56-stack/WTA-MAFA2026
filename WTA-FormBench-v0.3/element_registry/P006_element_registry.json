@@ -1,0 +1,261 @@
+{
+  "seed_paper_id": "P006",
+  "created_at": "2026-07-11T16:01:08.134037+00:00",
+  "elements": {
+    "SET:C": {
+      "id": "SET:C",
+      "kind": "set",
+      "meaning": "weapon types; six types: thermal, acoustic, radar, laser, jammer and point-defense"
+    },
+    "SET:W_c": {
+      "id": "SET:W_c",
+      "kind": "set",
+      "meaning": "weapons of type c"
+    },
+    "SET:M": {
+      "id": "SET:M",
+      "kind": "set",
+      "meaning": "incoming missiles / targets"
+    },
+    "SET:K": {
+      "id": "SET:K",
+      "kind": "set",
+      "meaning": "dynamic stages, for DSKWTA wrapper"
+    },
+    "PARAM:v_m": {
+      "id": "PARAM:v_m",
+      "kind": "parameter",
+      "meaning": "danger level/value of missile m"
+    },
+    "PARAM:p_cwm": {
+      "id": "PARAM:p_cwm",
+      "kind": "parameter",
+      "meaning": "base probability weapon w of type c intercepts missile m if assigned"
+    },
+    "PARAM:pi_cwm": {
+      "id": "PARAM:pi_cwm",
+      "kind": "parameter",
+      "meaning": "base conditional probability weapon w of type c destroys missile m if it intercepts"
+    },
+    "PARAM:r_min_cw": {
+      "id": "PARAM:r_min_cw",
+      "kind": "parameter",
+      "meaning": "minimum and maximum range of weapon w of type c"
+    },
+    "PARAM:r_max_cw": {
+      "id": "PARAM:r_max_cw",
+      "kind": "parameter",
+      "meaning": "split registry entry for grouped source item"
+    },
+    "PARAM:chi_m": {
+      "id": "PARAM:chi_m",
+      "kind": "parameter",
+      "meaning": "missile longitude, latitude and altitude"
+    },
+    "PARAM:psi_m": {
+      "id": "PARAM:psi_m",
+      "kind": "parameter",
+      "meaning": "split registry entry for grouped source item"
+    },
+    "PARAM:eta_m": {
+      "id": "PARAM:eta_m",
+      "kind": "parameter",
+      "meaning": "split registry entry for grouped source item"
+    },
+    "PARAM:alpha_cw": {
+      "id": "PARAM:alpha_cw",
+      "kind": "parameter",
+      "meaning": "weapon longitude and latitude"
+    },
+    "PARAM:beta_cw": {
+      "id": "PARAM:beta_cw",
+      "kind": "parameter",
+      "meaning": "split registry entry for grouped source item"
+    },
+    "PARAM:theta_cw": {
+      "id": "PARAM:theta_cw",
+      "kind": "parameter",
+      "meaning": "weapon motion angles"
+    },
+    "PARAM:theta_prime_cw": {
+      "id": "PARAM:theta_prime_cw",
+      "kind": "parameter",
+      "meaning": "split registry entry for grouped source item"
+    },
+    "PARAM:gamma_cw": {
+      "id": "PARAM:gamma_cw",
+      "kind": "parameter",
+      "meaning": "horizontal and vertical coverage angles"
+    },
+    "PARAM:gamma_prime_cw": {
+      "id": "PARAM:gamma_prime_cw",
+      "kind": "parameter",
+      "meaning": "split registry entry for grouped source item"
+    },
+    "PARAM:lambda_cm": {
+      "id": "PARAM:lambda_cm",
+      "kind": "parameter",
+      "meaning": "1 if weapon type c can counter missile guidance type of missile m"
+    },
+    "PARAM:rho": {
+      "id": "PARAM:rho",
+      "kind": "parameter",
+      "meaning": "maximum expected destruction/overkill-control threshold used in source constraint (14)"
+    },
+    "PARAM:dis_cwm": {
+      "id": "PARAM:dis_cwm",
+      "kind": "parameter",
+      "meaning": "distance between weapon w of type c and missile m"
+    },
+    "PARAM:p_prime_cwm": {
+      "id": "PARAM:p_prime_cwm",
+      "kind": "parameter",
+      "meaning": "range-adjusted intercept and destruction probabilities"
+    },
+    "PARAM:pi_prime_cwm": {
+      "id": "PARAM:pi_prime_cwm",
+      "kind": "parameter",
+      "meaning": "split registry entry for grouped source item"
+    },
+    "PARAM:st_cw": {
+      "id": "PARAM:st_cw",
+      "kind": "parameter",
+      "meaning": "setup time and time required for missile destruction in dynamic interval calculation"
+    },
+    "PARAM:lt_cwm": {
+      "id": "PARAM:lt_cwm",
+      "kind": "parameter",
+      "meaning": "split registry entry for grouped source item"
+    },
+    "PARAM:vl_m": {
+      "id": "PARAM:vl_m",
+      "kind": "parameter",
+      "meaning": "missile speed for dynamic coordinate updates"
+    },
+    "VAR:x_cwm": {
+      "id": "VAR:x_cwm",
+      "kind": "variable",
+      "meaning": "1 if weapon w of type c is assigned to missile m at the current stage"
+    },
+    "VAR:x_cwmk": {
+      "id": "VAR:x_cwmk",
+      "kind": "variable",
+      "meaning": "dynamic-stage version of assignment decision when the wrapper is active"
+    },
+    "DERIVED:dis_cwm": {
+      "id": "DERIVED:dis_cwm",
+      "kind": "derived",
+      "meaning": "weapon-to-missile distance"
+    },
+    "DERIVED:pi_prime_cwm": {
+      "id": "DERIVED:pi_prime_cwm",
+      "kind": "derived",
+      "meaning": "updated conditional destruction probability"
+    },
+    "DERIVED:p_prime_cwm": {
+      "id": "DERIVED:p_prime_cwm",
+      "kind": "derived",
+      "meaning": "updated interception probability"
+    },
+    "DERIVED:stage_interval_tau": {
+      "id": "DERIVED:stage_interval_tau",
+      "kind": "derived",
+      "meaning": "dynamic simulation interval between stages"
+    },
+    "DERIVED:missile_new_coordinates": {
+      "id": "DERIVED:missile_new_coordinates",
+      "kind": "derived",
+      "meaning": "dynamic position update"
+    },
+    "OBJ:OBJ1": {
+      "id": "OBJ:OBJ1",
+      "kind": "objective",
+      "meaning": "minimize weighted residual survival / wasted threat value; equivalent to maximizing missile destruction in the source"
+    },
+    "CON:C1": {
+      "id": "CON:C1",
+      "kind": "constraint",
+      "meaning": "each weapon except jammer can be used against at most one missile at a time"
+    },
+    "CON:C2": {
+      "id": "CON:C2",
+      "kind": "constraint",
+      "meaning": "each missile receives at least one eligible defensive assignment when considered in the static stage"
+    },
+    "CON:C3": {
+      "id": "CON:C3",
+      "kind": "constraint",
+      "meaning": "minimum range eligibility"
+    },
+    "CON:C4": {
+      "id": "CON:C4",
+      "kind": "constraint",
+      "meaning": "maximum range eligibility"
+    },
+    "CON:C5": {
+      "id": "CON:C5",
+      "kind": "constraint",
+      "meaning": "jammer assignment requires missile within horizontal coverage"
+    },
+    "CON:C6": {
+      "id": "CON:C6",
+      "kind": "constraint",
+      "meaning": "jammer assignment requires missile within vertical coverage"
+    },
+    "CON:C7": {
+      "id": "CON:C7",
+      "kind": "constraint",
+      "meaning": "weapon guidance-type compatibility, point defense can engage any type at close range"
+    },
+    "CON:C8": {
+      "id": "CON:C8",
+      "kind": "constraint",
+      "meaning": "prevents excessive assignment to a missile after sufficiently low survival probability"
+    },
+    "CON:C9": {
+      "id": "CON:C9",
+      "kind": "constraint",
+      "meaning": "binary assignment"
+    },
+    "SEMANTIC:DYNAMIC_UPDATE": {
+      "id": "SEMANTIC:DYNAMIC_UPDATE",
+      "kind": "semantic",
+      "meaning": "dynamic update or staged wrapper semantics"
+    },
+    "SEMANTIC:unsupported_hard_kill_missile_interceptor_model_replacing_soft_kill_weapon_types": {
+      "id": "SEMANTIC:unsupported_hard_kill_missile_interceptor_model_replacing_soft_kill_weapon_types",
+      "kind": "unsupported",
+      "meaning": "hard-kill missile interceptor model replacing soft-kill weapon types"
+    },
+    "SEMANTIC:unsupported_generic_weapon_target_cost_minimization_objective": {
+      "id": "SEMANTIC:unsupported_generic_weapon_target_cost_minimization_objective",
+      "kind": "unsupported",
+      "meaning": "generic weapon-target cost minimization objective"
+    },
+    "SEMANTIC:unsupported_target_threat_residual_objective_unrelated_to_soft_kill_residual_surviva": {
+      "id": "SEMANTIC:unsupported_target_threat_residual_objective_unrelated_to_soft_kill_residual_surviva",
+      "kind": "unsupported",
+      "meaning": "target threat residual objective unrelated to soft-kill residual survival product"
+    },
+    "SEMANTIC:unsupported_sensor_variables": {
+      "id": "SEMANTIC:unsupported_sensor_variables",
+      "kind": "unsupported",
+      "meaning": "sensor variables"
+    },
+    "SEMANTIC:unsupported_multiobjective_risk_cost_timeliness_weights": {
+      "id": "SEMANTIC:unsupported_multiobjective_risk_cost_timeliness_weights",
+      "kind": "unsupported",
+      "meaning": "multiobjective risk/cost/timeliness weights"
+    },
+    "SEMANTIC:unsupported_weapon_inventory_for_types_not_tied_to_w_c_sets": {
+      "id": "SEMANTIC:unsupported_weapon_inventory_for_types_not_tied_to_w_c_sets",
+      "kind": "unsupported",
+      "meaning": "weapon inventory for types not tied to W_c sets"
+    },
+    "SEMANTIC:unsupported_time_windows_as_substitute_for_stage_update_dynamics": {
+      "id": "SEMANTIC:unsupported_time_windows_as_substitute_for_stage_update_dynamics",
+      "kind": "unsupported",
+      "meaning": "time windows as substitute for stage update dynamics"
+    }
+  }
+}

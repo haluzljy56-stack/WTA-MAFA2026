@@ -1,0 +1,9 @@
+{
+  "sample_id": "P005-S06",
+  "paper_id": "P005",
+  "split": "formal",
+  "disclosure": "L3",
+  "evaluator_private": true,
+  "instance_sha256": "62968ff6971c4bceff4ad69bcfecb27d2105ca4fe43c194656eb4036ad747512",
+  "public_solution_witness_absent": true
+}

@@ -1,0 +1,11 @@
+﻿Field,Value,Meaning
+Sensors,8,public sensor set
+Targets,50,public target set
+Weapon vehicles,8,public weapon set
+Sensor classes,6,public type families
+Weapon classes,6,public type families
+Engagement options,3200,candidate sensor-weapon-target triplets
+Detection probability tensor,8 × 50 × 467,public effectiveness tensor
+Interception probability tensor,8 × 50 × 467,public effectiveness tensor
+Positive detection pairs,400,feasible candidate pairs
+Positive interception pairs,400,feasible candidate pairs

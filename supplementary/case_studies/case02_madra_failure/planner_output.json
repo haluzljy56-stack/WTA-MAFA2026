@@ -1,0 +1,229 @@
+{
+  "artifact_type": "planner_output",
+  "benchmark": "MADRA_LIB_P1_P10_OPEN_RECONSTRUCTION",
+  "constraint_candidates": [
+    {
+      "formula_text": "For each target_id: sum(x[e]) <= max_attempts_per_target, where max_attempts_per_target = 1.",
+      "id": "target_attempt_limit",
+      "pattern_id": "assignment_attempt_limit",
+      "scope": "target"
+    },
+    {
+      "formula_text": "For each radar_id: sum(x[e]) <= public radar channel_capacity.",
+      "id": "radar_channel_capacity",
+      "pattern_id": "resource_capacity",
+      "scope": "radar"
+    },
+    {
+      "formula_text": "For each launcher_id: sum(x[e]) <= public launcher inventory/capacity.",
+      "id": "launcher_inventory",
+      "pattern_id": "resource_inventory",
+      "scope": "launcher"
+    },
+    {
+      "formula_text": "For repeated attempts on the same target, enforce ripple_hit_separation_s lower/upper using hit_step and public time step; enforce same_radar_when_separation_below_s. Note max_attempts_per_target=1 makes repeated-attempt branches vacuous in this case.",
+      "id": "multi_attempt_temporal_rules",
+      "pattern_id": "same_target_repeated_attempt_temporal_rules",
+      "scope": "target,hit_step,radar"
+    }
+  ],
+  "executable_risks": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "forbidden_data_boundaries": [
+    "{'boundary': 'hidden/reference/trusted-builder artifacts', 'path_pattern': 'trusted_evaluation/**', 'reason': 'Restricted source root; no hidden reference or trusted builder artifacts may be read.'}",
+    "{'boundary': 'hidden/reference answer key', 'path_pattern': '**/answer_key*', 'reason': 'Non-public answer-key fields are forbidden.'}",
+    "{'boundary': 'reference solution', 'path_pattern': '**/reference_solution*', 'reason': 'No reference solution may be used.'}",
+    "{'boundary': 'external evaluator feedback', 'path_pattern': 'public_benchmark_execution_contract.evaluation_objective_vector_contract.objectives[0].replay_source_paths[0]', 'reason': 'Evaluator replay path is not materialized and must not be read during planning.'}",
+    "{'boundary': 'non-public raw probability or hidden benchmark skeleton', 'path_pattern': '**/hidden*/**', 'reason': 'Non-public raw probability, hidden model, or benchmark skeleton fields are forbidden.'}"
+  ],
+  "model_scope_assessment": {
+    "assessment_digest": "42079af31443ad392f1d2fe3978ba812b137ab3c9841e8bd130bffab5e35461d",
+    "builder_directives": [
+      "Implement only the Planner-approved modeling level: time_indexed_public.",
+      "Do not introduce variables or constraints for unsupported constructs listed in forbidden_modeling_constructs.",
+      "Use only public input fields and executable_data_manifest-allowed paths.",
+      "Use sparse public candidate variables x[e] instead of dense Cartesian expansion.",
+      "Do not create independent launch_time or launch_step decision variables.",
+      "Use solver objective contract madra.value_weighted_interception: maximize sum target_value[e] * interception_probability[e] for selected engagements.",
+      "Preserve solution_view contract fields and objective replay metadata."
+    ],
+    "forbidden_modeling_constructs": [
+      {
+        "blocked_terms": [
+          "launch_time",
+          "launch_step_decision"
+        ],
+        "name": "independent_launch_time_variable",
+        "reason": "No public launch_step or launch_time_step field is materialized.",
+        "route_hint": "modeler"
+      },
+      {
+        "blocked_terms": [
+          "trajectory",
+          "kinematic",
+          "velocity",
+          "position",
+          "coordinate",
+          "flight_time"
+        ],
+        "name": "continuous_trajectory",
+        "reason": "No public trajectory, position, coordinate, or velocity field is materialized as decision inputs.",
+        "route_hint": "modeler"
+      },
+      {
+        "blocked_terms": [
+          "stochastic",
+          "scenario",
+          "distribution",
+          "uncertainty",
+          "robust"
+        ],
+        "name": "stochastic_scenario_model",
+        "reason": "No public scenario, distribution, or uncertainty field is materialized.",
+        "route_hint": "modeler"
+      },
+      {
+        "blocked_terms": [
+          "cartesian product",
+          "all sensors weapons targets times",
+          "dense expansion"
+        ],
+        "name": "dense_cartesian_candidate_expansion",
+        "reason": "A public sparse candidate list exists; dense Cartesian resource-target-time expansion is a scale risk.",
+        "route_hint": "modeler"
+      }
+    ],
+    "objective_scope": {
+      "allowed_public_objective_fields": [
+        "target_value",
+        "interception_probability"
+      ],
+      "hidden_or_reference_objective_calibration_allowed": false,
+      "use_public_value_or_effectiveness_only": true
+    },
+    "partially_supported_constructs": [
+      {
+        "name": "trajectory_kinematic",
+        "notes": "Only limited trajectory inputs are public; do not build full kinematics.",
+        "support": "partial"
+      }
+    ],
+    "problem_family": "madra",
+    "public_input_digest": "781e84e41013d5d8c7db25cd48558db084b6f7de5ac44d45f347b47dbdfb16f5",
+    "scale_guardrails": {
+      "avoid_dense_cartesian_expansion": true,
+      "estimated_dense_assignment_product": 3200,
+      "largest_public_list": 1410,
+      "public_candidate_count": 1410,
+      "public_set_counts": {
+        "launchers": 8,
+        "radars": 8,
+        "targets": 50
+      },
+      "recommended_variable_basis": "sparse_public_candidate_list_x[e]"
+    },
+    "selected_modeling_level": "time_indexed_public",
+    "supported_constructs": [
+      {
+        "name": "candidate_assignment",
+        "notes": "Sparse binary assignment over public engagement options.",
+        "support": "supported"
+      },
+      {
+        "name": "resource_capacity",
+        "notes": "Public capacity and inventory fields are available.",
+        "support": "supported"
+      },
+      {
+        "name": "time_indexed_public",
+        "notes": "Discrete public hit_step indexing is available.",
+        "support": "supported"
+      },
+      {
+        "name": "deterministic_effectiveness_objective",
+        "notes": "Deterministic value/probability weights are available.",
+        "support": "supported"
+      }
+    ],
+    "temporal_policy": {
+      "allowed_public_time_fields": [
+        "hit_step"
+      ],
+      "discrete_time_supported": true,
+      "forbidden_variables": [
+        "launch_time",
+        "launch_step_decision"
+      ],
+      "independent_launch_time_decision_allowed": false,
+      "interval_based_time_supported": false
+    },
+    "uncertainty_policy": {
+      "allowed_effect_fields": [
+        "target_value",
+        "interception_probability"
+      ],
+      "deterministic_effectiveness_allowed": true,
+      "robust_optimization_allowed": false,
+      "stochastic_programming_allowed": false
+    },
+    "unsupported_constructs": [
+      {
+        "name": "interval_based_public",
+        "notes": "No interval/window fields are materialized as decision variables.",
+        "support": "unsupported"
+      },
+      {
+        "name": "stochastic_or_robust",
+        "notes": "No scenario, distribution, or uncertainty fields are materialized.",
+        "support": "unsupported"
+      }
+    ]
+  },
+  "objective_candidates": [
+    {
+      "formula_text": "sum_i (1 - product_k(1 - p_ik))",
+      "id": "aggregate_interception_probability",
+      "name": "aggregate_interception_probability",
+      "sense": "maximize",
+      "solver_contract_formula": "maximize sum_e target_value[e] * interception_probability[e] over selected public engagement_options",
+      "uses": [
+        "engagement_options",
+        "interception_probability",
+        "target_value"
+      ]
+    }
+  ],
+  "problem_family": "madra",
+  "provenance": {
+    "external_evaluator_feedback_used": false,
+    "hidden_reference_used": false,
+    "planner_agent": "WTA-MAFA v0.4 Planner Agent",
+    "public_input_digest": "781e84e41013d5d8c7db25cd48558db084b6f7de5ac44d45f347b47dbdfb16f5",
+    "public_model_scope_draft_digest": "1a633b1693682b6214cf951c30a1665e6329f1e6bafea541f3e7f84769567af6",
+    "source": "compiled_public_input + executable_data_manifest + public_benchmark_execution_contract",
+    "trusted_builder_used": false
+  },
+  "public_fields": [
+    "public_instance_data",
+    "public_instance_data.engagement_options",
+    "public_instance_data.targets",
+    "public_instance_data.radars",
+    "public_instance_data.launchers",
+    "public_instance_data.radar_trackable_hit_intervals",
+    "public_instance_data.launcher_trackable_hit_intervals",
+    "public_instance_data.time",
+    "public_instance_data.sets",
+    "public_instance_data.max_attempts_per_target",
+    "public_case",
+    "public_case.constraints",
+    "public_case.objective"
+  ],
+  "public_input_digest": "781e84e41013d5d8c7db25cd48558db084b6f7de5ac44d45f347b47dbdfb16f5",
+  "sample_id": "MADRA_OPEN_P6_single"
+}

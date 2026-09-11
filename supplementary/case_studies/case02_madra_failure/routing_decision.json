@@ -1,0 +1,58 @@
+{
+  "artifact_type": "error_route_decision",
+  "decision_digest": "5d6a1965d5e7be8968f48246af1fdd13c18b0cdea356756d1d3e4a7b661d073a",
+  "defects": [
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field variable_slot_llm.",
+      "owner": "variable_agent",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    },
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field objective_slot_llm.",
+      "owner": "objective_agent",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    },
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field constraint_slot_llm.",
+      "owner": "constraint_agent",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    },
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field solution_view_slot_llm.",
+      "owner": "solution_view_slot",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    },
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field repair_slot_llm.",
+      "owner": "causal_error_router",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    }
+  ],
+  "public_input_digest": "781e84e41013d5d8c7db25cd48558db084b6f7de5ac44d45f347b47dbdfb16f5",
+  "reason": "Stop required for unknown_tool_error from builder_contract.",
+  "retry_allowed": false,
+  "rollback_elite": false,
+  "round_index": 1,
+  "route_to": "stop",
+  "source_phase": "builder_contract"
+}

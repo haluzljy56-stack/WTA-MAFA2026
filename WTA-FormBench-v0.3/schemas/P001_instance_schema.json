@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "sets",
+    "sensor_target_detection_probability",
+    "weapon_target_conditional_destruction_probability",
+    "sensor_target_assignment_cost",
+    "weapon_target_assignment_cost",
+    "minimum_desired_destruction_probability"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "sets": {},
+    "sensor_target_detection_probability": {},
+    "weapon_target_conditional_destruction_probability": {},
+    "sensor_target_assignment_cost": {},
+    "weapon_target_assignment_cost": {},
+    "minimum_desired_destruction_probability": {}
+  }
+}

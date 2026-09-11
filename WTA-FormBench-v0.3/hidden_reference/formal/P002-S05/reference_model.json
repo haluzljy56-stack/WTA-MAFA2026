@@ -1,0 +1,242 @@
+{
+  "seed_paper_id": "P002",
+  "sample_id": "P002-S05",
+  "eligible_arc_policy": "P002 variables are defined only on healthy in-range missile-target arcs.",
+  "source_trace": {
+    "seed_paper_id": "P002",
+    "sample_id": "P002-S05",
+    "traced_element_ids": [
+      "PARAM:V_j",
+      "PARAM:C_i",
+      "PARAM:r_i",
+      "PARAM:r_ei",
+      "PARAM:P_ij",
+      "PARAM:P_qi",
+      "PARAM:n_mu",
+      "PARAM:s_i",
+      "PARAM:d_ij",
+      "PARAM:D_i",
+      "PARAM:rho_mu",
+      "VAR:x_ij",
+      "DERIVED:m_mu",
+      "DERIVED:P_ci",
+      "DERIVED:R_ij",
+      "DERIVED:R_j",
+      "DERIVED:R_mu",
+      "DERIVED:R_all",
+      "OBJ:F1",
+      "OBJ:F2",
+      "CON:C1",
+      "CON:C2",
+      "CON:C3",
+      "CON:C4",
+      "CON:C5",
+      "CON:C6"
+    ],
+    "source_trace_bindings": {
+      "SET:I": "master_spec.sets",
+      "SET:J": "master_spec.sets",
+      "SET:A": "master_spec.sets",
+      "SET:J_mu": "master_spec.sets",
+      "PARAM:V_j": "master_spec.parameters",
+      "PARAM:C_i": "master_spec.parameters",
+      "PARAM:r_i": "master_spec.parameters",
+      "PARAM:r_ei": "master_spec.parameters",
+      "PARAM:P_ij": "master_spec.parameters",
+      "PARAM:P_qi": "master_spec.parameters",
+      "PARAM:n_mu": "master_spec.parameters",
+      "PARAM:s_i": "master_spec.parameters",
+      "PARAM:d_ij": "master_spec.parameters",
+      "PARAM:D_i": "master_spec.parameters",
+      "PARAM:rho_mu": "master_spec.parameters",
+      "VAR:x_ij": "master_spec.variables",
+      "DERIVED:m_mu": "master_spec.derived",
+      "DERIVED:P_ci": "master_spec.derived",
+      "DERIVED:R_ij": "master_spec.derived",
+      "DERIVED:R_j": "master_spec.derived",
+      "DERIVED:R_mu": "master_spec.derived",
+      "DERIVED:R_all": "master_spec.derived",
+      "OBJ:F1": "Eq. (5)",
+      "OBJ:F2": "Eq. (6)",
+      "CON:C1": "Eq. (7)",
+      "CON:C2": "Eq. (8)",
+      "CON:C3": "Eq. (9)",
+      "CON:C4": "Eq. (10)",
+      "CON:C5": "Eq. (11)",
+      "CON:C6": "Eq. (12)",
+      "SEMANTIC:aggregation_rule": "R1C registry",
+      "SEMANTIC:eligibility_rule": "R1C registry",
+      "SEMANTIC:unsupported_target_threat": "R1C registry",
+      "SEMANTIC:unsupported_time_window": "R1C registry",
+      "SEMANTIC:unsupported_generic_inventory": "R1C registry"
+    }
+  },
+  "validator_trace": {
+    "planted_assignment": {
+      "T01": [
+        "M01",
+        "M02"
+      ],
+      "T02": [
+        "M03",
+        "M04"
+      ],
+      "T03": [
+        "M05",
+        "M06"
+      ],
+      "T04": [
+        "M07",
+        "M09"
+      ],
+      "T05": [
+        "M10",
+        "M11"
+      ],
+      "T06": [
+        "M12",
+        "M13"
+      ],
+      "T07": [
+        "M14",
+        "M16"
+      ],
+      "T08": [
+        "M17",
+        "M18"
+      ],
+      "T09": [
+        "M19",
+        "M20"
+      ],
+      "T10": [
+        "M21",
+        "M23"
+      ],
+      "T11": [
+        "M25",
+        "M27"
+      ],
+      "T12": [
+        "M28",
+        "M29"
+      ],
+      "T13": [
+        "M30",
+        "M31"
+      ],
+      "T14": [
+        "M32",
+        "M34"
+      ]
+    },
+    "area_mission_reliability": {
+      "A01": 0.98390806,
+      "A02": 0.97504391,
+      "A03": 0.99712807,
+      "A04": 0.99880484
+    },
+    "target_destruction_reliability": {
+      "T01": 0.99913787,
+      "T02": 0.99909218,
+      "T03": 0.9990873,
+      "T04": 0.99927018,
+      "T05": 0.99236415,
+      "T06": 0.99815979,
+      "T07": 0.9990873,
+      "T08": 0.99909218,
+      "T09": 0.98745834,
+      "T10": 0.98594684,
+      "T11": 0.99896638,
+      "T12": 0.99880484,
+      "T13": 0.9990873,
+      "T14": 0.99909218
+    },
+    "missile_target_reliability": {
+      "M01": {
+        "T01": 0.96978911
+      },
+      "M02": {
+        "T01": 0.97146286
+      },
+      "M03": {
+        "T02": 0.96986997
+      },
+      "M04": {
+        "T02": 0.96986997
+      },
+      "M05": {
+        "T03": 0.96978911
+      },
+      "M06": {
+        "T03": 0.96978911
+      },
+      "M07": {
+        "T04": 0.96986997
+      },
+      "M09": {
+        "T04": 0.97577781
+      },
+      "M10": {
+        "T05": 0.9382694
+      },
+      "M11": {
+        "T05": 0.87630359
+      },
+      "M12": {
+        "T06": 0.9427616
+      },
+      "M13": {
+        "T06": 0.96785008
+      },
+      "M14": {
+        "T07": 0.96978911
+      },
+      "M16": {
+        "T07": 0.96978911
+      },
+      "M17": {
+        "T08": 0.96986997
+      },
+      "M18": {
+        "T08": 0.96986997
+      },
+      "M19": {
+        "T09": 0.89980601
+      },
+      "M20": {
+        "T09": 0.87482623
+      },
+      "M21": {
+        "T10": 0.87998649
+      },
+      "M23": {
+        "T10": 0.88290352
+      },
+      "M25": {
+        "T11": 0.96785008
+      },
+      "M27": {
+        "T11": 0.96785008
+      },
+      "M28": {
+        "T12": 0.96542894
+      },
+      "M29": {
+        "T12": 0.96542894
+      },
+      "M30": {
+        "T13": 0.96978911
+      },
+      "M31": {
+        "T13": 0.96978911
+      },
+      "M32": {
+        "T14": 0.96986997
+      },
+      "M34": {
+        "T14": 0.96986997
+      }
+    }
+  }
+}

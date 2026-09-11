@@ -1,0 +1,9 @@
+{
+  "sample_id": "P005-S08",
+  "paper_id": "P005",
+  "split": "stress",
+  "disclosure": "L3",
+  "evaluator_private": true,
+  "instance_sha256": "2aa403e93319a34757f8cf51c5ddafc17da1bab3d036f86e5bc6ee63f7bfaf20",
+  "public_solution_witness_absent": true
+}

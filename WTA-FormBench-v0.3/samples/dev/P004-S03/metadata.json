@@ -1,0 +1,8 @@
+{
+  "sample_id": "P004-S03",
+  "paper_id": "P004",
+  "split": "dev",
+  "disclosure": "L3",
+  "evaluator_private": true,
+  "instance_sha256": "c3ac5c53e6f11bb140be47648469319875f56ed883171278d22667e71175e49e"
+}

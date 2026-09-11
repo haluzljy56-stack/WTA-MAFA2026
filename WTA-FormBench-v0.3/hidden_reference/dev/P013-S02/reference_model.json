@@ -1,0 +1,136 @@
+{
+  "paper_id": "P013",
+  "semantic_status": "AUDITED_HIGH_MASTER_SPEC_WITH_DYNAMIC_MIP_AND_ALGORITHM_BOUNDARY",
+  "sets": [
+    {
+      "id": "U",
+      "meaning": "UAVs",
+      "index": "n"
+    },
+    {
+      "id": "F",
+      "meaning": "frequency agile radars to be suppressed; includes dummy no-task option 0 for task assignment",
+      "index": "m"
+    },
+    {
+      "id": "K",
+      "meaning": "dynamic frames/time steps",
+      "index": "k"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "B_m",
+      "meaning": "working bandwidth of FAR m that must be collectively covered when m is suppressed",
+      "domain": "positive continuous"
+    },
+    {
+      "id": "JSR_nm_k",
+      "meaning": "jamming-to-signal ratio for UAV n suppressing FAR m at frame k before bandwidth-spreading adjustment",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "JSR0",
+      "meaning": "reference JSR threshold/scale in the suppressive effect function",
+      "domain": "positive"
+    },
+    {
+      "id": "L",
+      "meaning": "steepness parameter of the suppressive jamming effect function",
+      "domain": "positive"
+    },
+    {
+      "id": "lambda_cost",
+      "meaning": "cost factor weighting UAV participation cost",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "uav_far_feasibility",
+      "meaning": "1 if UAV n can suppress FAR m at frame k, otherwise 0",
+      "domain": "{0,1}"
+    },
+    {
+      "id": "dynamic_frame_data",
+      "meaning": "frame-dependent geometry, estimated bandwidth and JSR inputs",
+      "domain": "scenario data"
+    }
+  ],
+  "variables": [
+    {
+      "id": "u_nm_k",
+      "meaning": "1 if UAV n is assigned to suppress FAR m at frame k; m=0 means no suppression task",
+      "domain": "binary"
+    },
+    {
+      "id": "B_nm_k",
+      "meaning": "bandwidth allocated by UAV n to suppress FAR m at frame k",
+      "domain": "continuous nonnegative"
+    }
+  ],
+  "derived": [
+    {
+      "id": "C_m_k",
+      "formula": "{n | u_nm_k=1, m!=0}",
+      "meaning": "UAV coalition suppressing FAR m at frame k"
+    },
+    {
+      "id": "JSRbar_nm_k",
+      "formula": "JSR_nm_k / B_nm_k or source-equivalent bandwidth-adjusted JSR indicator",
+      "meaning": "bandwidth-aware suppressive jamming effect indicator"
+    },
+    {
+      "id": "p_nm_k",
+      "formula": "sigmoid-like increasing saturating function of bandwidth-adjusted JSR, source Eq. (27)-(28)",
+      "meaning": "suppressive jamming probability/effect of UAV n on FAR m"
+    },
+    {
+      "id": "R(C_m_k,B_m_k)",
+      "formula": "sum over assigned UAVs of bandwidth-aware suppressive reward terms",
+      "meaning": "suppression reward for FAR m at frame k"
+    },
+    {
+      "id": "C(C_m_k)",
+      "formula": "sum_n u_nm_k",
+      "meaning": "cost represented by number of UAVs participating in suppressing FAR m"
+    }
+  ],
+  "objective": {
+    "sense": "maximize",
+    "formula": "sum_m U(C_m_k) where U(C_m_k)=reward(C_m_k,B_m_k)-lambda_cost*cost(C_m_k), and U=0 if no UAV suppresses FAR m",
+    "meaning": "maximize total suppressive jamming utility at a dynamic frame"
+  },
+  "constraints": [
+    {
+      "id": "C1",
+      "formula": "sum_m u_nm_k <= 1 for each UAV n",
+      "meaning": "each UAV suppresses at most one FAR or chooses the no-task option at a frame"
+    },
+    {
+      "id": "C2",
+      "formula": "u_nm_k <= uav_far_feasibility_nm_k",
+      "meaning": "UAV can only be assigned to feasible FARs"
+    },
+    {
+      "id": "C3",
+      "formula": "sum_n B_nm_k = B_m for each FAR m that is suppressed",
+      "meaning": "the coalition bandwidth fully covers FAR m's working bandwidth"
+    },
+    {
+      "id": "C4",
+      "formula": "0 <= B_nm_k <= B_m*u_nm_k",
+      "meaning": "bandwidth is allocated only by UAVs assigned to FAR m and is bounded by FAR bandwidth"
+    },
+    {
+      "id": "C5",
+      "formula": "u_nm_k binary; B_nm_k continuous nonnegative",
+      "meaning": "variable domains"
+    }
+  ],
+  "equivalence_rules": [
+    "A mixed-integer nonlinear formulation or equivalent piecewise/logistic representation is acceptable if the reward, cost, task assignment and bandwidth constraints are retained.",
+    "Precomputing JSR or feasibility from geometry is acceptable as a data-field normalization.",
+    "Kriging surrogate prediction and GA/DE populations are algorithmic; they must not appear as optimization variables."
+  ],
+  "algorithm_boundary": "outer GA, Kriging surrogate, memory storage, random immigrants, and inner differential evolution are solution mechanisms; they are not gold formulation constraints",
+  "public_private_boundary": "All planted assignments, bandwidth plans, Pareto/deployment answers, path response traces and algorithm populations are private validation only unless explicitly defined as exogenous public scenario data."
+}

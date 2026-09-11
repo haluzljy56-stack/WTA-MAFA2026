@@ -1,0 +1,199 @@
+{
+  "sample_id": "P006-S08",
+  "paper_id": "P006",
+  "split": "stress",
+  "master_spec_sha256": "7d6f6f78296c0c80cd30dc5961ddbb10011f0182e19e5c8065ba84b980c175ae",
+  "instance_data_sha256": "2f76ab3e881ccdf5ce53e1b43c2166aa6d2b8cf1bc851bf9911ed446e4c8897a",
+  "sets": [
+    {
+      "id": "C",
+      "meaning": "weapon types; six types: thermal, acoustic, radar, laser, jammer and point-defense",
+      "index": "c"
+    },
+    {
+      "id": "W_c",
+      "meaning": "weapons of type c",
+      "index": "w"
+    },
+    {
+      "id": "M",
+      "meaning": "incoming missiles / targets",
+      "index": "m"
+    },
+    {
+      "id": "K",
+      "meaning": "dynamic stages, for DSKWTA wrapper",
+      "index": "k"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "v_m",
+      "meaning": "danger level/value of missile m"
+    },
+    {
+      "id": "p_cwm",
+      "meaning": "base probability weapon w of type c intercepts missile m if assigned"
+    },
+    {
+      "id": "pi_cwm",
+      "meaning": "base conditional probability weapon w of type c destroys missile m if it intercepts"
+    },
+    {
+      "id": "r_min_cw,r_max_cw",
+      "meaning": "minimum and maximum range of weapon w of type c"
+    },
+    {
+      "id": "chi_m,psi_m,eta_m",
+      "meaning": "missile longitude, latitude and altitude"
+    },
+    {
+      "id": "alpha_cw,beta_cw",
+      "meaning": "weapon longitude and latitude"
+    },
+    {
+      "id": "theta_cw,theta_prime_cw",
+      "meaning": "weapon motion angles"
+    },
+    {
+      "id": "gamma_cw,gamma_prime_cw",
+      "meaning": "horizontal and vertical coverage angles"
+    },
+    {
+      "id": "lambda_cm",
+      "meaning": "1 if weapon type c can counter missile guidance type of missile m"
+    },
+    {
+      "id": "rho",
+      "meaning": "maximum expected destruction/overkill-control threshold used in source constraint (14)"
+    },
+    {
+      "id": "dis_cwm",
+      "meaning": "distance between weapon w of type c and missile m"
+    },
+    {
+      "id": "p_prime_cwm,pi_prime_cwm",
+      "meaning": "range-adjusted intercept and destruction probabilities"
+    },
+    {
+      "id": "st_cw,lt_cwm",
+      "meaning": "setup time and time required for missile destruction in dynamic interval calculation"
+    },
+    {
+      "id": "vl_m",
+      "meaning": "missile speed for dynamic coordinate updates"
+    }
+  ],
+  "variables": [
+    {
+      "id": "x_cwm",
+      "meaning": "1 if weapon w of type c is assigned to missile m at the current stage",
+      "domain": "binary"
+    },
+    {
+      "id": "x_cwmk",
+      "meaning": "dynamic-stage version of assignment decision when the wrapper is active",
+      "domain": "binary"
+    }
+  ],
+  "objective": {
+    "sense": "minimize",
+    "formula": "sum_m v_m * product_c product_w (1 - p_prime_cwm*pi_prime_cwm)^(x_cwm)",
+    "meaning": "minimize weighted residual survival / wasted threat value; equivalent to maximizing missile destruction in the source",
+    "source": "Eqs. (2),(3),(6)"
+  },
+  "constraints": [
+    {
+      "id": "C1",
+      "formula": "sum_m x_cwm <= 1 for each non-jammer weapon",
+      "meaning": "each weapon except jammer can be used against at most one missile at a time",
+      "source": "Eq. (7)"
+    },
+    {
+      "id": "C2",
+      "formula": "sum_c sum_w x_cwm >= 1 for each missile m",
+      "meaning": "each missile receives at least one eligible defensive assignment when considered in the static stage",
+      "source": "Eq. (8)"
+    },
+    {
+      "id": "C3",
+      "formula": "assignment forbidden if distance is below minimum range",
+      "meaning": "minimum range eligibility",
+      "source": "Eq. (9)"
+    },
+    {
+      "id": "C4",
+      "formula": "assignment forbidden if distance exceeds maximum range",
+      "meaning": "maximum range eligibility",
+      "source": "Eq. (10)"
+    },
+    {
+      "id": "C5",
+      "formula": "jammer horizontal coverage condition",
+      "meaning": "jammer assignment requires missile within horizontal coverage",
+      "source": "Eq. (11)"
+    },
+    {
+      "id": "C6",
+      "formula": "jammer vertical coverage condition",
+      "meaning": "jammer assignment requires missile within vertical coverage",
+      "source": "Eq. (12)"
+    },
+    {
+      "id": "C7",
+      "formula": "x_cwm <= lambda_cm for c not point-defense type",
+      "meaning": "weapon guidance-type compatibility, point defense can engage any type at close range",
+      "source": "Eq. (13)"
+    },
+    {
+      "id": "C8",
+      "formula": "source log product over assigned survival terms satisfies overkill-control threshold",
+      "meaning": "prevents excessive assignment to a missile after sufficiently low survival probability",
+      "source": "Eq. (14)"
+    },
+    {
+      "id": "C9",
+      "formula": "x_cwm binary",
+      "meaning": "binary assignment",
+      "source": "Eq. (15)"
+    }
+  ],
+  "data_field_contract": {
+    "required": [
+      "weapon_types",
+      "weapons_by_type",
+      "missiles",
+      "missile_values",
+      "base_intercept_probability",
+      "base_conditional_destroy_probability",
+      "weapon_min_range",
+      "weapon_max_range",
+      "missile_coordinates",
+      "weapon_coordinates",
+      "weapon_motion_angles",
+      "weapon_coverage_angles",
+      "missile_guidance_type",
+      "guidance_counter_compatibility",
+      "overkill_threshold",
+      "stage_setup_time",
+      "stage_destruction_time",
+      "missile_speed"
+    ],
+    "derived_or_trace": [
+      "weapon_missile_distance",
+      "range_adjusted_intercept_probability",
+      "range_adjusted_destroy_probability",
+      "eligible_weapon_missile_pairs",
+      "stage_interval",
+      "updated_missile_coordinates"
+    ],
+    "forbidden": [
+      "target_required_effect",
+      "sensor_set",
+      "assignment_cost_weapon_target",
+      "objective_preference",
+      "generic_time_window"
+    ]
+  },
+  "normalization_note": "Instance data were mechanically generated from the R2B master spec, variant contract, scenario contract and assessability contract."
+}

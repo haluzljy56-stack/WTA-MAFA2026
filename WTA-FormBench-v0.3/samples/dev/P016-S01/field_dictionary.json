@@ -1,0 +1,84 @@
+{
+  "sample_id": "P016-S01",
+  "paper_id": "P016",
+  "contract_version": "R6C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "weapons",
+      "meaning": "weapon identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "defines weapon set"
+    },
+    {
+      "name": "targets",
+      "meaning": "target identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "defines target set"
+    },
+    {
+      "name": "target_value",
+      "meaning": "value of each target",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative number",
+      "index_order": "target -> nonnegative number",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "survival-value objective input"
+    },
+    {
+      "name": "weapon_target_completion_probability",
+      "meaning": "destroy/completion probability for each weapon-target pair",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> target -> probability",
+      "index_order": "weapon -> target -> probability",
+      "domain_or_range": "0 <= p <= 1",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "kill probability input"
+    },
+    {
+      "name": "model_variant",
+      "meaning": "declared formulation scope",
+      "type": "string",
+      "shape_or_key_structure": "variant label",
+      "index_order": "variant label",
+      "domain_or_range": "discrete/relaxation label",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "selects original WTA and relaxation scope"
+    },
+    {
+      "name": "relaxation_requested",
+      "meaning": "whether continuous relaxation is requested",
+      "type": "boolean",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "true/false",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "signals relaxed effort model"
+    },
+    {
+      "name": "regularization_parameters_if_saddle_form_requested",
+      "meaning": "optional solver-side regularization constants",
+      "type": "object",
+      "shape_or_key_structure": "parameter -> positive number",
+      "index_order": "parameter -> positive number",
+      "domain_or_range": "number > 0",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "algorithm-side saddle-form input"
+    }
+  ]
+}

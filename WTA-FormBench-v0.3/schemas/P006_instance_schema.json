@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P006 R2D strengthened instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "weapon_types",
+    "weapons_by_type",
+    "missiles",
+    "missile_values",
+    "base_intercept_probability",
+    "base_conditional_destroy_probability",
+    "weapon_min_range",
+    "weapon_max_range",
+    "missile_coordinates",
+    "weapon_coordinates",
+    "weapon_motion_angles",
+    "weapon_coverage_angles",
+    "missile_guidance_type",
+    "guidance_counter_compatibility",
+    "overkill_threshold",
+    "stage_setup_time",
+    "stage_destruction_time",
+    "missile_speed",
+    "weapon_missile_distance",
+    "range_adjusted_intercept_probability",
+    "range_adjusted_destroy_probability",
+    "eligible_weapon_missile_pairs",
+    "stage_interval",
+    "updated_missile_coordinates",
+    "dynamic_stages"
+  ],
+  "properties": {
+    "weapon_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "weapons_by_type": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "missiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "dynamic_stages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "missile_values": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "base_intercept_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "base_conditional_destroy_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "weapon_min_range": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "weapon_max_range": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "missile_coordinates": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "weapon_coordinates": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "weapon_motion_angles": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "weapon_coverage_angles": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "missile_guidance_type": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "guidance_counter_compatibility": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "overkill_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "stage_setup_time": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "stage_destruction_time": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "missile_speed": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "weapon_missile_distance": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "range_adjusted_intercept_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "range_adjusted_destroy_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "eligible_weapon_missile_pairs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "stage_interval": {
+      "type": "number",
+      "minimum": 0
+    },
+    "updated_missile_coordinates": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "dynamic_stage_trace": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

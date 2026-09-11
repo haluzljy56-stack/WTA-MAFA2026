@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P012 R4C instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "targets",
+    "radars",
+    "missile_vehicles",
+    "interception_attempts_by_target",
+    "time_slots",
+    "target_value",
+    "target_max_interception_count",
+    "missile_vehicle_load",
+    "missile_vehicle_cost",
+    "radar_detection_feasibility",
+    "radar_channel_capacity",
+    "radar_channel_requirement",
+    "radar_accuracy_factor",
+    "missile_engagement_feasibility",
+    "interception_probability_table_or_generation_inputs",
+    "interception_timing_windows",
+    "firepower_mode"
+  ],
+  "properties": {
+    "firepower_mode": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "unsaturated",
+        "saturated"
+      ]
+    },
+    "interception_attempts_by_target": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      }
+    },
+    "interception_probability_table_or_generation_inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "interception_timing_windows": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "missile_engagement_feasibility": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "missile_vehicle_cost": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "missile_vehicle_load": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "missile_vehicles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "radar_accuracy_factor": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "radar_channel_capacity": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "radar_channel_requirement": {
+      "type": "number",
+      "minimum": 1e-06
+    },
+    "radar_detection_feasibility": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "radars": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "target_max_interception_count": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "target_value": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "time_slots": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  }
+}

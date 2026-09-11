@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P015 R5C instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "air_defense_systems",
+    "candidate_positions",
+    "position_suitability",
+    "defense_radius",
+    "drone_start_point",
+    "drone_entry_point",
+    "terrain_or_grid_cost_data",
+    "path_cost_weights",
+    "swarm_interval_delta",
+    "path_planning_graph"
+  ],
+  "properties": {
+    "air_defense_systems": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "candidate_positions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "defense_radius": {
+      "type": "number",
+      "minimum": 1e-06
+    },
+    "drone_entry_point": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "drone_start_point": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "path_cost_weights": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "path_planning_graph": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "position_suitability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "enum": [
+          0,
+          1
+        ]
+      }
+    },
+    "swarm_interval_delta": {
+      "type": "number",
+      "minimum": 1e-06
+    },
+    "terrain_or_grid_cost_data": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "sample_id": "P007-S01",
+  "paper_id": "P007",
+  "master_spec_sha256": "6e10346b7b00bf29b6cdd45e36eb6e5eddc360d7d29e81243a8952076ad0bcee",
+  "instance_data_sha256": "df267bf9958bb5e2c5d368d3860cf0ae6ea03a18f13241273f19ca749350bc52",
+  "sets": [
+    {
+      "id": "U",
+      "meaning": "integrated UUVs or weapon-carrying attack platforms",
+      "index": "i"
+    },
+    {
+      "id": "T",
+      "meaning": "enemy targets",
+      "index": "j"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "P_ij",
+      "meaning": "hit probability when platform/weapon resource i attacks target j; may be computed by the paper's motion/homing model or supplied as precomputed data",
+      "domain": "[0,1]"
+    },
+    {
+      "id": "V_j",
+      "meaning": "target value",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "Th_j",
+      "meaning": "target threat degree",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "c_i",
+      "meaning": "weapon/resource cost of assigning one weapon from platform i",
+      "domain": "nonnegative; paper often assumes c_i=1 for isomorphic weapons"
+    },
+    {
+      "id": "S_i",
+      "meaning": "maximum number of weapons platform i can fire / carry for the allocation task",
+      "domain": "nonnegative integer"
+    },
+    {
+      "id": "B_j",
+      "meaning": "maximum number of weapons that may be assigned to target j to avoid waste/over-attack",
+      "domain": "positive integer"
+    },
+    {
+      "id": "e_ij",
+      "meaning": "range/feasibility indicator; 1 if target j is effectively within range of platform/weapon i, 0 otherwise",
+      "domain": "{0,1}",
+      "normalization": "introduced from Assumption 2 as a faithful eligibility normalization"
+    }
+  ],
+  "variables": [
+    {
+      "id": "x_ij",
+      "meaning": "1 if platform/weapon resource i is allocated to target j, otherwise 0",
+      "domain": "binary"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "F1",
+      "sense": "minimize",
+      "formula": "sum_j V_j * product_i (1-P_ij)^(x_ij)",
+      "meaning": "battlefield residual target value after attack"
+    },
+    {
+      "id": "F2",
+      "sense": "minimize",
+      "formula": "sum_j Th_j * product_i (1-P_ij)^(x_ij)",
+      "meaning": "battlefield residual target threat degree after attack"
+    },
+    {
+      "id": "F3",
+      "sense": "minimize",
+      "formula": "sum_i sum_j c_i x_ij",
+      "meaning": "weapon resource consumption / cost-effectiveness proxy"
+    }
+  ],
+  "constraints": [
+    {
+      "id": "C1",
+      "formula": "1 <= sum_i x_ij <= B_j for all targets j",
+      "meaning": "each target receives at least one and at most B_j assigned resources"
+    },
+    {
+      "id": "C2",
+      "formula": "sum_j x_ij <= S_i for all platforms i",
+      "meaning": "platform/weapon carrying limit"
+    },
+    {
+      "id": "C3",
+      "formula": "x_ij <= e_ij for all i,j",
+      "meaning": "assignment allowed only if the target is within effective range/feasible engagement condition"
+    },
+    {
+      "id": "C4",
+      "formula": "x_ij in {0,1}",
+      "meaning": "binary assignment"
+    }
+  ],
+  "data_field_contract": {
+    "required": [
+      "platforms",
+      "targets",
+      "hit_probability",
+      "target_value",
+      "target_threat_degree",
+      "weapon_cost",
+      "platform_weapon_capacity",
+      "target_max_assigned_weapons",
+      "range_feasibility"
+    ],
+    "derived_or_private_trace": [
+      "planted_feasible_assignment",
+      "objective_values_for_planted_assignment",
+      "motion_model_trace_if_used"
+    ],
+    "forbidden_public": [
+      "planted_feasible_assignment",
+      "objective_values_for_planted_assignment",
+      "communication_elite_exchange_trace_as_model_constraint",
+      "solution_set_diversity_score"
+    ]
+  }
+}

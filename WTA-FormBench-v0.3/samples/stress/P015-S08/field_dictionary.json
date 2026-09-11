@@ -1,0 +1,117 @@
+{
+  "sample_id": "P015-S08",
+  "paper_id": "P015",
+  "contract_version": "R5C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "air_defense_systems",
+      "meaning": "air-defense system identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines deployment system index"
+    },
+    {
+      "name": "candidate_positions",
+      "meaning": "candidate deployment positions",
+      "type": "array[object]",
+      "shape_or_key_structure": "list of id/x/y records",
+      "index_order": "list of id/x/y records",
+      "domain_or_range": "candidate coordinates",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "deployment candidate set"
+    },
+    {
+      "name": "position_suitability",
+      "meaning": "whether a candidate position is suitable",
+      "type": "object",
+      "shape_or_key_structure": "candidate -> 0/1",
+      "index_order": "candidate -> 0/1",
+      "domain_or_range": "0 or 1",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "deployment feasibility input"
+    },
+    {
+      "name": "defense_radius",
+      "meaning": "defense radius of each deployed system",
+      "type": "number",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "number > 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "fire-threat range input"
+    },
+    {
+      "name": "drone_start_point",
+      "meaning": "drone swarm start point",
+      "type": "object",
+      "shape_or_key_structure": "x/y coordinate",
+      "index_order": "x/y coordinate",
+      "domain_or_range": "coordinate",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "path response input"
+    },
+    {
+      "name": "drone_entry_point",
+      "meaning": "drone swarm entry or terminal point",
+      "type": "object",
+      "shape_or_key_structure": "x/y coordinate",
+      "index_order": "x/y coordinate",
+      "domain_or_range": "coordinate",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "path response input"
+    },
+    {
+      "name": "terrain_or_grid_cost_data",
+      "meaning": "terrain and grid cost data for path planning",
+      "type": "object",
+      "shape_or_key_structure": "candidate keyed cost maps",
+      "index_order": "candidate keyed cost maps",
+      "domain_or_range": "nonnegative costs",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "path cost input"
+    },
+    {
+      "name": "path_cost_weights",
+      "meaning": "weights for path cost components",
+      "type": "object",
+      "shape_or_key_structure": "component -> nonnegative number",
+      "index_order": "component -> nonnegative number",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "path response objective input"
+    },
+    {
+      "name": "swarm_interval_delta",
+      "meaning": "distance or interval update after interception",
+      "type": "number",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "number > 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "replanning response input"
+    },
+    {
+      "name": "path_planning_graph",
+      "meaning": "public path graph for drone path response",
+      "type": "object",
+      "shape_or_key_structure": "nodes and weighted edges",
+      "index_order": "nodes and weighted edges",
+      "domain_or_range": "graph data",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "lower-level path response input"
+    }
+  ]
+}

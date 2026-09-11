@@ -1,0 +1,7 @@
+{
+  "allowed_files": [
+    "scenario_nl.md",
+    "data_description.md",
+    "instance_data.json"
+  ]
+}

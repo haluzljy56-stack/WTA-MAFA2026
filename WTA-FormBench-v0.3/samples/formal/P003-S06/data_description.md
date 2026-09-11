@@ -1,0 +1,100 @@
+# Data Description
+
+## sets
+- meaning: high-speed flight vehicles and targets
+- type: object
+- shape/index order: sets.hfvs, sets.targets
+- domain/range: unique string IDs
+- unit or dimensionless: dimensionless
+- raw/derived status: raw
+- agent-facing role: index sets
+
+## hf_v_type
+- meaning: type label for each vehicle
+- type: object
+- shape/index order: keys sets.hfvs
+- domain/range: string
+- unit or dimensionless: dimensionless
+- raw/derived status: raw
+- agent-facing role: descriptor
+
+## actual_trajectory_distance
+- meaning: actual trajectory length from row vehicle to column target
+- type: matrix
+- shape/index order: rows sets.hfvs; columns sets.targets
+- domain/range: nonnegative
+- unit or dimensionless: distance unit
+- raw/derived status: raw
+- agent-facing role: cost input
+
+## maximum_residual_speed
+- meaning: maximum residual speed of row vehicle at column target
+- type: matrix
+- shape/index order: rows sets.hfvs; columns sets.targets
+- domain/range: positive
+- unit or dimensionless: speed unit
+- raw/derived status: raw
+- agent-facing role: payoff input
+
+## target_antidamage_capability
+- meaning: anti-damage capability of each target
+- type: object
+- shape/index order: keys sets.targets
+- domain/range: positive
+- unit or dimensionless: capability unit
+- raw/derived status: raw
+- agent-facing role: payoff input
+
+## target_value
+- meaning: value of each target
+- type: object
+- shape/index order: keys sets.targets
+- domain/range: positive
+- unit or dimensionless: value unit
+- raw/derived status: raw
+- agent-facing role: payoff input
+
+## target_max_hfvs
+- meaning: maximum number of vehicles allowed for each target
+- type: object
+- shape/index order: keys sets.targets
+- domain/range: positive integer
+- unit or dimensionless: count
+- raw/derived status: raw
+- agent-facing role: capacity parameter
+
+## payoff_weight
+- meaning: weight applied to normalized payoff
+- type: number
+- shape/index order: scalar
+- domain/range: [0,1]
+- unit or dimensionless: dimensionless
+- raw/derived status: raw
+- agent-facing role: objective coefficient
+
+## distance_weight
+- meaning: weight applied to normalized trajectory distance
+- type: number
+- shape/index order: scalar
+- domain/range: [0,1]
+- unit or dimensionless: dimensionless
+- raw/derived status: raw
+- agent-facing role: objective coefficient
+
+## normalized_act_payoff
+- meaning: normalized payoff matrix
+- type: matrix
+- shape/index order: rows sets.hfvs; columns sets.targets
+- domain/range: [0,2]
+- unit or dimensionless: dimensionless
+- raw/derived status: derived
+- agent-facing role: objective coefficient
+
+## normalized_trajectory_distance
+- meaning: normalized trajectory distance matrix
+- type: matrix
+- shape/index order: rows sets.hfvs; columns sets.targets
+- domain/range: [0,2]
+- unit or dimensionless: dimensionless
+- raw/derived status: derived
+- agent-facing role: objective coefficient

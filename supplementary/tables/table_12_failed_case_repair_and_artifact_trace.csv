@@ -1,0 +1,5 @@
+﻿Artifact,Present,Interpretation
+Executable build model,False,No verified executable model was formed.
+Model registry,False,Builder never produced the authoritative registry.
+Solver result,False,The solver stage was never reached.
+Solution view,False,No replayable solution existed.

@@ -1,0 +1,62 @@
+{
+  "sample_id": "P010-S06",
+  "paper_id": "P010",
+  "publicly_available_data_fields": [
+    "weapons",
+    "targets",
+    "weapon_target_kill_probability",
+    "target_value",
+    "target_kill_threshold"
+  ],
+  "publicly_explained_parameter_semantics": [
+    "weapons",
+    "targets",
+    "weapon_target_kill_probability",
+    "target_value",
+    "target_kill_threshold"
+  ],
+  "withheld_aggregation_rules": [
+    "DERIVED:S_j(X)",
+    "DERIVED:K_j(X)",
+    "DERIVED:OV_j(X,Y)",
+    "DERIVED:IK_j(X,Y)",
+    "OBJ:OBJ1"
+  ],
+  "withheld_modeling_choices": [
+    "VAR:x_ij",
+    "VAR:y_j",
+    "CON:C1",
+    "CON:C2",
+    "CON:C3",
+    "CON:C4"
+  ],
+  "required_elements": [
+    "SET:W",
+    "SET:T",
+    "PARAM:p_ij",
+    "PARAM:v_j",
+    "PARAM:k_j",
+    "VAR:x_ij",
+    "VAR:y_j",
+    "DERIVED:S_j(X)",
+    "DERIVED:K_j(X)",
+    "DERIVED:OV_j(X,Y)",
+    "DERIVED:IK_j(X,Y)",
+    "OBJ:OBJ1",
+    "CON:C1",
+    "CON:C2",
+    "CON:C3",
+    "CON:C4"
+  ],
+  "optional_or_parameterizable_elements": [],
+  "unsupported_elements": [
+    "SEMANTIC:unsupported_generic_residual_survival_minimization_without_y_j_destruction_decisions",
+    "SEMANTIC:unsupported_multiobjective_weighted_cost_risk_preference_vector",
+    "SEMANTIC:unsupported_planted_target_destruction_scheme_or_heuristic_initial_solution_in_public_input",
+    "SEMANTIC:unsupported_sensor_variables",
+    "SEMANTIC:unsupported_target_threat_objective",
+    "SEMANTIC:unsupported_time_stages_or_dynamic_replanning"
+  ],
+  "expected_agent_behavior": "complete formulation under declared pressure mechanism only",
+  "registry_file": "element_registry/P010_element_registry.json"
+}

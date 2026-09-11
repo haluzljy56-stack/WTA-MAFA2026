@@ -1,0 +1,10 @@
+{
+  "sample_id": "P017-S02",
+  "allowed_semantic_sources": [
+    "master_specs/P017_master_spec_v1.0.json",
+    "variant_contracts/P017_variant_contract_v1.0.json",
+    "scenario_contracts/P017_scenario_contract_v1.0.json",
+    "assessability_contracts/P017_assessability_contract_v1.0.json",
+    "prevention/R6C_P016_P018_prevention_gate.md"
+  ]
+}

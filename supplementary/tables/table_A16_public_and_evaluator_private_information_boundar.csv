@@ -1,0 +1,4 @@
+﻿Stage,Accessible materials,Inaccessible materials
+Agent inference,"scenario_nl.md, data_description.md, instance_data.json","Hidden references, masks, registries, validation traces and evaluator scores"
+Terminal bundle validation,Agent-generated formulation bundle and public input digest,Private reference content is not returned to the Agent
+External evaluation,Public input plus evaluator-private reference artifacts after termination,No private evidence is fed back into the current sample generation

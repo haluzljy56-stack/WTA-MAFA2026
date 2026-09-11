@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P008 R3C instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "targets",
+    "sensors",
+    "weapons",
+    "time_horizon",
+    "attempts_by_target",
+    "target_value",
+    "sensor_visibility",
+    "sensor_channel_capacity",
+    "weapon_engagement_envelope",
+    "weapon_inventory",
+    "weapon_reload_time",
+    "target_impact_time",
+    "weapon_flight_time",
+    "sensor_tracking_time",
+    "sensor_lock_time",
+    "kill_probability_coefficients_or_precomputed_values"
+  ],
+  "properties": {
+    "sensor_visibility": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "sensor_lock_time": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "weapons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "time_horizon": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "weapon_flight_time": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "attempts_by_target": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "target_value": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "target_impact_time": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "weapon_inventory": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "weapon_reload_time": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "weapon_engagement_envelope": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "sensor_tracking_time": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "sensors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "sensor_channel_capacity": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "kill_probability_coefficients_or_precomputed_values": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  }
+}

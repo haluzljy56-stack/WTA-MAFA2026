@@ -1,0 +1,282 @@
+{
+  "sample_id": "P006-S02",
+  "paper_id": "P006",
+  "contract_version": "R2D_field_dictionary_contract_v1.0",
+  "fields": [
+    {
+      "name": "weapon_types",
+      "meaning": "six soft-kill or defensive weapon types",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "weapon_type",
+      "domain_or_range": "exactly six identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "defines type index"
+    },
+    {
+      "name": "weapons_by_type",
+      "meaning": "weapons grouped under each weapon type",
+      "type": "object",
+      "shape_or_key_structure": "weapon_type -> list[weapon]",
+      "index_order": "weapon_type, weapon",
+      "domain_or_range": "unique weapon identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set mapping",
+      "agent_facing_role": "defines weapon-by-type sets"
+    },
+    {
+      "name": "missiles",
+      "meaning": "incoming missile identifiers considered in the stage",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "missile",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "defines missile index"
+    },
+    {
+      "name": "dynamic_stages",
+      "meaning": "dynamic wrapper stage identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique ordered list",
+      "index_order": "stage",
+      "domain_or_range": "unique identifiers",
+      "unit": "stage",
+      "raw_or_derived": "scenario set",
+      "agent_facing_role": "defines wrapper stages"
+    },
+    {
+      "name": "missile_values",
+      "meaning": "danger level or value weight for each missile",
+      "type": "object",
+      "shape_or_key_structure": "missile -> nonnegative number",
+      "index_order": "missile",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "objective weight"
+    },
+    {
+      "name": "base_intercept_probability",
+      "meaning": "base intercept probability before range adjustment",
+      "type": "object",
+      "shape_or_key_structure": "weapon_type -> weapon -> missile -> probability",
+      "index_order": "weapon_type, weapon, missile",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "effectiveness input"
+    },
+    {
+      "name": "base_conditional_destroy_probability",
+      "meaning": "conditional defeat probability after intercept before range adjustment",
+      "type": "object",
+      "shape_or_key_structure": "weapon_type -> weapon -> missile -> probability",
+      "index_order": "weapon_type, weapon, missile",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "effectiveness input"
+    },
+    {
+      "name": "weapon_min_range",
+      "meaning": "minimum usable range for each weapon",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> nonnegative distance",
+      "index_order": "weapon",
+      "domain_or_range": "number >= 0",
+      "unit": "distance units",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "range eligibility input"
+    },
+    {
+      "name": "weapon_max_range",
+      "meaning": "maximum usable range for each weapon",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> nonnegative distance",
+      "index_order": "weapon",
+      "domain_or_range": "number >= 0",
+      "unit": "distance units",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "range eligibility input"
+    },
+    {
+      "name": "missile_coordinates",
+      "meaning": "current missile coordinates",
+      "type": "object",
+      "shape_or_key_structure": "missile -> {x,y,z}",
+      "index_order": "missile, coordinate axis",
+      "domain_or_range": "numeric coordinates",
+      "unit": "distance units",
+      "raw_or_derived": "raw scenario state",
+      "agent_facing_role": "geometry input"
+    },
+    {
+      "name": "weapon_coordinates",
+      "meaning": "weapon coordinates",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> {x,y,z}",
+      "index_order": "weapon, coordinate axis",
+      "domain_or_range": "numeric coordinates",
+      "unit": "distance units",
+      "raw_or_derived": "raw geometry",
+      "agent_facing_role": "geometry input"
+    },
+    {
+      "name": "weapon_motion_angles",
+      "meaning": "weapon orientation angles",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> angle fields",
+      "index_order": "weapon",
+      "domain_or_range": "angles in degrees",
+      "unit": "degrees",
+      "raw_or_derived": "raw geometry",
+      "agent_facing_role": "coverage input"
+    },
+    {
+      "name": "weapon_coverage_angles",
+      "meaning": "weapon coverage half-angles",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> horizontal/vertical half-angle",
+      "index_order": "weapon",
+      "domain_or_range": "nonnegative angles",
+      "unit": "degrees",
+      "raw_or_derived": "raw geometry",
+      "agent_facing_role": "coverage input"
+    },
+    {
+      "name": "missile_guidance_type",
+      "meaning": "guidance class for each missile",
+      "type": "object",
+      "shape_or_key_structure": "missile -> guidance type",
+      "index_order": "missile",
+      "domain_or_range": "categorical",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "compatibility input"
+    },
+    {
+      "name": "guidance_counter_compatibility",
+      "meaning": "whether a weapon type can counter a guidance class",
+      "type": "object",
+      "shape_or_key_structure": "weapon_type -> guidance_type -> 0/1",
+      "index_order": "weapon_type, guidance_type",
+      "domain_or_range": "0 or 1",
+      "unit": "binary",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "compatibility input"
+    },
+    {
+      "name": "overkill_threshold",
+      "meaning": "threshold controlling excessive assignment to one missile",
+      "type": "number",
+      "shape_or_key_structure": "scalar",
+      "index_order": "not indexed",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "over-assignment control input"
+    },
+    {
+      "name": "stage_setup_time",
+      "meaning": "setup time for each weapon in a stage",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> nonnegative time",
+      "index_order": "weapon",
+      "domain_or_range": "number >= 0",
+      "unit": "time units",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "dynamic interval input"
+    },
+    {
+      "name": "stage_destruction_time",
+      "meaning": "engagement/destruction time by weapon and missile",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> missile -> nonnegative time",
+      "index_order": "weapon, missile",
+      "domain_or_range": "number >= 0",
+      "unit": "time units",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "dynamic interval input"
+    },
+    {
+      "name": "missile_speed",
+      "meaning": "missile speed used for coordinate updates",
+      "type": "object",
+      "shape_or_key_structure": "missile -> nonnegative speed",
+      "index_order": "missile",
+      "domain_or_range": "number >= 0",
+      "unit": "distance per time",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "dynamic update input"
+    },
+    {
+      "name": "weapon_missile_distance",
+      "meaning": "weapon-to-missile distance",
+      "type": "object",
+      "shape_or_key_structure": "weapon_type -> weapon -> missile",
+      "index_order": "weapon_type, weapon, missile",
+      "domain_or_range": "number >= 0",
+      "unit": "distance units",
+      "raw_or_derived": "derived geometry",
+      "agent_facing_role": "range adjustment input"
+    },
+    {
+      "name": "range_adjusted_intercept_probability",
+      "meaning": "distance-adjusted intercept probability",
+      "type": "object",
+      "shape_or_key_structure": "weapon_type -> weapon -> missile",
+      "index_order": "weapon_type, weapon, missile",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "derived parameter",
+      "agent_facing_role": "objective/constraint input"
+    },
+    {
+      "name": "range_adjusted_destroy_probability",
+      "meaning": "distance-adjusted conditional defeat probability",
+      "type": "object",
+      "shape_or_key_structure": "weapon_type -> weapon -> missile",
+      "index_order": "weapon_type, weapon, missile",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "derived parameter",
+      "agent_facing_role": "objective/constraint input"
+    },
+    {
+      "name": "eligible_weapon_missile_pairs",
+      "meaning": "allowed assignment triples derived from range, coverage and guidance compatibility",
+      "type": "array[object]",
+      "shape_or_key_structure": "list of {weapon_type, weapon, missile}",
+      "index_order": "weapon_type, weapon, missile",
+      "domain_or_range": "members must belong to public sets",
+      "unit": "dimensionless",
+      "raw_or_derived": "derived feasibility",
+      "agent_facing_role": "assignment eligibility input"
+    },
+    {
+      "name": "stage_interval",
+      "meaning": "computed interval used by the dynamic wrapper",
+      "type": "number",
+      "shape_or_key_structure": "scalar",
+      "index_order": "not indexed",
+      "domain_or_range": "number >= 0",
+      "unit": "time units",
+      "raw_or_derived": "derived scenario parameter",
+      "agent_facing_role": "coordinate update input"
+    },
+    {
+      "name": "updated_missile_coordinates",
+      "meaning": "scenario-state coordinate update data",
+      "type": "object",
+      "shape_or_key_structure": "stage -> missile -> {x,y,z}",
+      "index_order": "stage, missile, coordinate axis",
+      "domain_or_range": "numeric coordinates",
+      "unit": "distance units",
+      "raw_or_derived": "scenario-state update data",
+      "agent_facing_role": "public dynamic state input"
+    }
+  ]
+}

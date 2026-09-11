@@ -1,0 +1,190 @@
+{
+  "sample_id": "P008-S04",
+  "paper_id": "P008",
+  "master_spec_sha256": "8803a88fe5af86df7ffc2008b89385e8a4c3046ee555d41e977165416462337d",
+  "instance_data_sha256": "757ef74306352b650d0e6ef82ba88e3eb14d395850532dd624da8e2bf1c6e631",
+  "sets": [
+    {
+      "id": "T",
+      "meaning": "incoming targets",
+      "index": "i"
+    },
+    {
+      "id": "S",
+      "meaning": "available sensors",
+      "index": "s"
+    },
+    {
+      "id": "W",
+      "meaning": "weapon systems",
+      "index": "w"
+    },
+    {
+      "id": "H",
+      "meaning": "discrete time horizon",
+      "index": "k"
+    },
+    {
+      "id": "K_i",
+      "meaning": "possible interception attempts for target i",
+      "index": "j"
+    },
+    {
+      "id": "F_ij",
+      "meaning": "feasible sensor-weapon pairs for target i at attempt j",
+      "index": "(s,w)"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "V_i",
+      "meaning": "importance value of target i",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "alpha_is(t_k)",
+      "meaning": "sensor visibility indicator for sensor s detecting/tracking target i at time k",
+      "domain": "{0,1}"
+    },
+    {
+      "id": "beta_iw(t)",
+      "meaning": "weapon engagement-envelope indicator for weapon w engaging target i at launch/intercept time",
+      "domain": "{0,1}"
+    },
+    {
+      "id": "C_s_max",
+      "meaning": "maximum tracking channel capacity of sensor s",
+      "domain": "nonnegative integer"
+    },
+    {
+      "id": "M_w_load",
+      "meaning": "missile inventory / launch capacity of weapon w",
+      "domain": "nonnegative integer"
+    },
+    {
+      "id": "Delta_t_w_reload",
+      "meaning": "minimum reload time between successive launches from weapon w",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "T_i_impact",
+      "meaning": "predicted impact time of target i",
+      "domain": "positive"
+    },
+    {
+      "id": "t_iw_flight",
+      "meaning": "flight time of weapon w against target i for an assigned engagement",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "t_is_track",
+      "meaning": "sensor tracking time requirement before engagement/lock",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "t_is_lock",
+      "meaning": "sensor lock/processing time requirement",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "P_kill",
+      "meaning": "kill-probability function based on miss distance and sensor accuracy",
+      "domain": "[0,1]"
+    }
+  ],
+  "variables": [
+    {
+      "id": "x_iswk_j",
+      "meaning": "1 if target i attempt j is assigned to sensor s and weapon w at discrete time k",
+      "domain": "binary"
+    },
+    {
+      "id": "sigma_is_jk",
+      "meaning": "1 if sensor s tracks target i during attempt j at time k",
+      "domain": "binary"
+    },
+    {
+      "id": "omega_iw_j",
+      "meaning": "1 if weapon w is assigned to target i for attempt j",
+      "domain": "binary"
+    },
+    {
+      "id": "gamma_i_j",
+      "meaning": "1 if attempt j against target i is executed",
+      "domain": "binary"
+    },
+    {
+      "id": "tau_i_j",
+      "meaning": "launch time for attempt j against target i",
+      "domain": "time variable/discrete time value"
+    }
+  ],
+  "objectives": [
+    {
+      "sense": "maximize",
+      "formula": "sum_i V_i * P_i_total(X)",
+      "meaning": "overall value-weighted interception probability"
+    }
+  ],
+  "constraints": [
+    {
+      "id": "ASSIGNMENT_CONSISTENCY",
+      "meaning": "each target-attempt-time is assigned to at most one sensor-weapon pair; assignment variables are linked to sensor and weapon decisions",
+      "source": "Eqs. (4)-(5)"
+    },
+    {
+      "id": "SENSOR_CAPACITY_VISIBILITY",
+      "meaning": "sensor channel capacity and visibility constraints for target tracking",
+      "source": "Eqs. (6)-(7)"
+    },
+    {
+      "id": "WEAPON_RESOURCE_RELOAD",
+      "meaning": "weapon inventory limits and minimum reload time between launches from the same weapon",
+      "source": "Eqs. (8)-(9)"
+    },
+    {
+      "id": "TEMPORAL_COORDINATION",
+      "meaning": "launch plus flight must occur before target impact; sensor tracking/lock must precede launch/engagement",
+      "source": "Eqs. (10)-(11)"
+    },
+    {
+      "id": "ENGAGEMENT_ENVELOPE",
+      "meaning": "weapon can only be assigned when target is inside its kinematic engagement capability",
+      "source": "Eq. (12)"
+    },
+    {
+      "id": "VARIABLE_DOMAINS",
+      "meaning": "binary domains for assignment, sensor, weapon and activation variables; valid launch-time domains"
+    }
+  ],
+  "data_field_contract": {
+    "required": [
+      "targets",
+      "sensors",
+      "weapons",
+      "time_horizon",
+      "attempts_by_target",
+      "target_value",
+      "sensor_visibility",
+      "sensor_channel_capacity",
+      "weapon_engagement_envelope",
+      "weapon_inventory",
+      "weapon_reload_time",
+      "target_impact_time",
+      "weapon_flight_time",
+      "sensor_tracking_time",
+      "sensor_lock_time",
+      "kill_probability_coefficients_or_precomputed_values"
+    ],
+    "derived_or_private_trace": [
+      "feasible_sensor_weapon_time_combinations",
+      "planted_feasible_plan",
+      "portfolio_diversity_metrics"
+    ],
+    "forbidden_public": [
+      "planted_feasible_plan",
+      "objective_value_of_planted_plan",
+      "solution_set_diversity_answer"
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "sample_id": "P013-S04",
+  "paper_id": "P013",
+  "contract_version": "R5C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "uavs",
+      "meaning": "UAV identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines UAV index"
+    },
+    {
+      "name": "far_radars",
+      "meaning": "frequency-agile radar identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines FAR index"
+    },
+    {
+      "name": "frames",
+      "meaning": "dynamic frame identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "ordered frame identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "defines frame index"
+    },
+    {
+      "name": "far_working_bandwidth",
+      "meaning": "working bandwidth that must be covered for each radar",
+      "type": "object",
+      "shape_or_key_structure": "FAR -> positive number",
+      "index_order": "FAR -> positive number",
+      "domain_or_range": "number > 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "bandwidth coverage input"
+    },
+    {
+      "name": "uav_far_jsr",
+      "meaning": "jamming-to-signal ratio by frame, UAV and radar",
+      "type": "object",
+      "shape_or_key_structure": "frame -> UAV -> FAR -> nonnegative number",
+      "index_order": "frame -> UAV -> FAR -> nonnegative number",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "jamming reward input"
+    },
+    {
+      "name": "effect_function_parameters",
+      "meaning": "parameters for the suppressive jamming effect function",
+      "type": "object",
+      "shape_or_key_structure": "parameter name -> number",
+      "index_order": "parameter name -> number",
+      "domain_or_range": "positive numbers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "effect function input"
+    },
+    {
+      "name": "cost_factor",
+      "meaning": "cost factor for UAV participation",
+      "type": "number",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "participation cost input"
+    },
+    {
+      "name": "uav_far_feasibility",
+      "meaning": "whether each UAV can suppress each radar at each frame",
+      "type": "object",
+      "shape_or_key_structure": "frame -> UAV -> FAR -> 0/1",
+      "index_order": "frame -> UAV -> FAR -> 0/1",
+      "domain_or_range": "0 or 1",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "assignment feasibility input"
+    },
+    {
+      "name": "dynamic_frame_data",
+      "meaning": "frame-dependent radar and environment observations",
+      "type": "object",
+      "shape_or_key_structure": "frame -> public frame data",
+      "index_order": "frame -> public frame data",
+      "domain_or_range": "scenario data",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw or precomputed public instance parameter",
+      "agent_facing_role": "dynamic per-frame data input"
+    }
+  ]
+}

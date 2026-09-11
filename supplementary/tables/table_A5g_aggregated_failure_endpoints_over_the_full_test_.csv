@@ -1,0 +1,23 @@
+﻿Benchmark,Method,Dominant failure endpoint,Count,Rate
+SWTA,WTA-MAFA,Provider or builder contract,1,0.6%
+SWTA,WTA-MAFA,Large-sample modeling-risk gate,1,0.6%
+SWTA,WTA-MAFA,Unsupported modeling construct,1,0.6%
+MADRA,WTA-MAFA,Large-sample modeling-risk gate,3,15.0%
+MADRA,WTA-MAFA,Missing builder slot,1,5.0%
+SWTA,OR-LLM-Agent,Solver failure,45,27.8%
+SWTA,OR-LLM-Agent,Solution-view failure,13,8.0%
+MADRA,OR-LLM-Agent,Solver failure,13,65.0%
+SWTA,CoE,Method failure,106,65.4%
+SWTA,CoE,Public-feasibility failure,21,13.0%
+SWTA,CoE,Exception,35,21.6%
+MADRA,CoE,Method failure,18,90.0%
+SWTA,OptiMUS v0.3,Method failure,38,23.5%
+SWTA,OptiMUS v0.3,Objective mismatch,33,20.4%
+SWTA,OptiMUS v0.3,Solver failure,31,19.1%
+SWTA,OptiMUS v0.3,Timeout,12,7.4%
+SWTA,OptiMUS v0.3,Solution-view failure,9,5.6%
+SWTA,OptiMUS v0.3,Build failure,2,1.2%
+MADRA,OptiMUS v0.3,Solver failure,9,45.0%
+MADRA,OptiMUS v0.3,Method failure,4,20.0%
+MADRA,OptiMUS v0.3,Timeout,4,20.0%
+MADRA,OptiMUS v0.3,Build failure,3,15.0%

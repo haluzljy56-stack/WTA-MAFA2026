@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "sets",
+    "target_area",
+    "target_value",
+    "missile_cost",
+    "missile_intrinsic_reliability",
+    "missile_em_reliability",
+    "missile_target_damage_probability",
+    "single_interceptor_success_probability",
+    "area_interceptor_count",
+    "missile_health",
+    "missile_target_distance",
+    "missile_range",
+    "area_reliability_threshold"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "sets": {},
+    "target_area": {},
+    "target_value": {},
+    "missile_cost": {},
+    "missile_intrinsic_reliability": {},
+    "missile_em_reliability": {},
+    "missile_target_damage_probability": {},
+    "single_interceptor_success_probability": {},
+    "area_interceptor_count": {},
+    "missile_health": {},
+    "missile_target_distance": {},
+    "missile_range": {},
+    "area_reliability_threshold": {}
+  }
+}

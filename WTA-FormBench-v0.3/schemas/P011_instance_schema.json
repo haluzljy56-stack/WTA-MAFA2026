@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P011 R4C instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "missiles",
+    "targets",
+    "missile_cost",
+    "missile_destructive_payload",
+    "target_value",
+    "target_health",
+    "missile_target_penetration_probability"
+  ],
+  "properties": {
+    "cost_objective_active": {
+      "type": "boolean"
+    },
+    "missile_cost": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "missile_destructive_payload": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 1e-06
+      }
+    },
+    "missile_target_penetration_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "missiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "target_health": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 1e-06
+      }
+    },
+    "target_value": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  }
+}

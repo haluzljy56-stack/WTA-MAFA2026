@@ -1,0 +1,60 @@
+{
+  "sample_id": "P003-S07",
+  "publicly_available_data_fields": [
+    "sets",
+    "hf_v_type",
+    "actual_trajectory_distance",
+    "maximum_residual_speed",
+    "target_antidamage_capability",
+    "target_value",
+    "target_max_hfvs",
+    "payoff_weight",
+    "distance_weight",
+    "normalized_act_payoff",
+    "normalized_trajectory_distance"
+  ],
+  "publicly_explained_parameter_semantics": [
+    "sets",
+    "hf_v_type",
+    "actual_trajectory_distance",
+    "maximum_residual_speed",
+    "target_antidamage_capability",
+    "target_value",
+    "target_max_hfvs",
+    "payoff_weight",
+    "distance_weight",
+    "normalized_act_payoff",
+    "normalized_trajectory_distance"
+  ],
+  "withheld_aggregation_rules": [],
+  "withheld_modeling_choices": [],
+  "required_elements": [
+    "SET:H",
+    "SET:T",
+    "PARAM:d_ij",
+    "PARAM:v_ij",
+    "PARAM:a_j",
+    "PARAM:u_j",
+    "PARAM:z_j",
+    "PARAM:omega_P",
+    "PARAM:omega_D",
+    "VAR:chi_ij",
+    "DERIVED:q_ij",
+    "DERIVED:p_ij",
+    "DERIVED:p_hat_ij",
+    "DERIVED:d_hat_ij",
+    "OBJ:OBJ",
+    "CON:C0",
+    "CON:C1",
+    "CON:C2",
+    "CON:C3"
+  ],
+  "optional_or_parameterizable_elements": [],
+  "unsupported_elements": [
+    "SEMANTIC:unsupported_target_threat",
+    "SEMANTIC:unsupported_time_window",
+    "SEMANTIC:unsupported_generic_inventory"
+  ],
+  "expected_agent_behavior": "Use only the public scenario and data files to construct a model at the disclosed level.",
+  "scoring_denominator_policy": "Only required_elements enter the mandatory denominator for this disclosure level."
+}

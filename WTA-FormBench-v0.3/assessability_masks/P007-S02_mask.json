@@ -1,0 +1,80 @@
+{
+  "sample_id": "P007-S02",
+  "paper_id": "P007",
+  "publicly_available_data_fields": [
+    "platforms",
+    "targets",
+    "hit_probability",
+    "target_value",
+    "target_threat_degree",
+    "weapon_cost",
+    "platform_weapon_capacity",
+    "target_max_assigned_weapons",
+    "range_feasibility"
+  ],
+  "publicly_explained_parameter_semantics": [
+    "platforms",
+    "targets",
+    "hit_probability",
+    "target_value",
+    "target_threat_degree",
+    "weapon_cost",
+    "platform_weapon_capacity",
+    "target_max_assigned_weapons",
+    "range_feasibility"
+  ],
+  "withheld_aggregation_rules": [
+    "OBJ:OBJ1",
+    "SET:U",
+    "SET:T",
+    "VAR:x_ij",
+    "OBJ:F1",
+    "OBJ:F2",
+    "OBJ:F3",
+    "CON:C1",
+    "CON:C2",
+    "PARAM:P_ij",
+    "PARAM:e_ij",
+    "CON:C3",
+    "CON:C4"
+  ],
+  "withheld_modeling_choices": [
+    "VAR:x_ij",
+    "CON:C1",
+    "CON:C2",
+    "CON:C3",
+    "CON:C4"
+  ],
+  "required_elements": [
+    "SET:U",
+    "SET:T",
+    "VAR:x_ij",
+    "OBJ:F1",
+    "OBJ:F2",
+    "OBJ:F3",
+    "CON:C1",
+    "CON:C2",
+    "PARAM:P_ij",
+    "PARAM:e_ij",
+    "CON:C3",
+    "CON:C4"
+  ],
+  "optional_or_parameterizable_elements": [
+    "PARAM:V_j",
+    "PARAM:Th_j",
+    "PARAM:c_i",
+    "PARAM:S_i",
+    "PARAM:B_j"
+  ],
+  "unsupported_elements": [
+    "SEMANTIC:unsupported_communication_message_variables_as_optimization_decisions",
+    "SEMANTIC:unsupported_dynamic_replanning_constraints",
+    "SEMANTIC:unsupported_sensor_variables",
+    "SEMANTIC:unsupported_single_residual_threat_scalar_objective_replacing_three_objectives",
+    "SEMANTIC:unsupported_solution_set_diversity_objective",
+    "SEMANTIC:unsupported_time_windows_or_stages_not_in_the_target_allocation_model",
+    "SEMANTIC:unsupported_weapon_target_compatibility_matrix_unrelated_to_range_feasibility"
+  ],
+  "expected_agent_behavior": "recover most of the model structure with parameterized details where exact formulas are not disclosed",
+  "registry_file": "element_registry/P007_element_registry.json"
+}

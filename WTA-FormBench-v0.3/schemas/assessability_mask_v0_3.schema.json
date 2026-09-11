@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "sample_id",
+    "publicly_available_data_fields",
+    "publicly_explained_parameter_semantics",
+    "withheld_aggregation_rules",
+    "withheld_modeling_choices",
+    "required_elements",
+    "optional_or_parameterizable_elements",
+    "unsupported_elements",
+    "expected_agent_behavior",
+    "scoring_denominator_policy"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "sample_id": {},
+    "publicly_available_data_fields": {},
+    "publicly_explained_parameter_semantics": {},
+    "withheld_aggregation_rules": {},
+    "withheld_modeling_choices": {},
+    "required_elements": {},
+    "optional_or_parameterizable_elements": {},
+    "unsupported_elements": {},
+    "expected_agent_behavior": {},
+    "scoring_denominator_policy": {}
+  }
+}

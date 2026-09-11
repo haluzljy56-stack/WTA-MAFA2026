@@ -1,0 +1,246 @@
+{
+  "paper_id": "P018",
+  "semantic_status": "AUDITED_HIGH_MASTER_SPEC_WITH_ROTATION_STRATEGY_AND_CLUSTERING_BOUNDARY",
+  "sets": [
+    {
+      "id": "T",
+      "meaning": "targets / threats",
+      "index": "t"
+    },
+    {
+      "id": "W",
+      "meaning": "launchers",
+      "index": "w"
+    },
+    {
+      "id": "S",
+      "meaning": "discrete firing time slots",
+      "index": "s"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "X_w",
+      "meaning": "position of launcher w",
+      "domain": "coordinate vector"
+    },
+    {
+      "id": "X_pip_tws",
+      "meaning": "predicted intercept point of target t for launcher w at time slot s",
+      "domain": "coordinate vector"
+    },
+    {
+      "id": "O_w",
+      "meaning": "current or initial orientation vector of launcher w",
+      "domain": "unit/vector"
+    },
+    {
+      "id": "H_tws",
+      "meaning": "heading vector from launcher w to target t's predicted intercept point at slot s",
+      "domain": "vector"
+    },
+    {
+      "id": "mu_r",
+      "meaning": "mean relative distance for distance-based PK Gaussian",
+      "domain": "positive"
+    },
+    {
+      "id": "sigma_r",
+      "meaning": "standard deviation for distance-based PK Gaussian",
+      "domain": "positive"
+    },
+    {
+      "id": "r_min,r_max",
+      "meaning": "minimum and maximum engagement distance bounds",
+      "domain": "positive scalars"
+    },
+    {
+      "id": "mu_a",
+      "meaning": "mean heading error for heading-error PK Gaussian, typically zero",
+      "domain": "angle"
+    },
+    {
+      "id": "sigma_a",
+      "meaning": "standard deviation for heading-error PK Gaussian",
+      "domain": "positive angle"
+    },
+    {
+      "id": "n_as_t",
+      "meaning": "maximum number of interceptors assignable to target t",
+      "domain": "positive integer"
+    },
+    {
+      "id": "n_st_w",
+      "meaning": "maximum usable interceptors for launcher w",
+      "domain": "nonnegative integer"
+    },
+    {
+      "id": "tau_d",
+      "meaning": "minimum firing delay between successive firings from the same launcher",
+      "domain": "nonnegative integer/time"
+    },
+    {
+      "id": "L_tw",
+      "meaning": "feasible firing time-slot set for target t and launcher w",
+      "domain": "subset of S"
+    },
+    {
+      "id": "v_rot",
+      "meaning": "launcher rotational velocity",
+      "domain": "positive",
+      "role": "R strategy"
+    },
+    {
+      "id": "tau_align",
+      "meaning": "realignment/stabilization time after rotation",
+      "domain": "nonnegative",
+      "role": "R strategy"
+    },
+    {
+      "id": "a_max",
+      "meaning": "maximum allowable launcher rotation angle",
+      "domain": "nonnegative angle",
+      "role": "R strategy"
+    }
+  ],
+  "variables": [
+    {
+      "id": "theta_tws",
+      "meaning": "1 if launcher w is assigned to engage target t at firing time slot s; 0 otherwise",
+      "domain": "binary"
+    },
+    {
+      "id": "O_w_initial",
+      "meaning": "optional launcher initial orientation angle/vector used by RF/R strategies",
+      "domain": "angle/vector; often fixed or algorithmically initialized"
+    }
+  ],
+  "equivalence_rules": [
+    "Binary tuple assignment z_{t,w,s} is equivalent to theta_tws if all time, launcher, target and inventory constraints are preserved.",
+    "The PK model must depend on both relative distance and heading error unless the strategy/sample explicitly sets heading error to zero after rotation.",
+    "A simple target coverage model without firing slots, heading error and rotation/firing delay constraints is not equivalent."
+  ],
+  "forbidden_extensions": [
+    "generic static weapon-target assignment without time slots",
+    "cost or threat objectives not in the source formulation",
+    "cluster coverage constraints replacing WTA constraints",
+    "omitting heading-error PK",
+    "omitting feasible firing slots or firing delay",
+    "public planted target-launcher-time assignment"
+  ],
+  "derived": [
+    {
+      "id": "r_tws",
+      "formula": "||X_pip_tws - X_w||_2",
+      "meaning": "relative distance between launcher and target predicted intercept point"
+    },
+    {
+      "id": "aHE_tws",
+      "formula": "acos((O_w · H_tws)/(||O_w|| ||H_tws||))",
+      "meaning": "heading error between launcher orientation and PIP heading"
+    },
+    {
+      "id": "p_tws",
+      "formula": "G(r_tws; mu_r, sigma_r, r_min, r_max) * G(aHE_tws; mu_a, sigma_a)",
+      "meaning": "probability of kill affected by distance and heading error"
+    },
+    {
+      "id": "tau_rot_w_t1s1_t2s2",
+      "formula": "required rotation angle between successive heading vectors divided by v_rot",
+      "meaning": "rotation time between successive engagements under R strategy"
+    },
+    {
+      "id": "target_success_t",
+      "formula": "1 - product_w product_s (1 - p_tws*theta_tws)",
+      "meaning": "expected kill probability for target t under assigned launcher-time slots"
+    }
+  ],
+  "objective": {
+    "sense": "maximize",
+    "formula": "sum_t [1 - product_w product_s (1 - p_tws*theta_tws)]",
+    "meaning": "maximize total expected PK / engagement success over targets"
+  },
+  "constraints": [
+    {
+      "id": "C1",
+      "formula": "sum_t theta_tws <= 1 for all launcher w and slot s",
+      "meaning": "a launcher can engage at most one target at a time slot"
+    },
+    {
+      "id": "C2",
+      "formula": "sum_w sum_s theta_tws <= n_as_t for each target t",
+      "meaning": "target-level maximum assigned interceptors"
+    },
+    {
+      "id": "C3",
+      "formula": "sum_t sum_s theta_tws <= n_st_w for each launcher w",
+      "meaning": "launcher interceptor inventory/use limit"
+    },
+    {
+      "id": "C4",
+      "formula": "theta_t1,w,s1 * theta_t2,w,s2 = 0 for conflicting slots |s1-s2| <= tau_d with different firings",
+      "meaning": "minimum firing delay between successive launcher firings"
+    },
+    {
+      "id": "C5",
+      "formula": "theta_tws=0 if s not in L_tw",
+      "meaning": "assignment only at feasible firing time slots"
+    },
+    {
+      "id": "C6_R",
+      "formula": "theta_t1,w,s1 * theta_t2,w,s2 = 0 when |s1-s2| <= tau_rot_w_t1s1_t2s2 + tau_align",
+      "meaning": "R strategy rotation and realignment time constraint"
+    },
+    {
+      "id": "C7_R",
+      "formula": "a_initial_tws <= a_max for R strategy assignments",
+      "meaning": "maximum allowable rotation angle from initial orientation"
+    },
+    {
+      "id": "C8",
+      "formula": "theta_tws binary",
+      "meaning": "binary assignment"
+    }
+  ],
+  "strategy_policy": {
+    "RF_strategy": "orientation angles are fixed; use heading-error PK and RF constraints C1-C5/C8",
+    "R_strategy": "launcher can rotate to improve heading-error PK but must satisfy rotation/realignment and maximum-angle constraints C6_R-C7_R",
+    "clustering_initialization": "source-supported method for choosing initial launcher orientations; not a separate optimization constraint unless the public stress sample explicitly asks for initialization design"
+  },
+  "public_private_boundary": {
+    "required": [
+      "targets",
+      "launchers",
+      "time_slots",
+      "launcher_positions",
+      "target_pip_positions_by_launcher_time",
+      "launcher_orientation",
+      "heading_vectors",
+      "distance_pk_parameters",
+      "heading_error_pk_parameters",
+      "engagement_distance_bounds",
+      "target_max_interceptors",
+      "launcher_interceptor_capacity",
+      "firing_delay",
+      "feasible_firing_slots",
+      "strategy_type"
+    ],
+    "required_for_R_strategy": [
+      "launcher_rotational_velocity",
+      "realignment_time",
+      "maximum_rotation_angle"
+    ],
+    "derived_or_private_trace": [
+      "planted_theta_assignment",
+      "target_success_values",
+      "rotation_sequence",
+      "clustering_initial_orientation_trace"
+    ],
+    "forbidden_public": [
+      "planted_theta_assignment",
+      "objective_value_of_planted_assignment",
+      "rotation_strategy_solution",
+      "cluster_assignment_answer"
+    ]
+  }
+}

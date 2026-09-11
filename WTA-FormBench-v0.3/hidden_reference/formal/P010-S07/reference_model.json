@@ -1,0 +1,103 @@
+{
+  "paper_id": "P010",
+  "semantic_status": "AUDITED_HIGH_MASTER_SPEC_WITH_WTAU_OBJECTIVE_BOUNDARY",
+  "sets": [
+    {
+      "id": "W",
+      "meaning": "weapons",
+      "index": "i",
+      "cardinality_symbol": "m"
+    },
+    {
+      "id": "T",
+      "meaning": "targets",
+      "index": "j",
+      "cardinality_symbol": "n"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "p_ij",
+      "meaning": "kill probability of weapon i against target j",
+      "domain": "[0,1]"
+    },
+    {
+      "id": "v_j",
+      "meaning": "value of target j",
+      "domain": "nonnegative"
+    },
+    {
+      "id": "k_j",
+      "meaning": "kill-probability threshold required for target j to be considered destroyed",
+      "domain": "[0,1]"
+    }
+  ],
+  "variables": [
+    {
+      "id": "x_ij",
+      "meaning": "1 if weapon i is assigned to target j; 0 otherwise",
+      "domain": "binary"
+    },
+    {
+      "id": "y_j",
+      "meaning": "1 if target j is considered destroyed; 0 otherwise",
+      "domain": "binary"
+    }
+  ],
+  "derived": [
+    {
+      "id": "S_j(X)",
+      "formula": "product_i (1-p_ij)^(x_ij)",
+      "meaning": "survival probability of target j under assigned weapons"
+    },
+    {
+      "id": "K_j(X)",
+      "formula": "1 - S_j(X)",
+      "meaning": "kill probability of target j"
+    },
+    {
+      "id": "OV_j(X,Y)",
+      "formula": "y_j * max(0, K_j(X)-k_j), equivalently y_j*((1-k_j)-S_j(X)) under the destruction-linking constraint",
+      "meaning": "overkill penalty for destroyed target j"
+    },
+    {
+      "id": "IK_j(X,Y)",
+      "formula": "sum_i x_ij*(1-y_j)",
+      "meaning": "invalid-kill penalty: weapons assigned to an undestroyed target"
+    }
+  ],
+  "objective": {
+    "sense": "maximize",
+    "formula": "sum_j v_j*y_j - sum_j OV_j(X,Y) - sum_j IK_j(X,Y)",
+    "meaning": "maximize destroyed-target value while penalizing overkill and invalid kill"
+  },
+  "constraints": [
+    {
+      "id": "C1",
+      "formula": "sum_j x_ij <= 1 for all weapons i",
+      "meaning": "each weapon is assigned to at most one target"
+    },
+    {
+      "id": "C2",
+      "formula": "S_j(X) <= 1 - k_j*y_j for all targets j",
+      "meaning": "target j can be declared destroyed only if its kill threshold is reached"
+    },
+    {
+      "id": "C3",
+      "formula": "x_ij in {0,1}",
+      "meaning": "binary assignment domain"
+    },
+    {
+      "id": "C4",
+      "formula": "y_j in {0,1}",
+      "meaning": "binary target destruction domain"
+    }
+  ],
+  "equivalence_rules": [
+    "The nonlinear survival product may be log-transformed or linearized for a solver if the transformed model remains equivalent.",
+    "The overkill penalty can be represented using survival probability or kill probability, provided it penalizes excess above threshold only for destroyed targets.",
+    "A model that only maximizes destroyed value without invalid-kill and overkill penalties is not equivalent."
+  ],
+  "algorithm_boundary": "logarithmic transformation, TSHHS, SimpleO and MMRBH are solution algorithms; they are not the gold optimization model",
+  "public_private_boundary": "All planted assignments, destruction schemes, sampled stochastic outcomes, objective values and algorithm traces are private validation only."
+}

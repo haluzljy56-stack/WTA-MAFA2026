@@ -1,0 +1,51 @@
+{
+  "sample_id": "P016-S06",
+  "paper_id": "P016",
+  "publicly_available_data_fields": [
+    "weapons",
+    "targets",
+    "target_value",
+    "weapon_target_completion_probability",
+    "model_variant",
+    "relaxation_requested",
+    "regularization_parameters_if_saddle_form_requested"
+  ],
+  "publicly_explained_parameter_semantics": [
+    "weapons",
+    "targets",
+    "target_value",
+    "weapon_target_completion_probability",
+    "model_variant",
+    "relaxation_requested",
+    "regularization_parameters_if_saddle_form_requested"
+  ],
+  "withheld_aggregation_rules": [
+    "OBJ:OBJ1"
+  ],
+  "withheld_modeling_choices": [
+    "VAR:x_ij_binary",
+    "VAR:x_ij_relaxed"
+  ],
+  "required_elements": [
+    "SET:I",
+    "SET:J",
+    "PARAM:V_j",
+    "PARAM:Pk_ij",
+    "PARAM:alpha",
+    "PARAM:delta",
+    "VAR:x_ij_binary",
+    "VAR:x_ij_relaxed",
+    "SEMANTIC:ORIGINAL_DISCRETE_WTA",
+    "SEMANTIC:CONVEX_RELAXATION",
+    "SEMANTIC:ALGORITHM_MODEL_BOUNDARY"
+  ],
+  "optional_or_parameterizable_elements": [],
+  "unsupported_elements": [
+    "SEMANTIC:unsupported_public_witness_or_answer_trace",
+    "SEMANTIC:unsupported_algorithm_trace_as_public_model_variable",
+    "SEMANTIC:unsupported_generic_static_WTA_when_dynamic_or_time_slot_semantics_required",
+    "SEMANTIC:unsupported_cluster_coverage_replacement"
+  ],
+  "expected_agent_behavior": "complete formulation under declared pressure mechanism only",
+  "registry_file": "element_registry/P016_element_registry.json"
+}

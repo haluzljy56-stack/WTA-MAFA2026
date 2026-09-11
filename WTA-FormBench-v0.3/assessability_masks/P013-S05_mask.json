@@ -1,0 +1,80 @@
+{
+  "sample_id": "P013-S05",
+  "paper_id": "P013",
+  "publicly_available_data_fields": [
+    "uavs",
+    "far_radars",
+    "frames",
+    "far_working_bandwidth",
+    "uav_far_jsr",
+    "effect_function_parameters",
+    "cost_factor",
+    "uav_far_feasibility",
+    "dynamic_frame_data"
+  ],
+  "publicly_explained_parameter_semantics": [
+    "uavs",
+    "far_radars",
+    "frames",
+    "far_working_bandwidth",
+    "uav_far_jsr",
+    "effect_function_parameters",
+    "cost_factor",
+    "uav_far_feasibility",
+    "dynamic_frame_data"
+  ],
+  "withheld_aggregation_rules": [
+    "DERIVED:C_m_k",
+    "DERIVED:JSRbar_nm_k",
+    "DERIVED:p_nm_k",
+    "DERIVED:R(C_m_k,B_m_k)",
+    "DERIVED:C(C_m_k)",
+    "OBJ:OBJ1"
+  ],
+  "withheld_modeling_choices": [
+    "VAR:u_nm_k",
+    "VAR:B_nm_k",
+    "CON:C1",
+    "CON:C2",
+    "CON:C3",
+    "CON:C4",
+    "CON:C5"
+  ],
+  "required_elements": [
+    "SET:U",
+    "SET:F",
+    "SET:K",
+    "PARAM:B_m",
+    "PARAM:JSR_nm_k",
+    "PARAM:JSR0",
+    "PARAM:L",
+    "PARAM:lambda_cost",
+    "PARAM:uav_far_feasibility",
+    "PARAM:dynamic_frame_data",
+    "VAR:u_nm_k",
+    "VAR:B_nm_k",
+    "DERIVED:C_m_k",
+    "DERIVED:JSRbar_nm_k",
+    "DERIVED:p_nm_k",
+    "DERIVED:R(C_m_k,B_m_k)",
+    "DERIVED:C(C_m_k)",
+    "OBJ:OBJ1",
+    "CON:C1",
+    "CON:C2",
+    "CON:C3",
+    "CON:C4",
+    "CON:C5",
+    "SEMANTIC:DYNAMIC_FRAME_UPDATE",
+    "SEMANTIC:ALGORITHM_MODEL_BOUNDARY"
+  ],
+  "optional_or_parameterizable_elements": [],
+  "unsupported_elements": [
+    "SEMANTIC:unsupported_hard_kill_weapon_target_assignment",
+    "SEMANTIC:unsupported_kriging_model_variables_or_memory_module_constraints",
+    "SEMANTIC:unsupported_planted_task_assignment_or_bandwidth_allocation_in_public_input",
+    "SEMANTIC:unsupported_sensor_weapon_target_kill_probability_objective",
+    "SEMANTIC:unsupported_uav_trajectory_path_planning_variables_unless_provided_as_exogenous_dynamic_fram"
+  ],
+  "expected_agent_behavior": "complete formulation at nested large scale",
+  "registry_file": "element_registry/P013_element_registry.json"
+}

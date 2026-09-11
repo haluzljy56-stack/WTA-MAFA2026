@@ -1,0 +1,9 @@
+﻿ID,Name,Formula text,Uses
+C001,assignment_consistency,"Create binary x[s,w,t] only for public compatible sensor-weapon-target engagement options.",engagement_options
+C002,target_flight_window,Selected engagements must respect the target public flight window and feasible detection/interception timing.,"target_flight_time, engagement_options"
+C003,sensor_detectability_and_tracking,A selected sensor-target pairing must have public positive detection evidence and satisfy required tracking duration.,"detection_probability_max, target_min_detection_steps, engagement_options"
+C004,sensor_channel_capacity,"For each sensor, assigned tracking workload must not exceed public sensor_channel_capacity.","sensor_channel_capacity, target_channel_need, engagement_options"
+C005,weapon_reachability,A selected weapon-target pairing must have public positive interception evidence.,"interception_probability_max, engagement_options"
+C006,weapon_inventory,"For each weapon vehicle, selected launches must not exceed public weapon_inventory.","weapon_inventory, engagement_options"
+C007,weapon_firing_interval,Selected launches from one weapon vehicle must respect public minimum launch intervals when modeled over time.,"weapon_min_launch_interval_steps, engagement_options"
+C008,joint_sensor_weapon_target_time_compatibility,A selected sensor-weapon-target triple must have jointly positive public detection and interception effectiveness.,"engagement_options, combined_effectiveness"

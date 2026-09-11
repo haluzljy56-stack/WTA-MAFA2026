@@ -1,0 +1,35 @@
+{
+  "planted_feasible_tuple_assignment": {
+    "K01": {
+      "sensor": "I01",
+      "weapon_vehicle": "J01",
+      "time": "T02"
+    },
+    "K02": {
+      "sensor": "I02",
+      "weapon_vehicle": "J02",
+      "time": "T03"
+    },
+    "K03": {
+      "sensor": "I03",
+      "weapon_vehicle": "J03",
+      "time": "T04"
+    },
+    "K04": {
+      "sensor": "I04",
+      "weapon_vehicle": "J04",
+      "time": "T05"
+    },
+    "K05": {
+      "sensor": "I01",
+      "weapon_vehicle": "J01",
+      "time": "T06"
+    }
+  },
+  "objective_vector_of_planted_assignment": {
+    "F1": 91.473,
+    "F2": 37,
+    "F3": 6,
+    "F4": 4
+  }
+}

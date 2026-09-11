@@ -1,0 +1,5 @@
+﻿ID,Name,Sense,Meaning,Formula text,Uses
+F1,expected_remaining_target_value,minimize,Expected remaining target value after selected defense effects.,"Minimize expected remaining target value after selected sensor-weapon-target engagements, using public detection and interception effecti...","target_value, engagement_options, combined_effectiveness"
+F2,resource_usage_cost,minimize,Operating cost of selected sensors and weapon vehicles.,Minimize public sensor and weapon resource-use costs induced by selected engagements.,"sensor_cost, weapon_cost, engagement_options"
+F3,launch_interception_makespan,minimize,Latest selected launch/interception plan time for the engagement scheme.,Minimize the latest selected interception or engagement completion time.,"engagement_options, best_interception_step"
+F4,operational_concentration_risk,minimize,Risk from concentrating many engagements on a small number of resources.,Minimize concentration risk induced by repeatedly assigning a small number of sensors or weapon vehicles across selected engagements.,engagement_options

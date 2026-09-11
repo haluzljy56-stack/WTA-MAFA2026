@@ -1,0 +1,316 @@
+{
+  "paper_id": "P018",
+  "contract_version": "R6C_element_registry_v1.0",
+  "elements": {
+    "SET:T": {
+      "id": "SET:T",
+      "kind": "set",
+      "meaning": "targets / threats"
+    },
+    "SET:W": {
+      "id": "SET:W",
+      "kind": "set",
+      "meaning": "launchers"
+    },
+    "SET:S": {
+      "id": "SET:S",
+      "kind": "set",
+      "meaning": "discrete firing time slots"
+    },
+    "PAR:X_w": {
+      "id": "PAR:X_w",
+      "kind": "parameter",
+      "meaning": "position of launcher w"
+    },
+    "PAR:X_pip_tws": {
+      "id": "PAR:X_pip_tws",
+      "kind": "parameter",
+      "meaning": "predicted intercept point of target t for launcher w at time slot s"
+    },
+    "PAR:O_w": {
+      "id": "PAR:O_w",
+      "kind": "parameter",
+      "meaning": "current or initial orientation vector of launcher w"
+    },
+    "PAR:H_tws": {
+      "id": "PAR:H_tws",
+      "kind": "parameter",
+      "meaning": "heading vector from launcher w to target t's predicted intercept point at slot s"
+    },
+    "PAR:mu_r": {
+      "id": "PAR:mu_r",
+      "kind": "parameter",
+      "meaning": "mean relative distance for distance-based PK Gaussian"
+    },
+    "PAR:sigma_r": {
+      "id": "PAR:sigma_r",
+      "kind": "parameter",
+      "meaning": "standard deviation for distance-based PK Gaussian"
+    },
+    "PAR:r_min,r_max": {
+      "id": "PAR:r_min,r_max",
+      "kind": "parameter",
+      "meaning": "minimum and maximum engagement distance bounds"
+    },
+    "PAR:mu_a": {
+      "id": "PAR:mu_a",
+      "kind": "parameter",
+      "meaning": "mean heading error for heading-error PK Gaussian, typically zero"
+    },
+    "PAR:sigma_a": {
+      "id": "PAR:sigma_a",
+      "kind": "parameter",
+      "meaning": "standard deviation for heading-error PK Gaussian"
+    },
+    "PAR:n_as_t": {
+      "id": "PAR:n_as_t",
+      "kind": "parameter",
+      "meaning": "maximum number of interceptors assignable to target t"
+    },
+    "PAR:n_st_w": {
+      "id": "PAR:n_st_w",
+      "kind": "parameter",
+      "meaning": "maximum usable interceptors for launcher w"
+    },
+    "PAR:tau_d": {
+      "id": "PAR:tau_d",
+      "kind": "parameter",
+      "meaning": "minimum firing delay between successive firings from the same launcher"
+    },
+    "PAR:L_tw": {
+      "id": "PAR:L_tw",
+      "kind": "parameter",
+      "meaning": "feasible firing time-slot set for target t and launcher w"
+    },
+    "PAR:v_rot": {
+      "id": "PAR:v_rot",
+      "kind": "parameter",
+      "meaning": "launcher rotational velocity"
+    },
+    "PAR:tau_align": {
+      "id": "PAR:tau_align",
+      "kind": "parameter",
+      "meaning": "realignment/stabilization time after rotation"
+    },
+    "PAR:a_max": {
+      "id": "PAR:a_max",
+      "kind": "parameter",
+      "meaning": "maximum allowable launcher rotation angle"
+    },
+    "VAR:theta_tws": {
+      "id": "VAR:theta_tws",
+      "kind": "variable",
+      "meaning": "1 if launcher w is assigned to engage target t at firing time slot s; 0 otherwise"
+    },
+    "VAR:O_w_initial": {
+      "id": "VAR:O_w_initial",
+      "kind": "variable",
+      "meaning": "optional launcher initial orientation angle/vector used by RF/R strategies"
+    },
+    "DER:r_tws": {
+      "id": "DER:r_tws",
+      "kind": "derived",
+      "meaning": "relative distance between launcher and target predicted intercept point"
+    },
+    "DER:aHE_tws": {
+      "id": "DER:aHE_tws",
+      "kind": "derived",
+      "meaning": "heading error between launcher orientation and PIP heading"
+    },
+    "DER:p_tws": {
+      "id": "DER:p_tws",
+      "kind": "derived",
+      "meaning": "probability of kill affected by distance and heading error"
+    },
+    "DER:tau_rot_w_t1s1_t2s2": {
+      "id": "DER:tau_rot_w_t1s1_t2s2",
+      "kind": "derived",
+      "meaning": "rotation time between successive engagements under R strategy"
+    },
+    "DER:target_success_t": {
+      "id": "DER:target_success_t",
+      "kind": "derived",
+      "meaning": "expected kill probability for target t under assigned launcher-time slots"
+    },
+    "OBJ:OBJ1": {
+      "id": "OBJ:OBJ1",
+      "kind": "objective",
+      "meaning": "maximize total expected PK / engagement success over targets"
+    },
+    "CON:C1": {
+      "id": "CON:C1",
+      "kind": "constraint",
+      "meaning": "a launcher can engage at most one target at a time slot"
+    },
+    "CON:C2": {
+      "id": "CON:C2",
+      "kind": "constraint",
+      "meaning": "target-level maximum assigned interceptors"
+    },
+    "CON:C3": {
+      "id": "CON:C3",
+      "kind": "constraint",
+      "meaning": "launcher interceptor inventory/use limit"
+    },
+    "CON:C4": {
+      "id": "CON:C4",
+      "kind": "constraint",
+      "meaning": "minimum firing delay between successive launcher firings"
+    },
+    "CON:C5": {
+      "id": "CON:C5",
+      "kind": "constraint",
+      "meaning": "assignment only at feasible firing time slots"
+    },
+    "CON:C6_R": {
+      "id": "CON:C6_R",
+      "kind": "constraint",
+      "meaning": "R strategy rotation and realignment time constraint"
+    },
+    "CON:C7_R": {
+      "id": "CON:C7_R",
+      "kind": "constraint",
+      "meaning": "maximum allowable rotation angle from initial orientation"
+    },
+    "CON:C8": {
+      "id": "CON:C8",
+      "kind": "constraint",
+      "meaning": "binary assignment"
+    },
+    "PARAM:X_w": {
+      "id": "PARAM:X_w",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:X_pip_tws": {
+      "id": "PARAM:X_pip_tws",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:O_w": {
+      "id": "PARAM:O_w",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:H_tws": {
+      "id": "PARAM:H_tws",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:mu_r": {
+      "id": "PARAM:mu_r",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:sigma_r": {
+      "id": "PARAM:sigma_r",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:r_min,r_max": {
+      "id": "PARAM:r_min,r_max",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:mu_a": {
+      "id": "PARAM:mu_a",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:sigma_a": {
+      "id": "PARAM:sigma_a",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:n_as_t": {
+      "id": "PARAM:n_as_t",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:n_st_w": {
+      "id": "PARAM:n_st_w",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:tau_d": {
+      "id": "PARAM:tau_d",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:L_tw": {
+      "id": "PARAM:L_tw",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:v_rot": {
+      "id": "PARAM:v_rot",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:tau_align": {
+      "id": "PARAM:tau_align",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "PARAM:a_max": {
+      "id": "PARAM:a_max",
+      "kind": "param",
+      "meaning": "registered by assessability contract"
+    },
+    "DERIVED:r_tws": {
+      "id": "DERIVED:r_tws",
+      "kind": "derived",
+      "meaning": "registered by assessability contract"
+    },
+    "DERIVED:aHE_tws": {
+      "id": "DERIVED:aHE_tws",
+      "kind": "derived",
+      "meaning": "registered by assessability contract"
+    },
+    "DERIVED:p_tws": {
+      "id": "DERIVED:p_tws",
+      "kind": "derived",
+      "meaning": "registered by assessability contract"
+    },
+    "DERIVED:tau_rot_w_t1s1_t2s2": {
+      "id": "DERIVED:tau_rot_w_t1s1_t2s2",
+      "kind": "derived",
+      "meaning": "registered by assessability contract"
+    },
+    "DERIVED:target_success_t": {
+      "id": "DERIVED:target_success_t",
+      "kind": "derived",
+      "meaning": "registered by assessability contract"
+    },
+    "SEMANTIC:RF_R_STRATEGY_BOUNDARY": {
+      "id": "SEMANTIC:RF_R_STRATEGY_BOUNDARY",
+      "kind": "semantic",
+      "meaning": "registered by assessability contract"
+    },
+    "SEMANTIC:ALGORITHM_MODEL_BOUNDARY": {
+      "id": "SEMANTIC:ALGORITHM_MODEL_BOUNDARY",
+      "kind": "semantic",
+      "meaning": "registered by assessability contract"
+    },
+    "SEMANTIC:unsupported_public_witness_or_answer_trace": {
+      "id": "SEMANTIC:unsupported_public_witness_or_answer_trace",
+      "kind": "unsupported",
+      "meaning": "unsupported by R6C prevention gate"
+    },
+    "SEMANTIC:unsupported_algorithm_trace_as_public_model_variable": {
+      "id": "SEMANTIC:unsupported_algorithm_trace_as_public_model_variable",
+      "kind": "unsupported",
+      "meaning": "unsupported by R6C prevention gate"
+    },
+    "SEMANTIC:unsupported_generic_static_WTA_when_dynamic_or_time_slot_semantics_required": {
+      "id": "SEMANTIC:unsupported_generic_static_WTA_when_dynamic_or_time_slot_semantics_required",
+      "kind": "unsupported",
+      "meaning": "unsupported by R6C prevention gate"
+    },
+    "SEMANTIC:unsupported_cluster_coverage_replacement": {
+      "id": "SEMANTIC:unsupported_cluster_coverage_replacement",
+      "kind": "unsupported",
+      "meaning": "unsupported by R6C prevention gate"
+    }
+  }
+}

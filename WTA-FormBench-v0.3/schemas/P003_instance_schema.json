@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "sets",
+    "hf_v_type",
+    "actual_trajectory_distance",
+    "maximum_residual_speed",
+    "target_antidamage_capability",
+    "target_value",
+    "target_max_hfvs",
+    "payoff_weight",
+    "distance_weight",
+    "normalized_act_payoff",
+    "normalized_trajectory_distance"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "sets": {},
+    "hf_v_type": {},
+    "actual_trajectory_distance": {},
+    "maximum_residual_speed": {},
+    "target_antidamage_capability": {},
+    "target_value": {},
+    "target_max_hfvs": {},
+    "payoff_weight": {},
+    "distance_weight": {},
+    "normalized_act_payoff": {},
+    "normalized_trajectory_distance": {}
+  }
+}

@@ -1,0 +1,7 @@
+﻿Stage,State,Evidence,Interpretation
+Input,MADRA_OPEN_P6_single,MADRA_LIB_P1_P10_OPEN_RECONSTRUCTION / P6_single_targets50,The public MADRA scenario enters the system
+Frontend,formulation present,objective_count=1,"A formulation was produced, but no verified executable model was reached"
+Builder Team,slot contract failed,BUILDER_SLOT_MISSING,The variable slot's LLM response omitted required object fields
+Bounded repair,1 round,variable_agent,The system records the responsible component and phase instead of retrying without bound
+Artifact state,partial artifacts retained,build_model_present=False; registry_present=False,"Formulation, SCW state and math-export manifest are retained for failure audit"
+External evaluator,failed,p4_builder_contract_failed,The failed sample remains in the denominator; domain scoring is blocked_by_core_failure

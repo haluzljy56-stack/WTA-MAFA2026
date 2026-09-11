@@ -1,0 +1,107 @@
+{
+  "paper_id": "P011",
+  "contract_version": "R4C_element_registry_v1.0",
+  "elements": {
+    "SET:M": {
+      "kind": "SET",
+      "meaning": "missiles"
+    },
+    "SET:T": {
+      "kind": "SET",
+      "meaning": "targets"
+    },
+    "PARAM:c_i": {
+      "kind": "PARAM",
+      "meaning": "cost of missile i"
+    },
+    "PARAM:dp_i": {
+      "kind": "PARAM",
+      "meaning": "destructive payload of missile i"
+    },
+    "PARAM:v_j": {
+      "kind": "PARAM",
+      "meaning": "value of target j"
+    },
+    "PARAM:h_j": {
+      "kind": "PARAM",
+      "meaning": "health of target j"
+    },
+    "PARAM:tau_ij": {
+      "kind": "PARAM",
+      "meaning": "penetration probability of missile i against target j in adversarial environment"
+    },
+    "PARAM:xi": {
+      "kind": "PARAM",
+      "meaning": "random variable sampled in adversarial penetration simulation"
+    },
+    "VAR:x_ij": {
+      "kind": "VAR",
+      "meaning": "1 if missile i is allocated to target j; 0 otherwise"
+    },
+    "DERIVED:p_ij": {
+      "kind": "DERIVED",
+      "meaning": "kill probability of missile i against target j in the paper's simplified model"
+    },
+    "DERIVED:K_j(X)": {
+      "kind": "DERIVED",
+      "meaning": "set of missiles assigned to target j"
+    },
+    "DERIVED:p_j(X)": {
+      "kind": "DERIVED",
+      "meaning": "joint kill probability of missiles assigned to target j without adversarial interception"
+    },
+    "DERIVED:tau_j(X)": {
+      "kind": "DERIVED",
+      "meaning": "joint penetration value for missiles assigned to target j"
+    },
+    "DERIVED:K'_j": {
+      "kind": "DERIVED",
+      "meaning": "surviving missile set after stochastic interception"
+    },
+    "OBJ:E": {
+      "kind": "OBJ",
+      "meaning": "baseline MTA combat effectiveness without adversarial interception"
+    },
+    "OBJ:E_adv": {
+      "kind": "OBJ",
+      "meaning": "AMTA expected combat effectiveness after stochastic missile penetration"
+    },
+    "OBJ:C": {
+      "kind": "OBJ",
+      "meaning": "optional combat-cost objective for multiobjective AMTA extension"
+    },
+    "CON:C1": {
+      "kind": "CON",
+      "meaning": "each missile is allocated to exactly one target"
+    },
+    "CON:C2": {
+      "kind": "CON",
+      "meaning": "binary assignment domain"
+    },
+    "SEMANTIC:unsupported_robust_max_min_scenario_objective_unless_explicitly_requested_by_a_sample": {
+      "kind": "UNSUPPORTED",
+      "meaning": "robust max-min scenario objective unless explicitly requested by a sample"
+    },
+    "SEMANTIC:unsupported_target_lower_upper_assignment_bounds_not_present_in_the_paper_s_basic_amta_model": {
+      "kind": "UNSUPPORTED",
+      "meaning": "target lower/upper assignment bounds not present in the paper's basic AMTA model"
+    },
+    "SEMANTIC:unsupported_missile_type_inventory_constraints_not_part_of_the_basic_amta_formulation": {
+      "kind": "UNSUPPORTED",
+      "meaning": "missile type inventory constraints not part of the basic AMTA formulation"
+    },
+    "SEMANTIC:unsupported_time_windows__dynamic_replanning_or_stage_survival_recurrence": {
+      "kind": "UNSUPPORTED",
+      "meaning": "time windows, dynamic replanning or stage survival recurrence"
+    },
+    "SEMANTIC:unsupported_dqn_state__action_and_reward_variables_as_optimization_decision_variables": {
+      "kind": "UNSUPPORTED",
+      "meaning": "DQN state, action and reward variables as optimization decision variables"
+    },
+    "SEMANTIC:unsupported_planted_assignment_or_sampled_penetration_outcomes_in_public_input": {
+      "kind": "UNSUPPORTED",
+      "meaning": "planted assignment or sampled penetration outcomes in public input"
+    }
+  },
+  "algorithm_boundary": "PODRL, DQN state-action design, fair sample and reward shaping are learning/solution machinery, not the mathematical MTA/AMTA formulation"
+}

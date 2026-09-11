@@ -1,0 +1,4 @@
+﻿Field,Value
+model_class,public_binary_assignment_model
+preferred_builder_kind,gurobi
+solver_agent_owns_optimize,True

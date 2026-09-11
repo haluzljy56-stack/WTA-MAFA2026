@@ -1,0 +1,172 @@
+{
+  "sample_id": "P018-S04",
+  "paper_id": "P018",
+  "contract_version": "R6C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "targets",
+      "meaning": "target identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "defines target set"
+    },
+    {
+      "name": "launchers",
+      "meaning": "launcher identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "defines launcher set"
+    },
+    {
+      "name": "time_slots",
+      "meaning": "discrete firing slots",
+      "type": "array[string]",
+      "shape_or_key_structure": "ordered unique list",
+      "index_order": "ordered unique list",
+      "domain_or_range": "slot identifiers",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "defines firing-time set"
+    },
+    {
+      "name": "launcher_positions",
+      "meaning": "launcher coordinate positions",
+      "type": "object",
+      "shape_or_key_structure": "launcher -> coordinate vector",
+      "index_order": "launcher -> coordinate vector",
+      "domain_or_range": "2D coordinates",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "relative-distance input"
+    },
+    {
+      "name": "target_pip_positions_by_launcher_time",
+      "meaning": "predicted intercept point by target, launcher and slot",
+      "type": "object",
+      "shape_or_key_structure": "target -> launcher -> slot -> coordinate",
+      "index_order": "target -> launcher -> slot -> coordinate",
+      "domain_or_range": "2D coordinates",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "relative-distance input"
+    },
+    {
+      "name": "launcher_orientation",
+      "meaning": "launcher orientation vectors",
+      "type": "object",
+      "shape_or_key_structure": "launcher -> vector",
+      "index_order": "launcher -> vector",
+      "domain_or_range": "2D vectors",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "heading-error input"
+    },
+    {
+      "name": "heading_vectors",
+      "meaning": "heading vectors toward predicted intercept points",
+      "type": "object",
+      "shape_or_key_structure": "target -> launcher -> slot -> vector",
+      "index_order": "target -> launcher -> slot -> vector",
+      "domain_or_range": "2D vectors",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "heading-error input"
+    },
+    {
+      "name": "distance_pk_parameters",
+      "meaning": "distance-effect PK parameters",
+      "type": "object",
+      "shape_or_key_structure": "parameter -> number",
+      "index_order": "parameter -> number",
+      "domain_or_range": "positive parameters",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "distance PK input"
+    },
+    {
+      "name": "heading_error_pk_parameters",
+      "meaning": "heading-error PK parameters",
+      "type": "object",
+      "shape_or_key_structure": "parameter -> number",
+      "index_order": "parameter -> number",
+      "domain_or_range": "angle parameters",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "heading-error PK input"
+    },
+    {
+      "name": "engagement_distance_bounds",
+      "meaning": "minimum and maximum engagement distances",
+      "type": "object",
+      "shape_or_key_structure": "r_min/r_max",
+      "index_order": "r_min/r_max",
+      "domain_or_range": "positive bounds",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "feasibility and PK input"
+    },
+    {
+      "name": "target_max_interceptors",
+      "meaning": "target-level interceptor upper bound",
+      "type": "object",
+      "shape_or_key_structure": "target -> integer",
+      "index_order": "target -> integer",
+      "domain_or_range": "positive integer",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "target capacity constraint input"
+    },
+    {
+      "name": "launcher_interceptor_capacity",
+      "meaning": "launcher interceptor capacity",
+      "type": "object",
+      "shape_or_key_structure": "launcher -> integer",
+      "index_order": "launcher -> integer",
+      "domain_or_range": "nonnegative integer",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "launcher capacity constraint input"
+    },
+    {
+      "name": "firing_delay",
+      "meaning": "minimum delay between successive firings",
+      "type": "integer",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "nonnegative integer",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "launcher timing constraint input"
+    },
+    {
+      "name": "feasible_firing_slots",
+      "meaning": "allowed firing slots for each target-launcher pair",
+      "type": "object",
+      "shape_or_key_structure": "target -> launcher -> slots",
+      "index_order": "target -> launcher -> slots",
+      "domain_or_range": "subset of time_slots",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "slot feasibility input"
+    },
+    {
+      "name": "strategy_type",
+      "meaning": "RF or R strategy flag",
+      "type": "string",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "RF or R",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "selects rotation strategy constraints"
+    }
+  ]
+}

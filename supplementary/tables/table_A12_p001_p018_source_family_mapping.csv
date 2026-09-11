@@ -1,0 +1,19 @@
+﻿Family,Source-grounded task family,Main formulation pressure,Formal / stress variants
+P001,Sensor-weapon-target assignment,Adaptive large-neighborhood assignment and public engagement structure,S04-S07 / S08
+P002,Reliability-aware multi-objective WTA,Reliability and multi-objective target allocation,S04-S07 / S08
+P003,High-speed vehicle-target assignment,Multiple high-speed vehicles and multiple targets,S04-S07 / S08
+P004,Dynamic naval air-defense planning,Dynamic naval engagement and radar support,S04-S07 / S08
+P005,Multi-stage WTA,Stage-dependent assignment and resource reuse,S04-S07 / S08
+P006,Dynamic soft-kill WTA,"Suppression, dynamic engagement and temporal coupling",S04-S07 / S08
+P007,Distributed target allocation,Distributed platforms and cooperative allocation,S04-S07 / S08
+P008,Multi-solution SWTA,Time-indexed multi-solution engagement decisions,S04-S07 / S08
+P009,Large-scale multi-objective SWTA,Benchmark-scale assignment and knowledge-driven constraints,S04-S07 / S08
+P010,Uncertainty-aware WTA,Weapon adequacy uncertainty and kill-threshold logic,S04-S07 / S08
+P011,Adversarial missile-target assignment,Opponent-aware assignment and scenario-dependent payoff,S04-S07 / S08
+P012,Air-defense resource assignment,Radar-missile coordination and saturated resources,S04-S07 / S08
+P013,Cooperative suppressive jamming,Joint task assignment and bandwidth allocation,S04-S07 / S08
+P014,UAV defense programming,Three-objective UAV defense SWTA,S04-S07 / S08
+P015,Anti-drone deployment,Deployment location and drone-path exposure,S04-S07 / S08
+P016,Decentralized WTA,Asynchronous communication and local information,S04-S07 / S08
+P017,Time-driven dynamic WTA,Time sampling and dynamic replanning,S04-S07 / S08
+P018,Rotational WTA,"Launcher orientation, heading error and clustering",S04-S07 / S08

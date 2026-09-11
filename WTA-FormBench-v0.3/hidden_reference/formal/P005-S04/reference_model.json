@@ -1,0 +1,145 @@
+{
+  "sample_id": "P005-S04",
+  "paper_id": "P005",
+  "split": "formal",
+  "master_spec_sha256": "6d0acc7fe429fc8a8b235790d90fb23a7b17984a0f480b215acc7950305c0dff",
+  "instance_data_sha256": "23b5b58954c82956c88acb423f950743a7f8333a786f0bfad7a4bf76d7e2af47",
+  "sets": [
+    {
+      "id": "W",
+      "meaning": "weapon categories",
+      "index": "i"
+    },
+    {
+      "id": "N",
+      "meaning": "targets",
+      "index": "j"
+    },
+    {
+      "id": "S",
+      "meaning": "stages / attacking phases",
+      "index": "t"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "c_i",
+      "meaning": "unit cost of weapon category i"
+    },
+    {
+      "id": "p_ij",
+      "meaning": "destroy probability of one weapon of category i against target j"
+    },
+    {
+      "id": "w_i_t",
+      "meaning": "available quantity of weapon category i in stage t"
+    },
+    {
+      "id": "q_i",
+      "meaning": "total number of weapon category i across the whole problem, when used in data generation"
+    },
+    {
+      "id": "n_j_t",
+      "meaning": "1 if target j is reachable/available in stage t, otherwise 0"
+    },
+    {
+      "id": "d_j",
+      "meaning": "required destruction probability threshold of target j"
+    }
+  ],
+  "variables": [
+    {
+      "id": "x_ij_t",
+      "meaning": "integer number of weapons of category i assigned to target j in stage t",
+      "domain": "nonnegative integer"
+    },
+    {
+      "id": "y_j_t",
+      "meaning": "1 if target j is selected/engaged in stage t",
+      "domain": "binary"
+    }
+  ],
+  "objective": {
+    "sense": "minimize",
+    "formula": "sum_t sum_i sum_j c_i x_ij_t",
+    "meaning": "minimize total weapon cost used across all stages",
+    "source": "Eq. (2)"
+  },
+  "constraints": [
+    {
+      "id": "C1",
+      "formula": "D_j >= d_j for all targets j",
+      "meaning": "each target must reach the required damage threshold",
+      "source": "Eq. (3)"
+    },
+    {
+      "id": "C2",
+      "formula": "sum_j x_ij_t <= w_i_t for all weapon categories i and stages t",
+      "meaning": "stage-level inventory/resource limit",
+      "source": "Eq. (4)"
+    },
+    {
+      "id": "C3",
+      "formula": "if n_j_t=0 then sum_i x_ij_t=0",
+      "meaning": "unreachable targets cannot receive weapons in that stage",
+      "source": "Eq. (5)"
+    },
+    {
+      "id": "C4",
+      "formula": "if y_j_t=0 then sum_i x_ij_t=0",
+      "meaning": "no weapon assignment unless target is selected in that stage",
+      "source": "Eq. (6)"
+    },
+    {
+      "id": "C5",
+      "formula": "sum_i x_ij_t >= y_j_t",
+      "meaning": "if target is selected in a stage, at least one weapon is assigned",
+      "source": "Eq. (7)"
+    },
+    {
+      "id": "C6",
+      "formula": "a target can be engaged in only one stage; source Eq. (8) may be represented by equivalent linking constraints such as sum_t y_j_t <= 1 plus C4-C5",
+      "meaning": "single engagement stage per target",
+      "source": "Eq. (8)"
+    },
+    {
+      "id": "C7",
+      "formula": "x_ij_t nonnegative integer",
+      "meaning": "integer weapon counts",
+      "source": "Eq. (9)"
+    },
+    {
+      "id": "C8",
+      "formula": "y_j_t binary",
+      "meaning": "target-stage binary indicator",
+      "source": "Eq. (10)"
+    }
+  ],
+  "data_field_contract": {
+    "required": [
+      "weapon_categories",
+      "targets",
+      "stages",
+      "weapon_unit_cost",
+      "weapon_target_destroy_probability",
+      "stage_weapon_inventory",
+      "target_stage_availability",
+      "target_damage_threshold"
+    ],
+    "derived_or_trace": [
+      "accumulated_target_damage",
+      "planted_target_stage",
+      "planted_weapon_counts"
+    ],
+    "forbidden": [
+      "target_values",
+      "target_threat",
+      "sensor_set",
+      "compatibility_sensor_target",
+      "objective_preference",
+      "time_window_start_end"
+    ]
+  },
+  "normalization_note": "Instance data were mechanically generated from the R2B master spec, variant contract, scenario contract and assessability contract.",
+  "validation_trace_file": "validation_trace.json"
+}

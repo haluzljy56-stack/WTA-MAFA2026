@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P009 R3C instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "targets",
+    "sensors",
+    "weapon_vehicles",
+    "time_moments",
+    "mop_type",
+    "target_value",
+    "detection_probability",
+    "interception_probability",
+    "sensor_cost",
+    "weapon_cost",
+    "target_interception_duration",
+    "target_flight_time",
+    "target_channel_requirement",
+    "target_detection_persistence_time",
+    "sensor_channel_capacity",
+    "weapon_vehicle_capacity",
+    "weapon_firing_interval"
+  ],
+  "properties": {
+    "sensor_cost": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "weapon_vehicle_capacity": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "mop_type_configuration_rules": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "weapon_cost": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "mop_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "time_moments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "detection_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "target_value": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "weapon_vehicles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "interception_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "target_detection_persistence_time": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "sensors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "sensor_channel_capacity": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "weapon_firing_interval": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "target_channel_requirement": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "target_interception_duration": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "target_flight_time": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  }
+}

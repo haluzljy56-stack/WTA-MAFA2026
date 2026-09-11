@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P013 R5C instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "uavs",
+    "far_radars",
+    "frames",
+    "far_working_bandwidth",
+    "uav_far_jsr",
+    "effect_function_parameters",
+    "cost_factor",
+    "uav_far_feasibility",
+    "dynamic_frame_data"
+  ],
+  "properties": {
+    "cost_factor": {
+      "type": "number",
+      "minimum": 0
+    },
+    "dynamic_frame_data": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "effect_function_parameters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 1e-06
+      }
+    },
+    "far_radars": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "far_working_bandwidth": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 1e-06
+      }
+    },
+    "frames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "uav_far_feasibility": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "uav_far_jsr": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "uavs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  }
+}

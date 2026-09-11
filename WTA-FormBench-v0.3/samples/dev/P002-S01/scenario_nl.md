@@ -1,0 +1,1 @@
+A defender allocates healthy missiles to enemy targets that are grouped by area. Each missile can be used against at most one target. The commander wants trade-off plans that improve both cost effectiveness and mission reliability, while every area must satisfy its reliability requirement.

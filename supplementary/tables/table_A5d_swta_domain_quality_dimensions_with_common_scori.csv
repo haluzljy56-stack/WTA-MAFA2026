@@ -1,0 +1,5 @@
+﻿Method,Scored outputs,Public feasible,Engagement feasibility,Defense effectiveness,Resource feasibility,High-value protection,Operational traceability,Scalar quality
+WTA-MAFA,159,159/162 (98.1%),1.000,0.126,1.000,0.342,1.000,0.745
+OR-LLM-Agent,104,104/162 (64.2%),1.000,0.000,1.000,0.000,1.000,0.600
+CoE,39,35/162 (21.6%),0.962,0.076,1.000,0.079,0.962,0.620
+OptiMUS v0.3,37,31/162 (19.1%),1.000,0.048,1.000,0.078,1.000,0.632

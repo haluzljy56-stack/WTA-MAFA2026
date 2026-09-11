@@ -1,0 +1,65 @@
+{
+  "planted_weapon_assignment": {
+    "W01": {
+      "T01": 1,
+      "T02": 0,
+      "T03": 1,
+      "T04": 0
+    },
+    "W02": {
+      "T01": 1,
+      "T02": 0,
+      "T03": 1,
+      "T04": 0
+    },
+    "W03": {
+      "T01": 0,
+      "T02": 1,
+      "T03": 0,
+      "T04": 1
+    },
+    "W04": {
+      "T01": 0,
+      "T02": 1,
+      "T03": 0,
+      "T04": 1
+    }
+  },
+  "planted_sensor_assignment": {
+    "S01": {
+      "T01": 1,
+      "T02": 0,
+      "T03": 0,
+      "T04": 1
+    },
+    "S02": {
+      "T01": 0,
+      "T02": 1,
+      "T03": 0,
+      "T04": 0
+    },
+    "S03": {
+      "T01": 0,
+      "T02": 0,
+      "T03": 1,
+      "T04": 0
+    }
+  },
+  "tracking_probability_Q_k": {
+    "T01": 0.555,
+    "T02": 0.63,
+    "T03": 0.705,
+    "T04": 0.705
+  },
+  "destruction_probability_P_k": {
+    "T01": 0.7093,
+    "T02": 0.7228,
+    "T03": 0.7705,
+    "T04": 0.604
+  },
+  "objective_vector_of_planted_assignment": {
+    "O1_negative_normalized_threat_elimination": -0.457222,
+    "O2_sensor_weapon_cost": 56.0,
+    "O3_interceptor_consumption_over_A0": 0.133333
+  }
+}

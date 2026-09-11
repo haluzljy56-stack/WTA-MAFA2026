@@ -1,0 +1,11 @@
+﻿Benchmark,Method,Preference profile,Available samples,Mean score
+SWTA,WTA-MAFA,balanced,159,0.683
+SWTA,WTA-MAFA,effectiveness,159,0.464
+SWTA,WTA-MAFA,resource conservative,159,0.792
+SWTA,WTA-MAFA,timeliness,159,0.792
+SWTA,WTA-MAFA,high-value protection,159,0.584
+MADRA,WTA-MAFA,balanced,16,0.725
+MADRA,WTA-MAFA,effectiveness,16,0.495
+MADRA,WTA-MAFA,resource conservative,16,0.801
+MADRA,WTA-MAFA,timeliness,16,0.801
+MADRA,WTA-MAFA,high-value protection,16,0.681

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "sets",
+    "meaning": "named sensing assets, effectors and targets",
+    "type": "object",
+    "shape/index order": "sets.sensors, sets.weapons, sets.targets",
+    "domain/range": "unique string IDs",
+    "unit or dimensionless": "dimensionless",
+    "raw/derived status": "raw",
+    "agent-facing role": "index sets"
+  },
+  {
+    "name": "sensor_target_detection_probability",
+    "meaning": "probability that a row sensing asset detects a column target",
+    "type": "matrix",
+    "shape/index order": "rows sets.sensors; columns sets.targets",
+    "domain/range": "[0,1]",
+    "unit or dimensionless": "probability",
+    "raw/derived status": "raw",
+    "agent-facing role": "parameter"
+  },
+  {
+    "name": "weapon_target_conditional_destruction_probability",
+    "meaning": "conditional probability that a row effector destroys a column target after detection",
+    "type": "matrix",
+    "shape/index order": "rows sets.weapons; columns sets.targets",
+    "domain/range": "[0,1]",
+    "unit or dimensionless": "probability",
+    "raw/derived status": "raw",
+    "agent-facing role": "parameter"
+  },
+  {
+    "name": "sensor_target_assignment_cost",
+    "meaning": "cost of assigning a sensing asset to a target",
+    "type": "matrix",
+    "shape/index order": "rows sets.sensors; columns sets.targets",
+    "domain/range": "positive integer",
+    "unit or dimensionless": "cost unit",
+    "raw/derived status": "raw",
+    "agent-facing role": "objective coefficient"
+  },
+  {
+    "name": "weapon_target_assignment_cost",
+    "meaning": "cost of assigning an effector to a target",
+    "type": "matrix",
+    "shape/index order": "rows sets.weapons; columns sets.targets",
+    "domain/range": "positive integer",
+    "unit or dimensionless": "cost unit",
+    "raw/derived status": "raw",
+    "agent-facing role": "objective coefficient"
+  },
+  {
+    "name": "minimum_desired_destruction_probability",
+    "meaning": "common confidence threshold required for each target",
+    "type": "number",
+    "shape/index order": "scalar",
+    "domain/range": "(0,1]",
+    "unit or dimensionless": "probability",
+    "raw/derived status": "raw",
+    "agent-facing role": "constraint parameter"
+  }
+]

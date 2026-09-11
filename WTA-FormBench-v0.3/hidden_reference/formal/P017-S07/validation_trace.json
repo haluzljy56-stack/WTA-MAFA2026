@@ -1,0 +1,23 @@
+{
+  "current_step_validation": {
+    "TAU01": {
+      "planted_action_vector": {
+        "W01": "M01",
+        "W02": "M01",
+        "W03": "M01"
+      },
+      "objective_value_of_planted_action": 4.293161,
+      "threat_degree": {
+        "M01": 2.488789,
+        "M02": 2.481203,
+        "M03": 2.087379,
+        "M04": 2.435065
+      },
+      "post_step_destroyed_missiles": [
+        "M01"
+      ]
+    }
+  },
+  "storage_update_trace": "Private trace only: remove destroyed or expired missiles and insert newly detected missiles between sampling times.",
+  "algorithm_boundary_note": "No PPO policy output, reward curve or heuristic population is part of the public instance."
+}

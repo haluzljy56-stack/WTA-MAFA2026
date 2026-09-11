@@ -1,0 +1,649 @@
+{
+  "artifact_type": "model_design_card",
+  "assumptions": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "benchmark": "SWTA_MOP1_5",
+  "benchmark_contract_bindings": {
+    "binding_digest": "ff3b82242fe906524ba45261161cda1d29302314c30e3efc8e0574417c818b16",
+    "candidate_sets": [
+      {
+        "authoritative": true,
+        "binding_source": "computed_from_model_design_card",
+        "bound": true,
+        "filtering_allowed": false,
+        "id": "E",
+        "required_item_fields": [
+          "sensor",
+          "weapon_vehicle",
+          "target",
+          "hit_step",
+          "target_value",
+          "combined_effectiveness",
+          "sensor_cost",
+          "weapon_cost"
+        ]
+      }
+    ],
+    "constraint_contracts": [
+      {
+        "binding_source": "computed_from_model_design_card",
+        "bound_data_refs": [
+          "derived_public_facts.temporal_action_space.compatible_engagements"
+        ],
+        "constraint_id_bound": true,
+        "id": "target_at_most_one",
+        "pattern_id": "assignment_partition_limit",
+        "required_data_refs": [
+          "derived_public_facts.temporal_action_space.compatible_engagements"
+        ]
+      },
+      {
+        "binding_source": "computed_from_model_design_card",
+        "bound_data_refs": [
+          "derived_public_facts.temporal_action_space.compatible_engagements",
+          "public_instance_data.sensor_channel_capacity",
+          "public_instance_data.target_channel_need"
+        ],
+        "constraint_id_bound": true,
+        "id": "sensor_channel_capacity_time_indexed_weighted",
+        "pattern_id": "time_indexed_resource_capacity",
+        "required_data_refs": [
+          "derived_public_facts.temporal_action_space.compatible_engagements",
+          "public_instance_data.sensor_channel_capacity",
+          "public_instance_data.target_channel_need"
+        ]
+      },
+      {
+        "binding_source": "computed_from_model_design_card",
+        "bound_data_refs": [
+          "derived_public_facts.temporal_action_space.compatible_engagements",
+          "public_instance_data.weapon_inventory"
+        ],
+        "constraint_id_bound": true,
+        "id": "weapon_inventory",
+        "pattern_id": "resource_inventory",
+        "required_data_refs": [
+          "derived_public_facts.temporal_action_space.compatible_engagements",
+          "public_instance_data.weapon_inventory"
+        ]
+      },
+      {
+        "binding_source": "computed_from_model_design_card",
+        "bound_data_refs": [
+          "derived_public_facts.temporal_action_space.compatible_engagements",
+          "public_instance_data.weapon_min_launch_interval_steps"
+        ],
+        "constraint_id_bound": true,
+        "id": "weapon_min_launch_interval",
+        "pattern_id": "same_resource_minimum_time_separation",
+        "required_data_refs": [
+          "derived_public_facts.temporal_action_space.compatible_engagements",
+          "public_instance_data.weapon_min_launch_interval_steps"
+        ]
+      }
+    ],
+    "contract_digest": "58f83c5267630029036c3015bac20e5ddad2e417abb22a9e1335cf510dbdcd00",
+    "contract_id": "bec.swta.MultiSWTA2_Type1_NT50_NS8_NC6_NV8_NW6_O4.v1",
+    "contract_projection": {
+      "active_objectives": {
+        "all_available_objective_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ],
+        "objective_count": 4,
+        "objective_definitions": {
+          "F1": {
+            "description": "Expected remaining target value after selected defense effects.",
+            "evidence_ref": "public_problem_description",
+            "formula_text": "Minimize expected remaining target value after selected sensor-weapon-target engagements, using public detection and interception effectiveness.",
+            "id": "F1",
+            "name": "expected_remaining_target_value",
+            "sense": "minimize",
+            "uses": [
+              "target_value",
+              "engagement_options",
+              "combined_effectiveness"
+            ]
+          },
+          "F2": {
+            "description": "Operating cost of selected sensors and weapon vehicles.",
+            "evidence_ref": "public_problem_description",
+            "formula_text": "Minimize public sensor and weapon resource-use costs induced by selected engagements.",
+            "id": "F2",
+            "name": "resource_usage_cost",
+            "sense": "minimize",
+            "uses": [
+              "sensor_cost",
+              "weapon_cost",
+              "engagement_options"
+            ]
+          },
+          "F3": {
+            "description": "Latest selected launch/interception plan time for the engagement scheme.",
+            "evidence_ref": "public_problem_description",
+            "formula_text": "Minimize the latest selected interception or engagement completion time.",
+            "id": "F3",
+            "name": "launch_interception_makespan",
+            "sense": "minimize",
+            "uses": [
+              "engagement_options",
+              "best_interception_step"
+            ]
+          },
+          "F4": {
+            "description": "Risk from concentrating many engagements on a small number of resources.",
+            "evidence_ref": "public_problem_description",
+            "formula_text": "Minimize concentration risk induced by repeatedly assigning a small number of sensors or weapon vehicles across selected engagements.",
+            "id": "F4",
+            "name": "operational_concentration_risk",
+            "sense": "minimize",
+            "uses": [
+              "engagement_options"
+            ]
+          }
+        },
+        "objective_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ],
+        "source_boundary": "objective_count/objective_ids come from the frozen public SWTA case manifest/config; objective meanings come from the public problem description."
+      },
+      "candidate_sets": [
+        {
+          "authoritative": true,
+          "candidate_count": 3200,
+          "filtering_allowed": false,
+          "id": "E",
+          "identity_fields": [
+            "sensor",
+            "weapon_vehicle",
+            "target",
+            "hit_step"
+          ],
+          "required_item_fields": [
+            "sensor",
+            "weapon_vehicle",
+            "target",
+            "hit_step",
+            "target_value",
+            "combined_effectiveness",
+            "sensor_cost",
+            "weapon_cost"
+          ]
+        }
+      ],
+      "constraint_contracts": [
+        {
+          "id": "target_at_most_one",
+          "pattern_id": "assignment_partition_limit",
+          "required_data_refs": [
+            "derived_public_facts.temporal_action_space.compatible_engagements"
+          ],
+          "required_semantics": [
+            "for every target t, select at most one engagement whose target is t"
+          ],
+          "scope": "target"
+        },
+        {
+          "id": "sensor_channel_capacity_time_indexed_weighted",
+          "pattern_id": "time_indexed_resource_capacity",
+          "required_data_refs": [
+            "derived_public_facts.temporal_action_space.compatible_engagements",
+            "public_instance_data.sensor_channel_capacity",
+            "public_instance_data.target_channel_need"
+          ],
+          "required_semantics": [
+            "for each sensor and time step, sum target_channel_need[target[e]] over active selected tracking intervals",
+            "do not replace this with an unweighted count of selected engagements"
+          ],
+          "scope": "sensor,time"
+        },
+        {
+          "id": "weapon_inventory",
+          "pattern_id": "resource_inventory",
+          "required_data_refs": [
+            "derived_public_facts.temporal_action_space.compatible_engagements",
+            "public_instance_data.weapon_inventory"
+          ],
+          "required_semantics": [
+            "for each weapon vehicle, selected engagements cannot exceed public weapon inventory"
+          ],
+          "scope": "weapon_vehicle"
+        },
+        {
+          "id": "weapon_min_launch_interval",
+          "pattern_id": "same_resource_minimum_time_separation",
+          "required_data_refs": [
+            "derived_public_facts.temporal_action_space.compatible_engagements",
+            "public_instance_data.weapon_min_launch_interval_steps"
+          ],
+          "required_semantics": [
+            "the public firing interval is a launch-event rule, but current compact candidates materialize hit_step rather than true launch_step",
+            "until launch_step is materialized, the current solver-bound contract enforces separation on the explicit hit_step proxy",
+            "two selected engagements using the same weapon_vehicle conflict when abs(hit_step_i-hit_step_j) is smaller than the public interval proxy",
+            "equal hit_step conflicts must not be excluded"
+          ],
+          "scope": "weapon_vehicle,hit_step_proxy"
+        }
+      ],
+      "evaluation_objective_vector_contract": {
+        "active_objective_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ],
+        "claim_boundary": "This vector contract preserves public SWTA objective meaning for external evaluation/reporting. It does not grant the current Agent access to external results and does not override the solver-bound scalar.",
+        "external_evaluator_only": true,
+        "feedback_to_current_agent_allowed": false,
+        "objective_count": 4,
+        "objectives": [
+          {
+            "description": "Expected remaining target value after selected sensor-weapon-target engagements.",
+            "id": "F1",
+            "metric_field": "F1_raw",
+            "name": "expected_remaining_target_value",
+            "replay_status": "external_replay_available",
+            "reporting_note": "Expected remaining target value is externally replayable from selected engagements.",
+            "required_solution_fields": [
+              "target",
+              "target_value",
+              "combined_effectiveness"
+            ],
+            "sense": "minimize"
+          },
+          {
+            "description": "Public sensor and weapon resource-use cost induced by selected engagements.",
+            "id": "F2",
+            "metric_field": "F2_raw",
+            "name": "resource_usage_cost",
+            "replay_status": "external_replay_available",
+            "reporting_note": "Resource usage cost is externally replayable from selected engagement costs.",
+            "required_solution_fields": [
+              "sensor_cost",
+              "weapon_cost"
+            ],
+            "sense": "minimize"
+          },
+          {
+            "description": "Latest selected launch/interception plan time for the engagement scheme.",
+            "id": "F3",
+            "metric_field": "F3_raw",
+            "name": "launch_interception_makespan",
+            "replay_status": "hit_step_proxy_available_launch_step_not_materialized",
+            "reporting_note": "The public objective is launch/interception makespan. The current compact public action space materializes representative hit/interception time, while launch_step is explicitly marked not_materialized in event_semantics.",
+            "required_solution_fields": [
+              "hit_step"
+            ],
+            "sense": "minimize"
+          },
+          {
+            "description": "Operational concentration risk from repeatedly using a small number of public resources.",
+            "id": "F4",
+            "metric_field": "F4_raw",
+            "name": "operational_concentration_risk",
+            "replay_status": "external_reporting_available_from_selected_resource_usage",
+            "reporting_note": "Operational concentration can be reported from selected public sensor/weapon resource usage.",
+            "required_solution_fields": [
+              "sensor",
+              "weapon_vehicle"
+            ],
+            "sense": "minimize"
+          }
+        ],
+        "reporting_fields": [
+          "F1_raw",
+          "F2_raw",
+          "F3_raw",
+          "F4_raw"
+        ],
+        "solver_vector_feedback_allowed": false
+      },
+      "objective_contracts": [
+        {
+          "constant_terms": [
+            {
+              "aggregation": "sum_once_per_target",
+              "id": "total_target_value",
+              "math_symbol": "\\sum_{t \\in T} v_t"
+            }
+          ],
+          "id": "swta.expected_remaining_target_value_plus_cost",
+          "registry_objective_contract_required": true,
+          "replay_formula_id": "swta.expected_remaining_target_value_plus_cost",
+          "selected_terms": [
+            {
+              "candidate_set_id": "E",
+              "formula": "sensor_cost[e] + weapon_cost[e] - target_value[e] * combined_effectiveness[e]",
+              "required_fields": [
+                "sensor_cost",
+                "weapon_cost",
+                "target_value",
+                "combined_effectiveness",
+                "objective_contribution"
+              ]
+            }
+          ],
+          "sense": "minimize",
+          "solver_objective_must_match_replay": true
+        }
+      ],
+      "solver_objective_contract": {
+        "claim_boundary": "The current solver-bound scalar is the replayable F1+F2 contract. Active SWTA objectives beyond F1/F2 are retained for external vector reporting and cannot be claimed as directly optimized unless a public scalarization contract is added.",
+        "non_solver_active_objective_ids": [
+          "F3",
+          "F4"
+        ],
+        "objective_contract_id": "swta.expected_remaining_target_value_plus_cost",
+        "replay_formula_id": "swta.expected_remaining_target_value_plus_cost",
+        "scalarization_status": "declared_replayable_scalar_for_current_agent",
+        "sense": "minimize",
+        "solver_binding": "hard_solver_scalar",
+        "solver_bound_public_objective_ids": [
+          "F1",
+          "F2"
+        ],
+        "solver_objective_must_match_replay": true
+      }
+    },
+    "external_evaluator_feedback_used": false,
+    "feedback_to_current_agent_allowed": false,
+    "memory_prompt_allowed": false,
+    "model_reported_bindings": {
+      "candidate_sets": [
+        {
+          "authoritative": true,
+          "candidate_count": 3200,
+          "id": "E",
+          "identity_fields": [
+            "sensor",
+            "weapon_vehicle",
+            "target",
+            "hit_step"
+          ]
+        }
+      ],
+      "constraint_contracts": [
+        {
+          "id": "target_at_most_one"
+        },
+        {
+          "id": "sensor_channel_capacity_time_indexed_weighted"
+        },
+        {
+          "id": "weapon_inventory"
+        },
+        {
+          "id": "weapon_min_launch_interval"
+        }
+      ],
+      "contract_digest": "58f83c5267630029036c3015bac20e5ddad2e417abb22a9e1335cf510dbdcd00",
+      "contract_id": "bec.swta.MultiSWTA2_Type1_NT50_NS8_NC6_NV8_NW6_O4.v1",
+      "event_semantics": {
+        "hit_step": "materialized",
+        "launch_step": "not_materialized",
+        "tracking_interval": "materialized_when_temporal_action_space_available"
+      },
+      "objective_contracts": [
+        {
+          "constant_terms": [
+            {
+              "aggregation": "sum_once_per_target",
+              "id": "total_target_value"
+            }
+          ],
+          "id": "swta.expected_remaining_target_value_plus_cost",
+          "replay_formula_id": "swta.expected_remaining_target_value_plus_cost",
+          "selected_terms": [
+            {
+              "candidate_set_id": "E",
+              "formula": "sensor_cost[e] + weapon_cost[e] - target_value[e] * combined_effectiveness[e]",
+              "required_fields": [
+                "sensor_cost",
+                "weapon_cost",
+                "target_value",
+                "combined_effectiveness",
+                "objective_contribution"
+              ]
+            }
+          ],
+          "sense": "minimize"
+        }
+      ],
+      "solution_view_contract": {
+        "objective_breakdown_required": true,
+        "objective_contract_id_field": "solution_view.objective_contract_id",
+        "replayed_objective_value_field": "solution_view.replayed_objective_value",
+        "required_fields": [
+          "sensor",
+          "weapon_vehicle",
+          "target",
+          "hit_step"
+        ]
+      }
+    },
+    "objective_contracts": [
+      {
+        "binding_source": "computed_from_model_design_card",
+        "bound_required_fields": [
+          "sensor_cost",
+          "weapon_cost",
+          "target_value",
+          "combined_effectiveness",
+          "objective_contribution"
+        ],
+        "constant_terms": [
+          {
+            "aggregation": "sum_once_per_target",
+            "id": "total_target_value",
+            "math_symbol": "\\sum_{t \\in T} v_t"
+          }
+        ],
+        "id": "swta.expected_remaining_target_value_plus_cost",
+        "objective_id_bound": true,
+        "replay_formula_id": "swta.expected_remaining_target_value_plus_cost",
+        "required_fields": [
+          "sensor_cost",
+          "weapon_cost",
+          "target_value",
+          "combined_effectiveness",
+          "objective_contribution"
+        ],
+        "selected_terms": [
+          {
+            "candidate_set_id": "E",
+            "formula": "sensor_cost[e] + weapon_cost[e] - target_value[e] * combined_effectiveness[e]",
+            "required_fields": [
+              "sensor_cost",
+              "weapon_cost",
+              "target_value",
+              "combined_effectiveness",
+              "objective_contribution"
+            ]
+          }
+        ],
+        "sense": "minimize"
+      }
+    ],
+    "public_input_digest": "44b6357e874314c9b20730994a86eabc1379aa9d150ba3f53bc32a742eda40bf",
+    "schema_version": "wta_mafa_agent_v0_4_clean.model_design_contract_bindings.v1"
+  },
+  "constraints": [
+    {
+      "description": "Each target may be engaged at most once.",
+      "formula_text": "for every target t in T: sum_{e in E: target[e]=t} x_e <= 1",
+      "id": "C_target_at_most_one",
+      "name": "target_at_most_one",
+      "public_data_ref": [
+        "derived_public_facts.temporal_action_space.compatible_engagements",
+        "public_instance_data.sets.targets"
+      ]
+    },
+    {
+      "description": "For each sensor s and public time step tau, selected tracking workload cannot exceed sensor channel capacity.",
+      "formula_text": "for every sensor s in S and time step tau: sum_{e in E: sensor[e]=s and tracking_start_step[e] <= tau <= tracking_end_step[e]} target_channel_need[target[e]] * x_e <= sensor_channel_capacity[s]",
+      "id": "C_sensor_channel_capacity_time_indexed_weighted",
+      "name": "sensor_channel_capacity_time_indexed_weighted",
+      "public_data_ref": [
+        "derived_public_facts.temporal_action_space.compatible_engagements",
+        "public_instance_data.sensor_channel_capacity",
+        "public_instance_data.target_channel_need"
+      ]
+    },
+    {
+      "description": "Selected engagements per weapon_vehicle cannot exceed public weapon inventory.",
+      "formula_text": "for every weapon_vehicle w in W: sum_{e in E: weapon_vehicle[e]=w} x_e <= weapon_inventory[w]",
+      "id": "C_weapon_inventory",
+      "name": "weapon_inventory",
+      "public_data_ref": [
+        "derived_public_facts.temporal_action_space.compatible_engagements",
+        "public_instance_data.weapon_inventory"
+      ]
+    },
+    {
+      "description": "Same-weapon launch interval enforced on hit_step proxy using compact sliding-window.",
+      "formula_text": "for every weapon_vehicle w and every public hit_step window [h, h + weapon_min_launch_interval_steps[w] - 1] over observed hit_step anchors: sum_{e in E: weapon_vehicle[e]=w and hit_step[e] in [h, h + L_w - 1]} x_e <= 1, where L_w = weapon_min_launch_interval_steps[w]; equal hit_step conflicts included.",
+      "id": "C_weapon_min_launch_interval",
+      "name": "weapon_min_launch_interval",
+      "public_data_ref": [
+        "derived_public_facts.temporal_action_space.compatible_engagements",
+        "public_instance_data.weapon_min_launch_interval_steps"
+      ]
+    }
+  ],
+  "objectives": [
+    {
+      "constant_term": "sum_{t in T} target_value[t] from public_instance_data.target_value, summed once per target",
+      "contract_objective_id": "swta.expected_remaining_target_value_plus_cost",
+      "formula_text": "minimize sum_{t in T} target_value[t] + sum_{e in E} (sensor_cost[e] + weapon_cost[e] - target_value[e] * combined_effectiveness[e]) * x_e",
+      "id": "swta.expected_remaining_target_value_plus_cost",
+      "name": "expected_remaining_target_value_plus_cost",
+      "public_data_ref": [
+        "public_instance_data.target_value",
+        "derived_public_facts.temporal_action_space.compatible_engagements"
+      ],
+      "required_fields": [
+        "sensor_cost",
+        "weapon_cost",
+        "target_value",
+        "combined_effectiveness",
+        "objective_contribution"
+      ],
+      "selected_term": "sensor_cost[e] + weapon_cost[e] - target_value[e] * combined_effectiveness[e]",
+      "sense": "minimize",
+      "status": "solver_bound_scalar"
+    },
+    {
+      "formula_text": "External reporting proxy: minimize maximum hit_step among selected engagements; true launch_step is not materialized.",
+      "id": "F3_launch_interception_makespan",
+      "name": "launch_interception_makespan",
+      "public_data_ref": "derived_public_facts.temporal_action_space.compatible_engagements",
+      "required_fields": [
+        "hit_step"
+      ],
+      "sense": "minimize",
+      "status": "non_solver_active_reporting"
+    },
+    {
+      "formula_text": "External reporting from selected sensor/weapon_vehicle resource usage; no public scalarization weights for direct solver optimization.",
+      "id": "F4_operational_concentration_risk",
+      "name": "operational_concentration_risk",
+      "public_data_ref": "derived_public_facts.temporal_action_space.compatible_engagements",
+      "required_fields": [
+        "sensor",
+        "weapon_vehicle"
+      ],
+      "sense": "minimize",
+      "status": "non_solver_active_reporting"
+    }
+  ],
+  "planner_digest": "d8b3cdf8bc15c37b01a2a38982e5947fe665b807c631e230366e8c950aec95a2",
+  "provenance": {
+    "benchmark": "SWTA_MOP1_5",
+    "benchmark_execution_contract_digest": "58f83c5267630029036c3015bac20e5ddad2e417abb22a9e1335cf510dbdcd00",
+    "benchmark_execution_contract_id": "bec.swta.MultiSWTA2_Type1_NT50_NS8_NC6_NV8_NW6_O4.v1",
+    "external_evaluator_feedback_used": false,
+    "no_hidden_reference_used": true,
+    "planner_digest": "d8b3cdf8bc15c37b01a2a38982e5947fe665b807c631e230366e8c950aec95a2",
+    "public_input_digest": "44b6357e874314c9b20730994a86eabc1379aa9d150ba3f53bc32a742eda40bf",
+    "sample_id": "MultiSWTA2_Type1_NT50_NS8_NC6_NV8_NW6_O4",
+    "trusted_builder_used": false
+  },
+  "public_data_refs": [
+    "derived_public_facts.temporal_action_space.compatible_engagements",
+    "public_instance_data.sets.sensors",
+    "public_instance_data.sets.targets",
+    "public_instance_data.sets.weapon_vehicles",
+    "public_instance_data.target_value",
+    "public_instance_data.target_channel_need",
+    "public_instance_data.sensor_channel_capacity",
+    "public_instance_data.weapon_inventory",
+    "public_instance_data.weapon_min_launch_interval_steps",
+    "public_instance_data.sensor_cost",
+    "public_instance_data.weapon_cost",
+    "derived_public_facts.temporal_action_space.compatible_engagements[*].combined_effectiveness",
+    "derived_public_facts.temporal_action_space.compatible_engagements[*].hit_step",
+    "derived_public_facts.temporal_action_space.compatible_engagements[*].tracking_start_step",
+    "derived_public_facts.temporal_action_space.compatible_engagements[*].tracking_end_step"
+  ],
+  "public_input_digest": "44b6357e874314c9b20730994a86eabc1379aa9d150ba3f53bc32a742eda40bf",
+  "sample_id": "MultiSWTA2_Type1_NT50_NS8_NC6_NV8_NW6_O4",
+  "scope_commitment": {
+    "claim_boundary": "Modeler commits to Planner-approved public scope; Builder must not upgrade modeling level.",
+    "excluded_constructs": [
+      "trajectory_kinematic",
+      "stochastic_or_robust",
+      "independent_launch_time_variable",
+      "dense_cartesian_expansion"
+    ],
+    "included_constructs": [
+      "candidate_assignment",
+      "time_indexed_public",
+      "interval_based_public",
+      "resource_capacity",
+      "deterministic_effectiveness_objective",
+      "hit_step_proxy_for_firing_interval"
+    ],
+    "planner_digest": "d8b3cdf8bc15c37b01a2a38982e5947fe665b807c631e230366e8c950aec95a2",
+    "planner_scope_digest": "cd04fc7da5a8f7c21963e5745a4790bc456ad4babf5949700d7e554fd0a2f94c",
+    "public_input_digest": "44b6357e874314c9b20730994a86eabc1379aa9d150ba3f53bc32a742eda40bf",
+    "scale_strategy": "Use sparse binary variable x[e] per public compatible engagement (|E|=3200). Constraints are linear and compact; firing interval uses sliding-window/bucketed aggregation; no quadratic all-pairs. Complexity O(|E| + |T| + |S|*|Tau| + |W|*|Tau|).",
+    "schema_version": "wta_mafa_agent_v0_4.p9_6.model_scope_commitment.v1",
+    "scope_commitment_digest": "a3731bf4677912e4e5a6721255a5f030a8f372ef3c399c8f466d2b88d457987f",
+    "selected_modeling_level": "time_indexed_sparse_public_candidate_assignment"
+  },
+  "solver_capability_notes": {
+    "constraint_complexity": "O(|E| + |T| + |S|*|Tau| + |W|*|Tau|), not O(|E|^2); sliding-window/bucket for firing interval",
+    "hard_constraints": "target_at_most_one, sensor_channel_capacity_time_indexed_weighted, weapon_inventory, weapon_min_launch_interval_hit_step_proxy",
+    "integrality": "binary x_e; no continuous variables required",
+    "model_type": "MILP (binary assignment with linear objective and constraints)",
+    "objective_sense": "minimize scalarized objective",
+    "solver_recommendation": "Gurobi or equivalent MILP solver; pre-solve estimate required; compact sparse time-indexed constraints",
+    "variable_count_estimate": "3200 binary variables (one per candidate; no dense Cartesian expansion)"
+  },
+  "variables": [
+    {
+      "domain": "binary",
+      "evidence_ref": "public_benchmark_execution_contract.candidate_sets[0].path",
+      "id": "V001",
+      "indices": "e in E = derived_public_facts.temporal_action_space.compatible_engagements",
+      "meaning": "x_e = 1 if public compatible sensor-weapon-target-time engagement candidate e is selected; 0 otherwise. Candidate e carries public sensor, weapon_vehicle, target, hit_step, tracking_start_step, tracking_end_step, target_value, combined_effectiveness, sensor_cost, weapon_cost.",
+      "name": "selected_engagement_assignment",
+      "public_data_ref": "derived_public_facts.temporal_action_space.compatible_engagements",
+      "symbol": "x_e"
+    }
+  ]
+}

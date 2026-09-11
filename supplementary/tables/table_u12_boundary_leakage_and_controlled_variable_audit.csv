@@ -1,0 +1,2 @@
+﻿Run profile,Solver backend,Solver time limit,Modeling budget,LLM model,Max calls,Temperature,Seed,Hardware,Notes
+full_benchmark_main_v1,gurobi,300,global_llm_hard_limit=18; max_route_rounds=8,authorized provider configured by runtime,18,runtime_default,runtime_default,local workstation,profile_override=false; public-only; public-only

@@ -1,0 +1,415 @@
+[
+  {
+    "element_id": "SET:I",
+    "type": "SET",
+    "canonical_name": "I",
+    "meaning": "defender missiles",
+    "master_spec_binding": {
+      "id": "I",
+      "meaning": "defender missiles",
+      "index": "i"
+    },
+    "source_trace_binding": "master_spec.sets"
+  },
+  {
+    "element_id": "SET:J",
+    "type": "SET",
+    "canonical_name": "J",
+    "meaning": "enemy targets",
+    "master_spec_binding": {
+      "id": "J",
+      "meaning": "enemy targets",
+      "index": "j"
+    },
+    "source_trace_binding": "master_spec.sets"
+  },
+  {
+    "element_id": "SET:A",
+    "type": "SET",
+    "canonical_name": "A",
+    "meaning": "enemy areas",
+    "master_spec_binding": {
+      "id": "A",
+      "meaning": "enemy areas",
+      "index": "mu"
+    },
+    "source_trace_binding": "master_spec.sets"
+  },
+  {
+    "element_id": "SET:J_mu",
+    "type": "SET",
+    "canonical_name": "J_mu",
+    "meaning": "targets located in area mu",
+    "master_spec_binding": {
+      "id": "J_mu",
+      "meaning": "targets located in area mu",
+      "index": "j"
+    },
+    "source_trace_binding": "master_spec.sets"
+  },
+  {
+    "element_id": "PARAM:V_j",
+    "type": "PARAM",
+    "canonical_name": "V_j",
+    "meaning": "value of target j",
+    "master_spec_binding": {
+      "id": "V_j",
+      "meaning": "value of target j",
+      "domain": "positive"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:C_i",
+    "type": "PARAM",
+    "canonical_name": "C_i",
+    "meaning": "cost of missile i",
+    "master_spec_binding": {
+      "id": "C_i",
+      "meaning": "cost of missile i",
+      "domain": "positive"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:r_i",
+    "type": "PARAM",
+    "canonical_name": "r_i",
+    "meaning": "intrinsic reliability of missile i",
+    "master_spec_binding": {
+      "id": "r_i",
+      "meaning": "intrinsic reliability of missile i",
+      "domain": "[0,1]"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:r_ei",
+    "type": "PARAM",
+    "canonical_name": "r_ei",
+    "meaning": "reliability of missile i in electromagnetic interference",
+    "master_spec_binding": {
+      "id": "r_ei",
+      "meaning": "reliability of missile i in electromagnetic interference",
+      "domain": "[0,1]"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:P_ij",
+    "type": "PARAM",
+    "canonical_name": "P_ij",
+    "meaning": "damage probability of missile i against target j",
+    "master_spec_binding": {
+      "id": "P_ij",
+      "meaning": "damage probability of missile i against target j",
+      "domain": "[0,1]"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:P_qi",
+    "type": "PARAM",
+    "canonical_name": "P_qi",
+    "meaning": "probability one enemy interceptor successfully intercepts missile i",
+    "master_spec_binding": {
+      "id": "P_qi",
+      "meaning": "probability one enemy interceptor successfully intercepts missile i",
+      "domain": "[0,1]"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:n_mu",
+    "type": "PARAM",
+    "canonical_name": "n_mu",
+    "meaning": "number of enemy interceptors in area mu",
+    "master_spec_binding": {
+      "id": "n_mu",
+      "meaning": "number of enemy interceptors in area mu",
+      "domain": "nonnegative integer"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:s_i",
+    "type": "PARAM",
+    "canonical_name": "s_i",
+    "meaning": "missile health indicator",
+    "master_spec_binding": {
+      "id": "s_i",
+      "meaning": "missile health indicator",
+      "domain": "{0,1}"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:d_ij",
+    "type": "PARAM",
+    "canonical_name": "d_ij",
+    "meaning": "distance between missile i and target j",
+    "master_spec_binding": {
+      "id": "d_ij",
+      "meaning": "distance between missile i and target j",
+      "domain": "nonnegative"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:D_i",
+    "type": "PARAM",
+    "canonical_name": "D_i",
+    "meaning": "range of missile i",
+    "master_spec_binding": {
+      "id": "D_i",
+      "meaning": "range of missile i",
+      "domain": "positive"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:rho_mu",
+    "type": "PARAM",
+    "canonical_name": "rho_mu",
+    "meaning": "minimum area mission reliability",
+    "master_spec_binding": {
+      "id": "rho_mu",
+      "meaning": "minimum area mission reliability",
+      "domain": "[0,1]",
+      "paper_value": "0.9"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "VAR:x_ij",
+    "type": "VAR",
+    "canonical_name": "x_ij",
+    "meaning": "1 iff missile i is allocated to target j",
+    "master_spec_binding": {
+      "id": "x_ij",
+      "meaning": "1 iff missile i is allocated to target j",
+      "domain": "binary"
+    },
+    "source_trace_binding": "master_spec.variables"
+  },
+  {
+    "element_id": "DERIVED:m_mu",
+    "type": "DERIVED",
+    "canonical_name": "m_mu",
+    "meaning": "number of defender missiles allocated/launched to area mu",
+    "master_spec_binding": {
+      "id": "m_mu(x)",
+      "formula": "sum_i sum_{j in J_mu} x_ij",
+      "meaning": "number of defender missiles allocated/launched to area mu"
+    },
+    "source_trace_binding": "master_spec.derived"
+  },
+  {
+    "element_id": "DERIVED:P_ci",
+    "type": "DERIVED",
+    "canonical_name": "P_ci",
+    "meaning": "probability missile i is not intercepted; equivalent to paper Eq. (2); zero-allocation areas are excluded by reliability constraints",
+    "master_spec_binding": {
+      "id": "P_ci(x)",
+      "formula": "(1 - P_qi / m_mu(x))^(n_mu) for missile i assigned to area mu",
+      "meaning": "probability missile i is not intercepted; equivalent to paper Eq. (2); zero-allocation areas are excluded by reliability constraints"
+    },
+    "source_trace_binding": "master_spec.derived"
+  },
+  {
+    "element_id": "DERIVED:R_ij",
+    "type": "DERIVED",
+    "canonical_name": "R_ij",
+    "meaning": "mission reliability contribution of missile i against target j",
+    "master_spec_binding": {
+      "id": "R_ij(x)",
+      "formula": "r_i * r_ei * P_ci(x) * P_ij",
+      "meaning": "mission reliability contribution of missile i against target j"
+    },
+    "source_trace_binding": "master_spec.derived"
+  },
+  {
+    "element_id": "DERIVED:R_j",
+    "type": "DERIVED",
+    "canonical_name": "R_j",
+    "meaning": "reliability of destroying target j",
+    "master_spec_binding": {
+      "id": "R_j(x)",
+      "formula": "1 - product_i (1-R_ij(x))^(x_ij)",
+      "meaning": "reliability of destroying target j"
+    },
+    "source_trace_binding": "master_spec.derived"
+  },
+  {
+    "element_id": "DERIVED:R_mu",
+    "type": "DERIVED",
+    "canonical_name": "R_mu",
+    "meaning": "mission reliability of area mu",
+    "master_spec_binding": {
+      "id": "R_mu(x)",
+      "formula": "product_{j in J_mu} R_j(x)",
+      "meaning": "mission reliability of area mu"
+    },
+    "source_trace_binding": "master_spec.derived"
+  },
+  {
+    "element_id": "DERIVED:R_all",
+    "type": "DERIVED",
+    "canonical_name": "R_all",
+    "meaning": "overall serial mission reliability",
+    "master_spec_binding": {
+      "id": "R_all(x)",
+      "formula": "product_{mu in A} R_mu(x)",
+      "meaning": "overall serial mission reliability"
+    },
+    "source_trace_binding": "master_spec.derived"
+  },
+  {
+    "element_id": "OBJ:F1",
+    "type": "OBJ",
+    "canonical_name": "F1",
+    "meaning": "efficiency-cost ratio",
+    "master_spec_binding": {
+      "id": "F1",
+      "sense": "maximize",
+      "formula": "(sum_j V_j R_j(x)) / (sum_i sum_j C_i x_ij)",
+      "meaning": "efficiency-cost ratio",
+      "source": "Eq. (5)"
+    },
+    "source_trace_binding": "Eq. (5)"
+  },
+  {
+    "element_id": "OBJ:F2",
+    "type": "OBJ",
+    "canonical_name": "F2",
+    "meaning": "overall mission reliability",
+    "master_spec_binding": {
+      "id": "F2",
+      "sense": "maximize",
+      "formula": "product_mu R_mu(x)",
+      "meaning": "overall mission reliability",
+      "source": "Eq. (6)"
+    },
+    "source_trace_binding": "Eq. (6)"
+  },
+  {
+    "element_id": "CON:C1",
+    "type": "CON",
+    "canonical_name": "C1",
+    "meaning": "total assignments do not exceed available missiles",
+    "master_spec_binding": {
+      "id": "C1",
+      "formula": "sum_i sum_j x_ij <= |I|",
+      "meaning": "total assignments do not exceed available missiles",
+      "source": "Eq. (7)"
+    },
+    "source_trace_binding": "Eq. (7)"
+  },
+  {
+    "element_id": "CON:C2",
+    "type": "CON",
+    "canonical_name": "C2",
+    "meaning": "each missile is allocated to at most one target",
+    "master_spec_binding": {
+      "id": "C2",
+      "formula": "sum_j x_ij <= 1 for all i",
+      "meaning": "each missile is allocated to at most one target",
+      "source": "Eq. (8)"
+    },
+    "source_trace_binding": "Eq. (8)"
+  },
+  {
+    "element_id": "CON:C3",
+    "type": "CON",
+    "canonical_name": "C3",
+    "meaning": "binary domains",
+    "master_spec_binding": {
+      "id": "C3",
+      "formula": "x_ij in {0,1}",
+      "meaning": "binary domains",
+      "source": "Eq. (9)"
+    },
+    "source_trace_binding": "Eq. (9)"
+  },
+  {
+    "element_id": "CON:C4",
+    "type": "CON",
+    "canonical_name": "C4",
+    "meaning": "only healthy missiles are admitted",
+    "master_spec_binding": {
+      "id": "C4",
+      "formula": "s_i = 1 for all available i",
+      "meaning": "only healthy missiles are admitted",
+      "source": "Eq. (10)",
+      "normalized_equivalent": "pre-filter I to healthy missiles"
+    },
+    "source_trace_binding": "Eq. (10)"
+  },
+  {
+    "element_id": "CON:C5",
+    "type": "CON",
+    "canonical_name": "C5",
+    "meaning": "only in-range missile-target pairs are admitted",
+    "master_spec_binding": {
+      "id": "C5",
+      "formula": "d_ij <= D_i for every admitted pair (i,j)",
+      "meaning": "only in-range missile-target pairs are admitted",
+      "source": "Eq. (11)",
+      "normalized_equivalent": "pre-filter assignment arcs"
+    },
+    "source_trace_binding": "Eq. (11)"
+  },
+  {
+    "element_id": "CON:C6",
+    "type": "CON",
+    "canonical_name": "C6",
+    "meaning": "each area must meet mission reliability threshold",
+    "master_spec_binding": {
+      "id": "C6",
+      "formula": "R_mu(x) >= rho_mu for all mu",
+      "meaning": "each area must meet mission reliability threshold",
+      "source": "Eq. (12)"
+    },
+    "source_trace_binding": "Eq. (12)"
+  },
+  {
+    "element_id": "SEMANTIC:aggregation_rule",
+    "type": "SEMANTIC",
+    "canonical_name": "aggregation_rule",
+    "meaning": "aggregation rule",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  },
+  {
+    "element_id": "SEMANTIC:eligibility_rule",
+    "type": "SEMANTIC",
+    "canonical_name": "eligibility_rule",
+    "meaning": "eligibility rule",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  },
+  {
+    "element_id": "SEMANTIC:unsupported_target_threat",
+    "type": "SEMANTIC",
+    "canonical_name": "unsupported_target_threat",
+    "meaning": "unsupported target threat",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  },
+  {
+    "element_id": "SEMANTIC:unsupported_time_window",
+    "type": "SEMANTIC",
+    "canonical_name": "unsupported_time_window",
+    "meaning": "unsupported time window",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  },
+  {
+    "element_id": "SEMANTIC:unsupported_generic_inventory",
+    "type": "SEMANTIC",
+    "canonical_name": "unsupported_generic_inventory",
+    "meaning": "unsupported generic inventory",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  }
+]

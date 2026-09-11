@@ -1,0 +1,11 @@
+﻿Design item,Frozen specification
+Paper families,"18, identified as P001-P018"
+Total samples,144
+Splits,dev 54; formal 72; stress 18
+Variants per family,S01-S08
+Agent-visible input,"scenario_nl.md, data_description.md, instance_data.json"
+Formal target,"Recovery of task structure, variables, objectives, constraints and public-data bindings"
+Solver calls,0 by protocol
+Evaluator-private materials,"Hidden references, assessability masks, element registries and validation traces"
+Source-disjointness,Confirmed in the frozen benchmark package
+Version,v0.3-frozen-R7D

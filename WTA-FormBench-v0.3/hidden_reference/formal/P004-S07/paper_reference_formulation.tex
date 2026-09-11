@@ -1,0 +1,6 @@
+\section*{Dynamic naval air-defense planning reference}
+Let \(Y_{ift}\) denote engagement starts, \(Z_{ift}\) radar support, \(H_{nt}\) headings and \(PS_{ift}\) platform survival. Minimize value-weighted residual hit probability
+\[
+\sum_i v_i PK_i \prod_{f,t} (1-p_{ift}PS_{ift})^{Y_{ift}}.
+\]
+The reference includes weapon-round limits, engagement-window conflicts, radar illumination and setup conflicts, ship turn-rate and wraparound logic, relative-bearing blind-sector exclusions, platform-survival coupling and fixed prior engagements in dynamic updates.

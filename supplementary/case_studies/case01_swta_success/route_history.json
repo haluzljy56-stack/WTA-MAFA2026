@@ -1,0 +1,24 @@
+[
+  {
+    "artifact_type": "error_route_decision",
+    "decision_digest": "fc2738f94ce88072ecb18ad1bf6e7c2cf0d09367bf848c01d00fa5797d853cd0",
+    "defects": [
+      {
+        "component_id": "",
+        "details": {},
+        "error_code": "MODEL_DESIGN_SECTION_EMPTY",
+        "message": "assumptions must be a non-empty list.",
+        "owner": "modeler",
+        "phase": "model_design",
+        "severity": "critical"
+      }
+    ],
+    "public_input_digest": "44b6357e874314c9b20730994a86eabc1379aa9d150ba3f53bc32a742eda40bf",
+    "reason": "model_design_contract_error detected in model_design_contract; route to modeler for bounded local repair.",
+    "retry_allowed": true,
+    "rollback_elite": false,
+    "round_index": 1,
+    "route_to": "modeler",
+    "source_phase": "model_design_contract"
+  }
+]

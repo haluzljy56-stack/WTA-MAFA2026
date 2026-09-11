@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P007 R3C instance schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "platforms",
+    "targets",
+    "hit_probability",
+    "target_value",
+    "target_threat_degree",
+    "weapon_cost",
+    "platform_weapon_capacity",
+    "target_max_assigned_weapons",
+    "range_feasibility"
+  ],
+  "properties": {
+    "target_value": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "hit_probability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "weapon_cost": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "target_max_assigned_weapons": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "platform_weapon_capacity": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "range_feasibility": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "target_threat_degree": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  }
+}

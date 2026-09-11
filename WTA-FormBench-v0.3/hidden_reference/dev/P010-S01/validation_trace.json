@@ -1,0 +1,76 @@
+{
+  "planted_weapon_assignment": {
+    "W01": {
+      "T01": 1,
+      "T02": 0,
+      "T03": 0,
+      "T04": 0
+    },
+    "W02": {
+      "T01": 0,
+      "T02": 1,
+      "T03": 0,
+      "T04": 0
+    },
+    "W03": {
+      "T01": 0,
+      "T02": 0,
+      "T03": 1,
+      "T04": 0
+    },
+    "W04": {
+      "T01": 0,
+      "T02": 0,
+      "T03": 0,
+      "T04": 1
+    },
+    "W05": {
+      "T01": 1,
+      "T02": 0,
+      "T03": 0,
+      "T04": 0
+    },
+    "W06": {
+      "T01": 0,
+      "T02": 1,
+      "T03": 0,
+      "T04": 0
+    }
+  },
+  "target_survival_probability_for_planted_assignment": {
+    "T01": 0.258875,
+    "T02": 0.468,
+    "T03": 0.545,
+    "T04": 0.72
+  },
+  "target_kill_probability_for_planted_assignment": {
+    "T01": 0.741125,
+    "T02": 0.532,
+    "T03": 0.455,
+    "T04": 0.28
+  },
+  "target_destruction_scheme": {
+    "T01": 1,
+    "T02": 0,
+    "T03": 0,
+    "T04": 0
+  },
+  "overkill_penalty_by_target": {
+    "T01": 0.126125,
+    "T02": 0.0,
+    "T03": 0.0,
+    "T04": 0.0
+  },
+  "invalid_kill_penalty_by_target": {
+    "T01": 0,
+    "T02": 2,
+    "T03": 1,
+    "T04": 1
+  },
+  "objective_value_of_planted_assignment": 17.873875,
+  "adequacy_classification_trace": {
+    "all_targets_destroyed_under_planted_assignment": false,
+    "destroyed_target_count": 1,
+    "target_count": 4
+  }
+}

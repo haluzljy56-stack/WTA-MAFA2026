@@ -1,0 +1,63 @@
+{
+  "accepted_source": "",
+  "best_attempt_index": null,
+  "best_available_artifact_dir": "",
+  "claim_boundary": "External failure report preserves low-quality or repair-failed solver-success artifacts in the denominator; it must not be fed back to the same sample's internal Agent loop.",
+  "defects": [
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field variable_slot_llm.",
+      "owner": "variable_agent",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    },
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field objective_slot_llm.",
+      "owner": "objective_agent",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    },
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field constraint_slot_llm.",
+      "owner": "constraint_agent",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    },
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field solution_view_slot_llm.",
+      "owner": "solution_view_slot",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    },
+    {
+      "component_id": "",
+      "details": {},
+      "error_code": "BUILDER_SLOT_MISSING",
+      "message": "LLM Builder slot response must include object field repair_slot_llm.",
+      "owner": "causal_error_router",
+      "phase": "stage6_7_builder_slot_contract",
+      "severity": "critical"
+    }
+  ],
+  "failure_report_digest": "00302608ed1becbfd6e041a8d25c70a3fa11ad61295926992db25a472d213abf",
+  "failure_type": "BUILD_FAILURE",
+  "partial_success": false,
+  "result_status": "p4_builder_contract_failed",
+  "schema_version": "wta_mafa_agent_v0_4.p9_7.external_failure_report.v1",
+  "solver_success": false,
+  "solver_success_quality_failed": false,
+  "solver_success_repair_failed": false,
+  "terminal_failure_status": "",
+  "verified_success": false
+}

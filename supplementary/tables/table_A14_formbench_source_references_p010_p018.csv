@@ -1,0 +1,10 @@
+﻿ID,Verified source reference,Venue and year,DOI
+P010,"Y. Ma, G. Wang, X. Hu, and H. Luo, “Two-stage hybrid heuristic search algorithm for novel weapon target assignment problems”","Computers & Industrial Engineering, 2021",10.1016/j.cie.2021.107717
+P011,"W. Luo, J. Lü, K. Liu, and L. Chen, “Learning-Based Policy Optimization for Adversarial Missile-Target Assignment”","IEEE TSMC: Systems, 2022",10.1109/TSMC.2021.3096997
+P012,"N. Zheng, R. Wang, K. Li, W. Li, T. Luo, and H. Deng, “Balancing Global and Local Search via Q-Learning in Evolutionary Algorithms for Air Defense Resource Assignment Problems”","IEEE TSMC: Systems, 2025",10.1109/TSMC.2026.3690023
+P013,"R. Han, T. Zhang, H. Zhong, and Y. Wang, “A Dynamic UAVs Cooperative Suppressive Jamming Method With Joint Task Assignment and Bandwidth Allocation”","IEEE TAES, 2025",10.1109/TAES.2025.3566932
+P014,"Z. Bai, H. Zhou, J. Shi, L. Xing, and J. Wang, “A hybrid multi-objective evolutionary algorithm with high solving efficiency for UAV defense programming”","Swarm and Evolutionary Computation, 2024",10.1016/j.swevo.2024.101572
+P015,"N. Li, Z. Su, H. Ling, M. Karatas, and Y. Zheng, “Optimization of Air Defense System Deployment Against Reconnaissance Drone Swarms”","Complex System Modeling and Simulation, 2023",10.23919/CSMS.2023.0003
+P016,"K. Hendrickson, P. Ganesh, K. Volle, P. Buzaud, K. Brink, and M. Hale, “Decentralized Weapon-Target Assignment under Asynchronous Communications”","Journal of Guidance, Control, and Dynamics, 2022",
+P017,"C. Liu, J. Li, Y. Wang, Y. Yu, L. Hongguo, Y. Gao, Y. Chen, and F. Zhang, “A Time-Driven Dynamic Weapon Target Assignment Method”","IEEE Access, 2023",10.1109/ACCESS.2023.3332513
+P018,"J.-E. Kim, C.-H. Lee, and M.-Y. Yi, “New Weapon Target Assignment Algorithms for Multiple Targets Using a Rotational Strategy and Clustering Approach”","IEEE Access, 2022",10.1109/ACCESS.2022.3168718

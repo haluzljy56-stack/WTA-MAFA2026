@@ -1,0 +1,58 @@
+{
+  "weapons": [
+    "W01",
+    "W02",
+    "W03"
+  ],
+  "current_missile_storage_list": [
+    "M01",
+    "M02",
+    "M03",
+    "M04"
+  ],
+  "missile_distance_to_asset": {
+    "M01": 22.3,
+    "M02": 26.6,
+    "M03": 30.9,
+    "M04": 30.8
+  },
+  "missile_damage_intensity": {
+    "M01": 55.5,
+    "M02": 66.0,
+    "M03": 64.5,
+    "M04": 75.0
+  },
+  "weapon_missile_destroy_probability": {
+    "W01": {
+      "M01": 0.485,
+      "M02": 0.62,
+      "M03": 0.305,
+      "M04": 0.44
+    },
+    "W02": {
+      "M01": 0.575,
+      "M02": 0.26,
+      "M03": 0.395,
+      "M04": 0.53
+    },
+    "W03": {
+      "M01": 0.665,
+      "M02": 0.35,
+      "M03": 0.485,
+      "M04": 0.62
+    }
+  },
+  "missile_availability_mask": {
+    "M01": 1,
+    "M02": 0,
+    "M03": 1,
+    "M04": 0
+  },
+  "sampling_interval": 5,
+  "switching_penalty_if_reward_style_sample": -0.04,
+  "previous_weapon_action_if_switching_penalty_active": {
+    "W01": 0,
+    "W02": 0,
+    "W03": 0
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "kill_probability": {
+    "M01": {
+      "T01": 0.361111,
+      "T02": 0.333333,
+      "T03": 0.309524,
+      "T04": 0.481481
+    },
+    "M02": {
+      "T01": 0.394737,
+      "T02": 0.365854,
+      "T03": 0.340909,
+      "T04": 0.517241
+    },
+    "M03": {
+      "T01": 0.425,
+      "T02": 0.395349,
+      "T03": 0.369565,
+      "T04": 0.548387
+    },
+    "M04": {
+      "T01": 0.452381,
+      "T02": 0.422222,
+      "T03": 0.395833,
+      "T04": 0.575758
+    },
+    "M05": {
+      "T01": 0.477273,
+      "T02": 0.446809,
+      "T03": 0.42,
+      "T04": 0.6
+    },
+    "M06": {
+      "T01": 0.28125,
+      "T02": 0.257143,
+      "T03": 0.236842,
+      "T04": 0.391304
+    }
+  },
+  "joint_kill_probability": {
+    "T01": 0.424955,
+    "T02": 0.378523,
+    "T03": 0.291956,
+    "T04": 0.33394
+  },
+  "sampled_penetration_outcomes": {
+    "T01": {
+      "M01": {
+        "penetration_probability": 0.61,
+        "not_intercepted_indicator_for_private_validation": 1
+      },
+      "M05": {
+        "penetration_probability": 0.55,
+        "not_intercepted_indicator_for_private_validation": 0
+      }
+    },
+    "T02": {
+      "M02": {
+        "penetration_probability": 0.7,
+        "not_intercepted_indicator_for_private_validation": 1
+      },
+      "M06": {
+        "penetration_probability": 0.64,
+        "not_intercepted_indicator_for_private_validation": 1
+      }
+    },
+    "T03": {
+      "M03": {
+        "penetration_probability": 0.79,
+        "not_intercepted_indicator_for_private_validation": 1
+      }
+    },
+    "T04": {
+      "M04": {
+        "penetration_probability": 0.58,
+        "not_intercepted_indicator_for_private_validation": 1
+      }
+    }
+  },
+  "planted_assignment": {
+    "M01": {
+      "T01": 1,
+      "T02": 0,
+      "T03": 0,
+      "T04": 0
+    },
+    "M02": {
+      "T01": 0,
+      "T02": 1,
+      "T03": 0,
+      "T04": 0
+    },
+    "M03": {
+      "T01": 0,
+      "T02": 0,
+      "T03": 1,
+      "T04": 0
+    },
+    "M04": {
+      "T01": 0,
+      "T02": 0,
+      "T03": 0,
+      "T04": 1
+    },
+    "M05": {
+      "T01": 1,
+      "T02": 0,
+      "T03": 0,
+      "T04": 0
+    },
+    "M06": {
+      "T01": 0,
+      "T02": 1,
+      "T03": 0,
+      "T04": 0
+    }
+  },
+  "objective_value_of_planted_assignment": 45.555619,
+  "multiobjective_cost_trace": {
+    "assigned_missile_cost_sum": 35,
+    "no_public_pareto_answer": true
+  }
+}

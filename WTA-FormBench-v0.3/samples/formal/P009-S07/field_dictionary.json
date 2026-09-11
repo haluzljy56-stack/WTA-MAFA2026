@@ -1,0 +1,194 @@
+{
+  "sample_id": "P009-S07",
+  "paper_id": "P009",
+  "contract_version": "R3C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "targets",
+      "meaning": "target identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "target",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "target index"
+    },
+    {
+      "name": "sensors",
+      "meaning": "sensor identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "sensor",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "sensor tuple component"
+    },
+    {
+      "name": "weapon_vehicles",
+      "meaning": "weapon vehicle identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "weapon vehicle",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "weapon tuple component"
+    },
+    {
+      "name": "time_moments",
+      "meaning": "interception moment identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique ordered list",
+      "index_order": "time",
+      "domain_or_range": "unique identifiers",
+      "unit": "time moment",
+      "raw_or_derived": "raw set",
+      "agent_facing_role": "time tuple component"
+    },
+    {
+      "name": "mop_type",
+      "meaning": "source-defined benchmark type setting",
+      "type": "string",
+      "shape_or_key_structure": "categorical scalar",
+      "index_order": "not indexed",
+      "domain_or_range": "SWTA_MOP1..SWTA_MOP5 or configurable stress",
+      "unit": "dimensionless",
+      "raw_or_derived": "scenario parameter",
+      "agent_facing_role": "benchmark configuration"
+    },
+    {
+      "name": "target_value",
+      "meaning": "interception value of each target",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative number",
+      "index_order": "target",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "F1 input"
+    },
+    {
+      "name": "detection_probability",
+      "meaning": "detection probability for tuple sensor/time/target",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> time -> target -> probability",
+      "index_order": "sensor, time, target",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "raw/precomputed probability",
+      "agent_facing_role": "tuple probability input"
+    },
+    {
+      "name": "interception_probability",
+      "meaning": "interception probability for tuple weapon/time/target",
+      "type": "object",
+      "shape_or_key_structure": "weapon vehicle -> time -> target -> probability",
+      "index_order": "weapon, time, target",
+      "domain_or_range": "[0,1]",
+      "unit": "probability",
+      "raw_or_derived": "raw/precomputed probability",
+      "agent_facing_role": "tuple probability input"
+    },
+    {
+      "name": "sensor_cost",
+      "meaning": "tracking cost per sensor",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> nonnegative number",
+      "index_order": "sensor",
+      "domain_or_range": "number >= 0",
+      "unit": "cost units",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "F2 input"
+    },
+    {
+      "name": "weapon_cost",
+      "meaning": "usage cost per weapon vehicle",
+      "type": "object",
+      "shape_or_key_structure": "weapon vehicle -> nonnegative number",
+      "index_order": "weapon",
+      "domain_or_range": "number >= 0",
+      "unit": "cost units",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "F2 input"
+    },
+    {
+      "name": "target_interception_duration",
+      "meaning": "time required after chosen moment to complete interception",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative duration",
+      "index_order": "target",
+      "domain_or_range": "number >= 0",
+      "unit": "time moments",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "G1 input"
+    },
+    {
+      "name": "target_flight_time",
+      "meaning": "latest allowable target flight/impact time",
+      "type": "object",
+      "shape_or_key_structure": "target -> positive time",
+      "index_order": "target",
+      "domain_or_range": "positive number",
+      "unit": "time moments",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "G1 input"
+    },
+    {
+      "name": "target_channel_requirement",
+      "meaning": "sensor channels required by a target",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative integer",
+      "index_order": "target",
+      "domain_or_range": "integer >= 0",
+      "unit": "channels",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "G2 input"
+    },
+    {
+      "name": "target_detection_persistence_time",
+      "meaning": "time required for consistent detection",
+      "type": "object",
+      "shape_or_key_structure": "target -> nonnegative duration",
+      "index_order": "target",
+      "domain_or_range": "number >= 0",
+      "unit": "time moments",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "G2 input"
+    },
+    {
+      "name": "sensor_channel_capacity",
+      "meaning": "sensor channel capacity",
+      "type": "object",
+      "shape_or_key_structure": "sensor -> nonnegative integer",
+      "index_order": "sensor",
+      "domain_or_range": "integer >= 0",
+      "unit": "channels",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "G2 input"
+    },
+    {
+      "name": "weapon_vehicle_capacity",
+      "meaning": "weapon vehicle capacity",
+      "type": "object",
+      "shape_or_key_structure": "weapon vehicle -> nonnegative integer",
+      "index_order": "weapon",
+      "domain_or_range": "integer >= 0",
+      "unit": "interceptions",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "G3 input"
+    },
+    {
+      "name": "weapon_firing_interval",
+      "meaning": "minimum firing interval per weapon vehicle",
+      "type": "object",
+      "shape_or_key_structure": "weapon vehicle -> nonnegative time",
+      "index_order": "weapon",
+      "domain_or_range": "number >= 0",
+      "unit": "time moments",
+      "raw_or_derived": "raw parameter",
+      "agent_facing_role": "G4 input"
+    }
+  ]
+}

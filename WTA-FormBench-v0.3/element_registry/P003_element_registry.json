@@ -1,0 +1,281 @@
+[
+  {
+    "element_id": "SET:H",
+    "type": "SET",
+    "canonical_name": "H",
+    "meaning": "high-speed flight vehicles",
+    "master_spec_binding": {
+      "id": "H",
+      "meaning": "high-speed flight vehicles",
+      "index": "i",
+      "cardinality": "M"
+    },
+    "source_trace_binding": "master_spec.sets"
+  },
+  {
+    "element_id": "SET:T",
+    "type": "SET",
+    "canonical_name": "T",
+    "meaning": "targets",
+    "master_spec_binding": {
+      "id": "T",
+      "meaning": "targets",
+      "index": "j",
+      "cardinality": "N",
+      "condition": "M >= N"
+    },
+    "source_trace_binding": "master_spec.sets"
+  },
+  {
+    "element_id": "PARAM:d_ij",
+    "type": "PARAM",
+    "canonical_name": "d_ij",
+    "meaning": "actual trajectory length from HFV i to target j",
+    "master_spec_binding": {
+      "id": "d_ij",
+      "meaning": "actual trajectory length from HFV i to target j",
+      "domain": "nonnegative",
+      "source": "Eqs. (1)-(2) or precomputed trajectory generator"
+    },
+    "source_trace_binding": "Eqs. (1)-(2) or precomputed trajectory generator"
+  },
+  {
+    "element_id": "PARAM:v_ij",
+    "type": "PARAM",
+    "canonical_name": "v_ij",
+    "meaning": "maximum residual speed of HFV i at target j",
+    "master_spec_binding": {
+      "id": "v_ij",
+      "meaning": "maximum residual speed of HFV i at target j",
+      "domain": "positive"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:a_j",
+    "type": "PARAM",
+    "canonical_name": "a_j",
+    "meaning": "anti-damage capability of target j",
+    "master_spec_binding": {
+      "id": "a_j",
+      "meaning": "anti-damage capability of target j",
+      "domain": "positive"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:u_j",
+    "type": "PARAM",
+    "canonical_name": "u_j",
+    "meaning": "value of target j",
+    "master_spec_binding": {
+      "id": "u_j",
+      "meaning": "value of target j",
+      "domain": "positive"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:z_j",
+    "type": "PARAM",
+    "canonical_name": "z_j",
+    "meaning": "maximum number of HFVs allowed for target j",
+    "master_spec_binding": {
+      "id": "z_j",
+      "meaning": "maximum number of HFVs allowed for target j",
+      "domain": "positive integer"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:omega_P",
+    "type": "PARAM",
+    "canonical_name": "omega_P",
+    "meaning": "weight of act payoff",
+    "master_spec_binding": {
+      "id": "omega_P",
+      "meaning": "weight of act payoff",
+      "domain": "nonnegative"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "PARAM:omega_D",
+    "type": "PARAM",
+    "canonical_name": "omega_D",
+    "meaning": "weight of distance cost",
+    "master_spec_binding": {
+      "id": "omega_D",
+      "meaning": "weight of distance cost",
+      "domain": "nonnegative"
+    },
+    "source_trace_binding": "master_spec.parameters"
+  },
+  {
+    "element_id": "VAR:chi_ij",
+    "type": "VAR",
+    "canonical_name": "chi_ij",
+    "meaning": "1 iff HFV i is assigned to target j",
+    "master_spec_binding": {
+      "id": "chi_ij",
+      "meaning": "1 iff HFV i is assigned to target j",
+      "domain": "binary"
+    },
+    "source_trace_binding": "master_spec.variables"
+  },
+  {
+    "element_id": "DERIVED:q_ij",
+    "type": "DERIVED",
+    "canonical_name": "q_ij",
+    "meaning": "mission success rate; Norm2 is the paper's matrix normalization to [0,2]",
+    "master_spec_binding": {
+      "id": "q_ij",
+      "formula": "exp(-Norm2(a_j / v_ij))",
+      "meaning": "mission success rate; Norm2 is the paper's matrix normalization to [0,2]",
+      "source": "Eq. (3)"
+    },
+    "source_trace_binding": "Eq. (3)"
+  },
+  {
+    "element_id": "DERIVED:p_ij",
+    "type": "DERIVED",
+    "canonical_name": "p_ij",
+    "meaning": "act payoff",
+    "master_spec_binding": {
+      "id": "p_ij",
+      "formula": "q_ij * u_j",
+      "meaning": "act payoff",
+      "source": "Eq. (4)"
+    },
+    "source_trace_binding": "Eq. (4)"
+  },
+  {
+    "element_id": "DERIVED:p_hat_ij",
+    "type": "DERIVED",
+    "canonical_name": "p_hat_ij",
+    "meaning": "normalized payoff used in Eq. (5)",
+    "master_spec_binding": {
+      "id": "p_hat_ij",
+      "formula": "paper-compatible normalized act payoff supplied or deterministically computed",
+      "meaning": "normalized payoff used in Eq. (5)"
+    },
+    "source_trace_binding": "master_spec.derived"
+  },
+  {
+    "element_id": "DERIVED:d_hat_ij",
+    "type": "DERIVED",
+    "canonical_name": "d_hat_ij",
+    "meaning": "normalized distance used in Eq. (5)",
+    "master_spec_binding": {
+      "id": "d_hat_ij",
+      "formula": "paper-compatible normalized actual trajectory distance supplied or deterministically computed",
+      "meaning": "normalized distance used in Eq. (5)"
+    },
+    "source_trace_binding": "master_spec.derived"
+  },
+  {
+    "element_id": "OBJ:OBJ",
+    "type": "OBJ",
+    "canonical_name": "OBJ",
+    "meaning": "sum_i sum_j chi_ij (omega_P p_hat_ij - omega_D d_hat_ij)",
+    "master_spec_binding": {
+      "id": "OBJ",
+      "sense": "maximize",
+      "formula": "sum_i sum_j chi_ij (omega_P p_hat_ij - omega_D d_hat_ij)",
+      "source": "Eq. (5)"
+    },
+    "source_trace_binding": "Eq. (5)"
+  },
+  {
+    "element_id": "CON:C0",
+    "type": "CON",
+    "canonical_name": "C0",
+    "meaning": "enough HFVs to cover all targets",
+    "master_spec_binding": {
+      "id": "C0",
+      "formula": "M >= N",
+      "meaning": "enough HFVs to cover all targets",
+      "source": "Eq. (6)"
+    },
+    "source_trace_binding": "Eq. (6)"
+  },
+  {
+    "element_id": "CON:C1",
+    "type": "CON",
+    "canonical_name": "C1",
+    "meaning": "every target receives at least one and at most z_j HFVs",
+    "master_spec_binding": {
+      "id": "C1",
+      "formula": "1 <= sum_i chi_ij <= z_j for all j",
+      "meaning": "every target receives at least one and at most z_j HFVs",
+      "source": "Eq. (7)"
+    },
+    "source_trace_binding": "Eq. (7)"
+  },
+  {
+    "element_id": "CON:C2",
+    "type": "CON",
+    "canonical_name": "C2",
+    "meaning": "every HFV is assigned to exactly one target",
+    "master_spec_binding": {
+      "id": "C2",
+      "formula": "sum_j chi_ij = 1 for all i",
+      "meaning": "every HFV is assigned to exactly one target",
+      "source": "Eq. (8)"
+    },
+    "source_trace_binding": "Eq. (8)"
+  },
+  {
+    "element_id": "CON:C3",
+    "type": "CON",
+    "canonical_name": "C3",
+    "meaning": "binary domain",
+    "master_spec_binding": {
+      "id": "C3",
+      "formula": "chi_ij in {0,1}",
+      "meaning": "binary domain",
+      "source": "decision definition"
+    },
+    "source_trace_binding": "decision definition"
+  },
+  {
+    "element_id": "SEMANTIC:aggregation_rule",
+    "type": "SEMANTIC",
+    "canonical_name": "aggregation_rule",
+    "meaning": "aggregation rule",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  },
+  {
+    "element_id": "SEMANTIC:eligibility_rule",
+    "type": "SEMANTIC",
+    "canonical_name": "eligibility_rule",
+    "meaning": "eligibility rule",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  },
+  {
+    "element_id": "SEMANTIC:unsupported_target_threat",
+    "type": "SEMANTIC",
+    "canonical_name": "unsupported_target_threat",
+    "meaning": "unsupported target threat",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  },
+  {
+    "element_id": "SEMANTIC:unsupported_time_window",
+    "type": "SEMANTIC",
+    "canonical_name": "unsupported_time_window",
+    "meaning": "unsupported time window",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  },
+  {
+    "element_id": "SEMANTIC:unsupported_generic_inventory",
+    "type": "SEMANTIC",
+    "canonical_name": "unsupported_generic_inventory",
+    "meaning": "unsupported generic inventory",
+    "master_spec_binding": "semantic/rubric element",
+    "source_trace_binding": "R1C registry"
+  }
+]

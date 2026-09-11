@@ -1,0 +1,106 @@
+{
+  "sample_id": "P017-S04",
+  "paper_id": "P017",
+  "contract_version": "R6C_field_dictionary_v1.0",
+  "fields": [
+    {
+      "name": "weapons",
+      "meaning": "defensive weapon identifiers",
+      "type": "array[string]",
+      "shape_or_key_structure": "unique list",
+      "index_order": "unique list",
+      "domain_or_range": "unique identifiers",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "defines weapon set"
+    },
+    {
+      "name": "current_missile_storage_list",
+      "meaning": "missiles currently selectable at sampling time",
+      "type": "array/object",
+      "shape_or_key_structure": "list or time -> list",
+      "index_order": "list or time -> list",
+      "domain_or_range": "missile identifiers",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "defines current storage state"
+    },
+    {
+      "name": "missile_distance_to_asset",
+      "meaning": "distance from missile to protected asset",
+      "type": "object",
+      "shape_or_key_structure": "missile -> positive number, optionally time-indexed",
+      "index_order": "missile -> positive number, optionally time-indexed",
+      "domain_or_range": "number > 0",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "threat denominator"
+    },
+    {
+      "name": "missile_damage_intensity",
+      "meaning": "damage intensity of each missile",
+      "type": "object",
+      "shape_or_key_structure": "missile -> nonnegative number, optionally time-indexed",
+      "index_order": "missile -> nonnegative number, optionally time-indexed",
+      "domain_or_range": "number >= 0",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "threat numerator"
+    },
+    {
+      "name": "weapon_missile_destroy_probability",
+      "meaning": "destroy probability by weapon and missile",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> missile -> probability, optionally time-indexed",
+      "index_order": "weapon -> missile -> probability, optionally time-indexed",
+      "domain_or_range": "0 <= p <= 1",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "assignment reward input"
+    },
+    {
+      "name": "missile_availability_mask",
+      "meaning": "whether a missile is selectable",
+      "type": "object",
+      "shape_or_key_structure": "missile -> 0/1, optionally time-indexed",
+      "index_order": "missile -> 0/1, optionally time-indexed",
+      "domain_or_range": "0 or 1",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "storage availability input"
+    },
+    {
+      "name": "sampling_interval",
+      "meaning": "fixed sampling interval and optional time keys",
+      "type": "number/object",
+      "shape_or_key_structure": "seconds or metadata",
+      "index_order": "seconds or metadata",
+      "domain_or_range": "positive",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "time-driven decision cadence"
+    },
+    {
+      "name": "switching_penalty_if_reward_style_sample",
+      "meaning": "optional target-switching penalty",
+      "type": "number",
+      "shape_or_key_structure": "scalar",
+      "index_order": "scalar",
+      "domain_or_range": "nonpositive",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "optional reward-style penalty"
+    },
+    {
+      "name": "previous_weapon_action_if_switching_penalty_active",
+      "meaning": "previous weapon selections for switching penalty",
+      "type": "object",
+      "shape_or_key_structure": "weapon -> missile or 0",
+      "index_order": "weapon -> missile or 0",
+      "domain_or_range": "valid prior action",
+      "unit": "dimensionless unless coordinates/time/angle are explicitly indicated",
+      "raw_or_derived": "public instance parameter",
+      "agent_facing_role": "optional reward context"
+    }
+  ]
+}

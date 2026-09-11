@@ -1,0 +1,2 @@
+﻿ID,Name,Sense,Meaning,Formula text,Uses
+aggregate_interception_probability,aggregate_interception_probability,maximize,sum_i (1 - product_k(1 - p_ik)),sum_i (1 - product_k(1 - p_ik)),"target_interception_rate, target_type_interception_rate"
