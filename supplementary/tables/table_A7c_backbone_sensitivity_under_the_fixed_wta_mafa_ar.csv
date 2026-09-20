@@ -1,4 +1,0 @@
-﻿Backbone,Full success,Scalar domain quality,Mean LLM calls,Mean total tokens,Mean modeling time (s),Provider/runtime failures
-DeepSeek-V4-Pro,33/40 (82.5%),0.7567,4.825,"163,738.1",388.407,0
-Qwen3.7-Max,34/40 (85.0%),0.7606,4.025,"112,131.0",82.982,0
-Kimi-K3,32/40 (80.0%),0.7619,7.950,"221,676.1","1,500.510",3

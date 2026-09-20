@@ -1,2 +1,0 @@
-﻿Method,Input files exposed,Forbidden files blocked,Boundary report pass,External-only flags pass,Public digest match,Notes
-WTA-MAFA v0.4,formal manifest public_input_path / derived_public_input_path only,reference/trusted evaluator outputs not in prompt,1,True,recorded in external reports,feedback_to_current_agent_allowed=false; memory_prompt_allowed=false

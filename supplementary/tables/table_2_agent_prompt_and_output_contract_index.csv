@@ -1,7 +1,0 @@
-﻿Agent,Prompt length,LLM call,Human-readable input,Human-readable output
-Planner,2516,Yes,"Public scenario, public instance data, execution-contract summary","Problem family, public fields, candidate objectives, candidate constraints, forbidden-data boundary, modeling-scope judgement"
-Modeler,3000,Yes,"Planner output, public input, execution contract","Design Card: variables, objectives, constraints, assumptions, public-data references and scope commitment"
-Critic,2807,Yes,Design Card and Planner scope,"Execution-blocking defects, public-data binding risks, boundary violations, pass/fail"
-ErrorRouter,210,Yes,A normalized defect produced at any stage,"Route target, responsible component, retry permission, stop-or-rollback decision"
-Revisor,2613,Conditional,A local defect named by Critic or the Error Router,A local repair patch; the whole Design Card is not rewritten
-Executable Builder,13596,Yes,"Public input, Builder hints, hard execution contract, front-end design summary","Executable Python/Gurobi code, MODEL_REGISTRY, solution_view"

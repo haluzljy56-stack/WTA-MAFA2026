@@ -1,6 +1,0 @@
-﻿Experiment block,Sample scope,Fixed variables,Allowed change,Appendix role
-Formal182 C0,182 SWTA/MADRA samples,WTA-MAFA v0.4,No generation-stage reference/evaluator feedback,Mainline automated-modeling evidence
-C-baseline,Same public benchmark and evaluator,Original baseline logic retained,Only public input wrapper and model backend adapter,Like-for-like cross-method comparison
-A0 / D-Arch,Representative 40-sample slice,DeepSeek backbone and evaluator fixed,Only architecture component changes,Component-contribution ablation
-D-Backbone,Same representative 40-sample slice,"Architecture, prompts, schema, solver, evaluator fixed",Only LLM provider/model changes,Backbone robustness
-E reference/context,Only paired contexts where available,Not an automatic-modeling competitor,No feedback into A/C/D generation stage,Expert modeling-quality context

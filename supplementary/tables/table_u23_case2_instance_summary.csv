@@ -1,9 +1,0 @@
-﻿Field,Value,Meaning
-Launchers,8,public launcher set
-Radars,8,public radar set
-Targets,50,public target set
-Engagement options,1410,candidate radar-launcher-target triplets
-Radar intervals,335,public trackable hit intervals
-Launcher intervals,289,public trackable hit intervals
-Scale,"{'launcher_load': 10, 'launchers': 8, 'radar_channels': 11, 'radars': 8, 'targets': 50}",public size marker
-Time horizon,"{'horizon_rule': 'floor(ceil(path_length / target_speed) / time_step_s)', 'pretrack_duration_s': 15.0, 'pretrack_steps': 19, 'start_s': 0...",public time scale

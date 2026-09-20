@@ -1,3 +1,0 @@
-﻿Benchmark,Source,Cases,Coverage,Public input contains,Capability tested
-SWTA,"Zheng et al., 2026",162,MOP1-MOP5; Type0/Type1; O2/O3/O4; multiple scale tags,"Sensors, weapons, targets, candidate engagements, target values, detection/interception effectiveness, resource and temporal constraints","Tests multi-objective WTA modeling, candidate assignment, resource capacity, tactical timing and scale variation"
-MADRA,"Li et al., 2024",20,P1-P10; single and multi3,"Radars, launchers, targets, hit times, channel occupancy, inventory, repeated-interception intervals",Tests radar-launcher-target-hit-time chain semantics and multi-round interception feasibility

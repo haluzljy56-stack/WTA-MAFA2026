@@ -1,8 +1,0 @@
-﻿Batch,Families,Function
-R1D,P001-P003,Source rebuild and first family contracts
-R2E,P004-P006,Dynamic and naval family acceptance
-R3C,P007-P009,"Distributed, multi-solution and large-scale SWTA acceptance"
-R4D,P010-P012,"Uncertainty, adversarial and air-defense resource families"
-R5D,P013-P015,"Jamming, UAV defense and deployment families"
-R6C,P016-P018,"Decentralized, time-driven and rotational families"
-R7/R7D,All P001-P018,"Assembly, boundary audit, manifest check and final freeze"

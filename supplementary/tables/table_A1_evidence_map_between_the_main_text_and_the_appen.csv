@@ -1,7 +1,0 @@
-﻿Main-text object,Main-text role,Appendix evidence
-Table 1: SWTA end-to-end results,Overall modeling coverage and comparison,"Tables A5a and A5d, Figure A9"
-Table 2: MADRA end-to-end and comparable quality results,Temporal-chain coverage and domain-quality comparison,"Tables A5b-A5c, A9, Figure A7"
-Expert reference comparison,Availability gap and conditional quality proximity,"Tables A4a-A4b, Figure A4"
-Architecture and backbone analysis,Where the gain comes from and whether it depends on one model,"Tables A5a-A5c, Figures A5-A9"
-WTA-FormBench-v0.3 summary,Cross-family formulation recovery,"Sections 3.7.6-3.7.11, Tables A18-A21"
-Failure and robustness claims,"Boundaries, failure modes and pressure behavior","Tables A3e, A5d-A5e, A11, Figures A5-A9"

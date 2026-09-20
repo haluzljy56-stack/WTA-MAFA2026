@@ -14,6 +14,8 @@ Evaluator-private files:
 - `metadata.json`
 - `validation_trace.json`
 
+Evaluator-private files are not part of this public release.
+
 The final validator checks public witness leakage, scenario leakage, agent input manifests and mask/registry consistency.
 
 ## R7D Formal Freeze Repair

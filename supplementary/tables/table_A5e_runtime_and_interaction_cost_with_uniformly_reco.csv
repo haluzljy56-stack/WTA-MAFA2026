@@ -1,5 +1,0 @@
-﻿Method,N,Mean LLM calls,Mean modeling time (s),Mean total wall time (s)
-WTA-MAFA,182,4.87,397.47,398.24
-OR-LLM-Agent,182,2.00,190.19,190.19
-CoE,182,7.00,139.70,139.70
-OptiMUS v0.3,182,56.45,731.75,731.75

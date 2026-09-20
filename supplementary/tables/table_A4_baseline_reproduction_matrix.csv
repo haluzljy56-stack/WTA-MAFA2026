@@ -1,5 +1,0 @@
-﻿Method,Reproduced components,Benchmark-specific adaptation,Role
-OR-LLM-Agent [27],"Original modeling, code-generation and debugging order",Public input wrapper and unified external evaluation,General OR-agent comparison
-CoE [21],Chain-of-experts collaboration and trial logic,Public input wrapper and unified external evaluation,Multi-expert modeling comparison
-OptiMUS v0.3 [14],"Objective/constraint extraction, model generation and execution feedback",Public input wrapper and unified external evaluation,Solver-feedback modeling comparison
-WTA-MAFA,"Planner, Modeler, Critic, Builder Team, SCW, Error Router, bounded repair and replay checks",Native WTA-MAFA execution contract,Proposed system

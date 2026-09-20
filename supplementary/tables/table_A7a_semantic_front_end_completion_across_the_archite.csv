@@ -1,8 +1,0 @@
-﻿Configuration,Semantic/front-end success
-A0/D0 zero-shot,10/40 (25.0%)
-D1 structured prompt,5/40 (12.5%)
-D2 Planner + Modeler + Critic,24/40 (60.0%)
-D3 one-shot executable Builder,22/40 (55.0%)
-D4 + Error Router and bounded repair,28/40 (70.0%)
-D5 + Builder Team and SCW,33/40 (82.5%)
-D6 full WTA-MAFA,33/40 (82.5%)

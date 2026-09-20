@@ -1,7 +1,0 @@
-﻿Boundary check,Value
-public-only generation,True
-hidden / reference artifacts visible,False
-evaluator feedback allowed back into generator,False
-candidate builder source,agent_generated_only
-candidate model source,agent_generated_only
-solver agent owns optimize,True

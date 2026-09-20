@@ -1,6 +1,0 @@
-﻿Configuration,Full success,Solver success,Public feasible,Objective consistency
-A0/D0 zero-shot,0/40 (0.0%),0/40 (0.0%),0/40 (0.0%),0/40 (0.0%)
-D3 one-shot executable Builder,0/40 (0.0%),0/40 (0.0%),0/40 (0.0%),0/40 (0.0%)
-D4 + Error Router and bounded repair,0/40 (0.0%),1/40 (2.5%),0/40 (0.0%),0/40 (0.0%)
-D5 + Builder Team and SCW,29/40 (72.5%),29/40 (72.5%),29/40 (72.5%),29/40 (72.5%)
-D6 full WTA-MAFA,33/40 (82.5%),33/40 (82.5%),33/40 (82.5%),33/40 (82.5%)
