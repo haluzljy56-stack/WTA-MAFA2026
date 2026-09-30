@@ -1,7 +1,7 @@
 # WTA-MAFA — Benchmark and Supplementary Material
 
-Release accompanying *WTA-MAFA: Domain-Specific Multi-Agent Automated Modeling
-for Air and Missile Defense Weapon-Target Assignment*.
+Release accompanying *Automated Construction of Executable Optimization Models
+for Weapon–Target Assignment with Domain-Grounded Large Language Model Agents*.
 
 This repository holds two things: the WTA-FormBench benchmark, and the
 supplementary material of the paper.
