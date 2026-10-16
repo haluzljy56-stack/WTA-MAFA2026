@@ -1,7 +1,7 @@
 # WTA-MAFA — Benchmark and Supplementary Material
 
-Release accompanying *Automated Construction of Executable Optimization Models
-for Weapon–Target Assignment with Domain-Grounded Large Language Model Agents*.
+Release accompanying *Verification-Guided LLM Agents for Executable Optimization
+Modeling of Weapon–Target Assignment*.
 
 This repository holds two things: the WTA-FormBench benchmark, and the
 supplementary material of the paper.
